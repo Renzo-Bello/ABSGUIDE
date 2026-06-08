@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0A0A0A">
+<title>Protocolo Cardio · Guía Privada</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{font-size:16px;scroll-behavior:smooth}
+body{
+  font-family:'Outfit',sans-serif;
+  background:#0A0A0A;
+  color:#F0EDE8;
+  min-height:100vh;
+  min-height:100dvh;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+:root{
+  --gold:#C9A96E;
+  --gold-dim:#8A6D3F;
+  --gold-glow:rgba(201,169,110,0.12);
+  --gold-line:rgba(201,169,110,0.25);
+  --ink:#0A0A0A;
+  --ink2:#141414;
+  --ink3:#1E1E1E;
+  --ink4:#2A2A2A;
+  --text:#F0EDE8;
+  --text2:#B8B4AD;
+  --text3:#6E6A63;
+  --green:#5A9E72;
+  --green-bg:rgba(90,158,114,0.12);
+  --red:#C0514A;
+  --red-bg:rgba(192,81,74,0.12);
+  --amber:#C8881A;
+  --amber-bg:rgba(200,136,26,0.12);
+  --blue:#4A85C8;
+  --blue-bg:rgba(74,133,200,0.12);
+  --r-safe-top:env(safe-area-inset-top,0px);
+  --r-safe-bottom:env(safe-area-inset-bottom,0px);
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:3px;height:3px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--gold-dim);border-radius:2px}
+
+/* ── HEADER ── */
+.app-header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(10,10,10,0.92);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--gold-line);
+  padding:calc(12px + var(--r-safe-top)) 20px 12px;
+}
+.header-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  max-width:480px;margin:0 auto;
+}
+.header-brand{
+  display:flex;flex-direction:column;gap:1px;
+}
+.header-eyebrow{
+  font-size:9px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--gold);font-weight:500;
+}
+.header-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;font-weight:700;color:var(--text);
+  line-height:1;
+}
+.header-badge{
+  font-size:10px;font-weight:500;
+  background:var(--gold-glow);
+  border:1px solid var(--gold-line);
+  color:var(--gold);
+  padding:4px 10px;border-radius:20px;
+  letter-spacing:0.5px;
+}
+
+/* ── NAV TABS ── */
+.nav-tabs{
+  display:flex;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  gap:0;
+  background:var(--ink2);
+  border-bottom:1px solid var(--gold-line);
+  padding:0 4px;
+  max-width:100%;
+}
+.nav-tabs::-webkit-scrollbar{display:none}
+.nav-tab{
+  flex-shrink:0;
+  font-family:'Outfit',sans-serif;
+  font-size:12px;font-weight:400;
+  color:var(--text3);
+  padding:12px 14px;
+  border:none;background:none;cursor:pointer;
+  border-bottom:2px solid transparent;
+  transition:all 0.2s;
+  white-space:nowrap;
+  letter-spacing:0.3px;
+}
+.nav-tab.active{
+  color:var(--gold);
+  border-bottom-color:var(--gold);
+  font-weight:500;
+}
+.nav-tab:active{opacity:0.7}
+
+/* ── PANELS ── */
+.panel{display:none;padding:20px;max-width:480px;margin:0 auto}
+.panel.active{display:block}
+
+/* ── SECTION LABEL ── */
+.section-label{
+  font-size:10px;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--text3);font-weight:500;margin-bottom:14px;
+}
+
+/* ── SELECT CUSTOM ── */
+.field-group{margin-bottom:14px}
+.field-label{
+  display:block;font-size:11px;font-weight:500;
+  letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--text3);margin-bottom:7px;
+}
+.field-select{
+  width:100%;
+  font-family:'Outfit',sans-serif;font-size:14px;font-weight:400;
+  color:var(--text);
+  background:var(--ink3);
+  border:1px solid var(--ink4);
+  border-radius:10px;padding:13px 40px 13px 14px;
+  appearance:none;-webkit-appearance:none;
+  cursor:pointer;
+  transition:border-color 0.2s;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%236E6A63' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center;
+}
+.field-select:focus{outline:none;border-color:var(--gold-dim)}
+.field-select option{background:#1E1E1E;color:#F0EDE8}
+
+/* ── RESULT CARD ── */
+.result-card{
+  border:1px solid var(--gold-dim);
+  border-radius:16px;overflow:hidden;margin-top:4px;
+  animation:fadeUp 0.3s ease;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.result-top{
+  background:linear-gradient(135deg,#1A1308 0%,#0F0B05 100%);
+  padding:20px;
+  border-bottom:1px solid var(--gold-line);
+  position:relative;overflow:hidden;
+}
+.result-top::before{
+  content:'';position:absolute;top:-30px;right:-30px;
+  width:120px;height:120px;border-radius:50%;
+  background:radial-gradient(circle,rgba(201,169,110,0.08) 0%,transparent 70%);
+  pointer-events:none;
+}
+.result-top-row{display:flex;align-items:flex-start;gap:14px}
+.result-emoji{
+  width:48px;height:48px;border-radius:12px;
+  background:var(--gold-glow);border:1px solid var(--gold-line);
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;flex-shrink:0;
+}
+.result-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:24px;font-weight:700;color:var(--text);line-height:1.1;
+}
+.result-sub{font-size:12px;color:var(--gold);margin-top:4px;font-weight:400}
+.result-badge-wrap{margin-top:12px}
+.badge{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;
+  padding:5px 10px;border-radius:6px;
+}
+.badge-green{background:var(--green-bg);color:var(--green)}
+.badge-amber{background:var(--amber-bg);color:var(--amber)}
+.badge-red{background:var(--red-bg);color:var(--red)}
+.badge-blue{background:var(--blue-bg);color:var(--blue)}
+.badge-gold{background:var(--gold-glow);color:var(--gold)}
+
+.metrics-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:8px;
+  padding:16px;
+  background:var(--ink2);
+  border-bottom:1px solid var(--gold-line);
+}
+.metric-item{
+  background:var(--ink3);border-radius:10px;padding:12px 10px;
+  display:flex;flex-direction:column;gap:6px;
+}
+.metric-top-row{display:flex;align-items:center;justify-content:space-between}
+.metric-label-sm{font-size:10px;color:var(--text3);font-weight:500;letter-spacing:0.5px}
+.metric-val-lg{font-size:16px;font-weight:600;color:var(--text);line-height:1}
+.metric-val-kcal{font-size:20px;font-weight:600;color:var(--gold);line-height:1}
+.metric-sub{font-size:9px;color:var(--text3)}
+
+.pip-row{display:flex;gap:3px}
+.pip{
+  width:18px;height:4px;border-radius:2px;
+  background:var(--ink4);
+  transition:background 0.3s;
+}
+.pip.on-gold{background:var(--gold)}
+.pip.on-green{background:var(--green)}
+.pip.on-red{background:var(--red)}
+
+.result-tip{
+  padding:16px;background:var(--ink2);
+}
+.tip-inner{
+  border-left:2px solid var(--gold);
+  padding:10px 12px;
+  background:var(--gold-glow);
+  border-radius:0 8px 8px 0;
+  font-size:13px;line-height:1.6;color:var(--text2);
+}
+.tip-inner strong{color:var(--text);font-weight:500}
+
+/* ── COMPARATIVA ── */
+.comp-intro{
+  font-size:13px;color:var(--text2);line-height:1.6;
+  margin-bottom:20px;
+}
+.comp-cards{display:flex;flex-direction:column;gap:10px}
+.comp-modal-card{
+  border:1px solid var(--ink4);border-radius:12px;overflow:hidden;
+  transition:border-color 0.2s;
+}
+.comp-modal-card.featured{border-color:var(--gold-dim)}
+.comp-card-header{
+  padding:14px 16px;
+  display:flex;align-items:center;gap:12px;
+  cursor:pointer;
+  background:var(--ink2);
+  border-bottom:1px solid transparent;
+  transition:all 0.2s;
+  -webkit-user-select:none;user-select:none;
+}
+.comp-card-header.open{border-bottom-color:var(--ink4)}
+.comp-emoji{font-size:20px;width:36px;text-align:center;flex-shrink:0}
+.comp-name{font-size:14px;font-weight:500;color:var(--text);flex:1}
+.comp-arrow{
+  color:var(--text3);font-size:16px;
+  transition:transform 0.25s;
+  font-weight:300;
+}
+.comp-arrow.open{transform:rotate(180deg)}
+.comp-body{
+  display:none;padding:0;
+  background:var(--ink);
+}
+.comp-body.open{display:block}
+.comp-row{
+  display:flex;align-items:center;padding:11px 16px;
+  border-bottom:1px solid var(--ink3);
+  gap:12px;
+}
+.comp-row:last-child{border-bottom:none}
+.comp-factor{font-size:12px;color:var(--text3);flex:1;min-width:0}
+.comp-pips{display:flex;gap:3px;flex-shrink:0}
+.comp-chip{
+  font-size:10px;font-weight:600;padding:3px 8px;border-radius:4px;
+  white-space:nowrap;
+}
+
+/* ── CALORÍAS ── */
+.cal-card{
+  background:var(--ink2);border:1px solid var(--ink4);
+  border-radius:14px;padding:18px;margin-bottom:14px;
+}
+.cal-card-header{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:14px;
+}
+.cal-title{font-size:13px;font-weight:500;color:var(--text)}
+.cal-sub{font-size:11px;color:var(--text3);margin-top:2px}
+.weight-slider-wrap{
+  display:flex;align-items:center;gap:12px;margin-bottom:20px;
+}
+.weight-slider-wrap label{font-size:12px;color:var(--text2);white-space:nowrap}
+input[type=range]{
+  -webkit-appearance:none;appearance:none;
+  width:100%;height:4px;border-radius:2px;
+  background:var(--ink4);outline:none;cursor:pointer;
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;appearance:none;
+  width:20px;height:20px;border-radius:50%;
+  background:var(--gold);cursor:pointer;
+  border:2px solid var(--ink);
+  box-shadow:0 0 0 3px rgba(201,169,110,0.15);
+}
+input[type=range]::-moz-range-thumb{
+  width:20px;height:20px;border-radius:50%;
+  background:var(--gold);cursor:pointer;
+  border:2px solid var(--ink);
+}
+.weight-val{
+  font-size:14px;font-weight:600;color:var(--gold);
+  min-width:48px;text-align:right;white-space:nowrap;
+}
+.cal-bars{display:flex;flex-direction:column;gap:10px}
+.cal-row{display:flex;align-items:center;gap:10px}
+.cal-name{font-size:12px;color:var(--text2);width:110px;flex-shrink:0}
+.cal-bar-track{
+  flex:1;height:6px;background:var(--ink4);
+  border-radius:3px;overflow:hidden;
+}
+.cal-bar-fill{
+  height:100%;border-radius:3px;background:var(--gold);
+  transition:width 0.5s cubic-bezier(.4,0,.2,1);
+}
+.cal-num{
+  font-size:12px;font-weight:600;color:var(--gold);
+  min-width:62px;text-align:right;
+}
+.cal-int-tabs{
+  display:flex;gap:6px;margin-bottom:16px;
+}
+.cal-int-btn{
+  font-family:'Outfit',sans-serif;font-size:11px;font-weight:500;
+  padding:6px 12px;border-radius:20px;border:1px solid var(--ink4);
+  background:none;color:var(--text3);cursor:pointer;
+  transition:all 0.15s;
+}
+.cal-int-btn.active{
+  background:var(--gold-glow);border-color:var(--gold-line);color:var(--gold);
+}
+
+/* ── SEMANA ── */
+.phase-tabs{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap}
+.phase-btn{
+  font-family:'Outfit',sans-serif;font-size:12px;font-weight:500;
+  padding:8px 16px;border-radius:20px;
+  border:1px solid var(--ink4);
+  background:none;color:var(--text3);cursor:pointer;
+  transition:all 0.2s;
+}
+.phase-btn.active{
+  background:var(--ink);border-color:var(--gold-dim);
+  color:var(--gold);
+}
+.week-scroll{
+  overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+  margin:0 -20px;padding:0 20px;
+  padding-bottom:4px;
+}
+.week-scroll::-webkit-scrollbar{display:none}
+.week-inner{
+  display:flex;gap:8px;
+  width:max-content;
+  padding-right:20px;
+}
+.day-card{
+  width:88px;flex-shrink:0;
+  background:var(--ink2);border:1px solid var(--ink4);
+  border-radius:12px;padding:12px 8px;
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  position:relative;overflow:hidden;
+}
+.day-card.rest{opacity:0.5}
+.day-accent-bar{
+  position:absolute;top:0;left:0;right:0;height:2px;
+}
+.day-name{
+  font-size:9px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--text3);font-weight:500;
+}
+.day-icon-wrap{font-size:20px;line-height:1}
+.day-main{
+  font-size:11px;font-weight:500;color:var(--text);
+  text-align:center;line-height:1.3;
+}
+.day-detail{
+  font-size:10px;color:var(--text3);text-align:center;line-height:1.4;
+}
+.week-tip{
+  margin-top:16px;padding:14px;
+  background:var(--ink2);border:1px solid var(--ink4);
+  border-radius:12px;border-left:3px solid var(--gold);
+  font-size:12.5px;color:var(--text2);line-height:1.6;
+}
+.week-tip strong{color:var(--text);font-weight:500}
+
+/* ── INFO BANNER ── */
+.info-banner{
+  background:var(--ink2);border:1px solid var(--ink4);border-radius:12px;
+  padding:14px;margin-top:14px;
+  font-size:12px;color:var(--text3);line-height:1.6;
+}
+.info-banner strong{color:var(--text2);font-weight:500}
+
+/* ── FAQ ── */
+.faq-item{
+  border-bottom:1px solid var(--ink3);
+}
+.faq-item:last-child{border-bottom:none}
+.faq-q{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:16px 0;cursor:pointer;-webkit-user-select:none;user-select:none;
+}
+.faq-q-text{font-size:13px;font-weight:500;color:var(--text);line-height:1.4;flex:1}
+.faq-icon{
+  color:var(--gold);font-size:18px;flex-shrink:0;font-weight:300;
+  transition:transform 0.2s;
+}
+.faq-icon.open{transform:rotate(45deg)}
+.faq-a{
+  display:none;
+  font-size:12.5px;color:var(--text2);line-height:1.6;
+  padding:0 0 16px;
+}
+.faq-a.open{display:block}
+
+/* ── DIVIDER ── */
+.gold-divider{
+  height:1px;background:var(--gold-line);margin:20px 0;
+}
+
+/* ── HERO BANNER ── */
+.hero{
+  background:linear-gradient(160deg,#1A1308 0%,#0A0A0A 60%);
+  padding:28px 20px 24px;
+  border-bottom:1px solid var(--gold-line);
+  max-width:480px;margin:0 auto;
+}
+.hero-eyebrow{
+  font-size:10px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--gold);font-weight:500;margin-bottom:10px;
+  display:flex;align-items:center;gap:8px;
+}
+.hero-eyebrow::before{
+  content:'';width:20px;height:1px;background:var(--gold);display:block;
+}
+.hero-h{
+  font-family:'Cormorant Garamond',serif;
+  font-size:32px;font-weight:700;color:var(--text);
+  line-height:1.1;margin-bottom:10px;
+}
+.hero-h em{color:var(--gold);font-style:italic}
+.hero-p{font-size:13px;color:var(--text2);line-height:1.6}
+
+/* ── BOTTOM SAFE ── */
+.safe-bottom{height:calc(16px + var(--r-safe-bottom))}
+
+/* ── RESPONSIVE ── */
+@media(min-width:480px){
+  .app-header,.panel,.nav-tabs-wrap,.hero{max-width:480px;margin-left:auto;margin-right:auto}
+  .nav-tabs-wrap{display:flex;justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="header-inner">
+    <div class="header-brand">
+      <span class="header-eyebrow">SLAB | RENZO BELLO</span>
+      <span class="header-title">Protocolo Cardio</span>
+    </div>
+    <span class="header-badge">@reennzolifts</span>
+  </div>
+</header>
+
+<div style="background:#0A0A0A;">
+  <div class="hero">
+    <div class="hero-eyebrow">SLAB | ASESORIAS PERSONALIZADAS</div>
+    <h1 class="hero-h">Elige el cardio<br><em>correcto</em> para ti</h1>
+    <p class="hero-p">Escaladora, bicicleta, caminata suave o inclinada. Todo lo que importa para tu etapa y objetivo.</p>
+  </div>
+</div>
+
+<div style="position:sticky;top:57px;z-index:99;background:var(--ink2);">
+  <nav class="nav-tabs" role="tablist" aria-label="Secciones">
+    <button class="nav-tab active" onclick="switchTab('selector',this)" role="tab">Selector</button>
+    <button class="nav-tab" onclick="switchTab('comparativa',this)" role="tab">Comparativa</button>
+    <button class="nav-tab" onclick="switchTab('calorias',this)" role="tab">Calorías</button>
+    <button class="nav-tab" onclick="switchTab('semana',this)" role="tab">Plan semanal</button>
+    <button class="nav-tab" onclick="switchTab('faq',this)" role="tab">FAQ</button>
+  </nav>
+</div>
+
+<!-- ════════════════════════════════════
+     PANEL: SELECTOR
+════════════════════════════════════ -->
+<section class="panel active" id="panel-selector" role="tabpanel">
+  <div class="section-label">Tu perfil</div>
+
+  <div class="field-group">
+    <label class="field-label" for="sel-etapa">Etapa actual</label>
+    <select class="field-select" id="sel-etapa" onchange="buildResult()">
+      <option value="volumen">Volumen — construir masa muscular</option>
+      <option value="definicion">Definición — perder grasa</option>
+      <option value="mantencion">Mantención — mantener composición</option>
+    </select>
+  </div>
+
+  <div class="field-group">
+    <label class="field-label" for="sel-objetivo">Objetivo del cardio</label>
+    <select class="field-select" id="sel-objetivo" onchange="buildResult()">
+      <option value="rendimiento">Preservar rendimiento en pesas</option>
+      <option value="grasa">Maximizar quema de grasa</option>
+      <option value="recuperacion">Recuperación activa</option>
+      <option value="articulaciones">Proteger articulaciones</option>
+    </select>
+  </div>
+
+  <div class="field-group">
+    <label class="field-label" for="sel-dia">Contexto del día</label>
+    <select class="field-select" id="sel-dia" onchange="buildResult()">
+      <option value="post_sup">Post-entreno de tren superior</option>
+      <option value="post_inf">Post-entreno de piernas</option>
+      <option value="descanso">Día de descanso</option>
+      <option value="independiente">Sesión independiente de pesas</option>
+    </select>
+  </div>
+
+  <div class="field-group">
+    <label class="field-label" for="sel-articular">Estado articular</label>
+    <select class="field-select" id="sel-articular" onchange="buildResult()">
+      <option value="ok">Sin limitaciones</option>
+      <option value="rodilla">Rodilla sensible / condromalacia</option>
+      <option value="cadera">Cadera o espalda baja</option>
+      <option value="tobillo">Tobillo sensible</option>
+    </select>
+  </div>
+
+  <div id="result-output"></div>
+  <div class="safe-bottom"></div>
+</section>
+
+<!-- ════════════════════════════════════
+     PANEL: COMPARATIVA
+════════════════════════════════════ -->
+<section class="panel" id="panel-comparativa" role="tabpanel">
+  <div class="section-label">Las 4 modalidades</div>
+  <p class="comp-intro">Tocá cada modalidad para ver su análisis completo.</p>
+  <div class="comp-cards" id="comp-cards"></div>
+  <div class="safe-bottom"></div>
+</section>
+
+<!-- ════════════════════════════════════
+     PANEL: CALORÍAS
+════════════════════════════════════ -->
+<section class="panel" id="panel-calorias" role="tabpanel">
+  <div class="section-label">Estimado por 30 minutos</div>
+
+  <div class="cal-card">
+    <div class="weight-slider-wrap">
+      <label for="weight-slider">Peso corporal</label>
+      <input type="range" id="weight-slider" min="45" max="130" value="70" step="1" oninput="updateCals()">
+      <span class="weight-val" id="weight-out">70 kg</span>
+    </div>
+    <div class="cal-int-tabs">
+      <button class="cal-int-btn" onclick="setInt('low',this)">Baja</button>
+      <button class="cal-int-btn active" onclick="setInt('mod',this)">Moderada</button>
+      <button class="cal-int-btn" onclick="setInt('high',this)">Alta</button>
+    </div>
+    <div class="cal-bars" id="cal-bars"></div>
+  </div>
+
+  <div class="info-banner">
+    <strong>Más calorías ≠ mejor opción.</strong> La escaladora quema más pero también fatiga más. En volumen o si tienes piernas el mismo día, la caminata suave o la bicicleta LISS son superiores aunque quemen menos.
+  </div>
+
+  <div class="gold-divider"></div>
+  <div class="section-label">Factores que afectan el gasto</div>
+  <div style="display:flex;flex-direction:column;gap:8px">
+    <div class="info-banner" style="margin-top:0">
+      <strong>Peso corporal</strong> — Más peso = más calorías. La variación es aprox. ±10 kcal por cada 5 kg adicionales en 30 min.
+    </div>
+    <div class="info-banner" style="margin-top:0">
+      <strong>Condición física</strong> — A mayor condición aeróbica, menor gasto relativo a la misma intensidad. El cuerpo se adapta.
+    </div>
+    <div class="info-banner" style="margin-top:0">
+      <strong>Composición corporal</strong> — Mayor masa muscular eleva el metabolismo basal y el gasto en cardio.
+    </div>
+  </div>
+  <div class="safe-bottom"></div>
+</section>
+
+<!-- ════════════════════════════════════
+     PANEL: SEMANA
+════════════════════════════════════ -->
+<section class="panel" id="panel-semana" role="tabpanel">
+  <div class="section-label">Protocolo semanal</div>
+  <div class="phase-tabs">
+    <button class="phase-btn active" onclick="buildWeek('volumen',this)">Volumen</button>
+    <button class="phase-btn" onclick="buildWeek('definicion',this)">Definición</button>
+    <button class="phase-btn" onclick="buildWeek('mantencion',this)">Mantención</button>
+  </div>
+  <div class="week-scroll">
+    <div class="week-inner" id="week-inner"></div>
+  </div>
+  <div class="week-tip" id="week-tip"></div>
+
+  <div class="gold-divider"></div>
+  <div class="section-label">Reglas de oro</div>
+  <div style="display:flex;flex-direction:column;gap:8px">
+    <div class="info-banner" style="margin-top:0">
+      <strong>Pesas primero, siempre.</strong> Si haces cardio el mismo día que pesas, haz pesas antes. El cardio pre-pesas compromete la calidad del entrenamiento de fuerza.
+    </div>
+    <div class="info-banner" style="margin-top:0">
+      <strong>Separar 4-6h si es posible.</strong> La separación ideal entre cardio intenso y pesas es de 4 a 6 horas para maximizar la recuperación entre sesiones.
+    </div>
+    <div class="info-banner" style="margin-top:0">
+      <strong>Escaladora + piernas = mala combinación.</strong> Nunca uses escaladora el mismo día que entrenes piernas intensamente. La fatiga muscular se superpone y baja la calidad de ambas sesiones.
+    </div>
+  </div>
+  <div class="safe-bottom"></div>
+</section>
+
+<!-- ════════════════════════════════════
+     PANEL: FAQ
+════════════════════════════════════ -->
+<section class="panel" id="panel-faq" role="tabpanel">
+  <div class="section-label">Preguntas frecuentes</div>
+  <div id="faq-list"></div>
+  <div class="safe-bottom"></div>
+</section>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────────────
+const MODAL_INFO = {
+  escaladora:{
+    emoji:'🪜', name:'Escaladora',
+    desc:'Simula subir escaleras de forma continua. La modalidad más exigente de las cuatro: alta demanda CV, muscular y sistémica.',
+    rows:[
+      {f:'Intensidad cardiovascular', v:5, good:true},
+      {f:'Impacto articular', v:3, good:false},
+      {f:'Fatiga muscular', v:5, good:false},
+      {f:'Quema calórica', v:5, good:true},
+      {f:'Preserva músculo', v:2, good:true},
+      {f:'Uso en volumen', v:1, good:true},
+      {f:'Uso en definición', v:4, good:true},
+      {f:'Recuperación activa', v:1, good:true},
+    ],
+    chips:[
+      {t:'Glúteos/Cuádriceps',c:'blue'},{t:'No en día de piernas',c:'red'},{t:'Definición avanzada',c:'gold'}
+    ]
+  },
+  bicicleta:{
+    emoji:'🚴', name:'Bicicleta estática',
+    desc:'Bajo impacto articular, alta quema calórica. Versátil para LISS o HIIT. Ideal para personas con rodillas sensibles.',
+    rows:[
+      {f:'Intensidad cardiovascular', v:4, good:true},
+      {f:'Impacto articular', v:1, good:false},
+      {f:'Fatiga muscular', v:2, good:false},
+      {f:'Quema calórica', v:4, good:true},
+      {f:'Preserva músculo', v:4, good:true},
+      {f:'Uso en volumen', v:3, good:true},
+      {f:'Uso en definición', v:5, good:true},
+      {f:'Recuperación activa', v:3, good:true},
+    ],
+    chips:[
+      {t:'Articulaciones amigable',c:'green'},{t:'LISS y HIIT',c:'blue'},{t:'Todas las etapas',c:'gold'}
+    ]
+  },
+  caminata_inclinada:{
+    emoji:'⛰️', name:'Caminata inclinada',
+    desc:'Caminata en trotadora con 8-15% de inclinación. El punto medio perfecto: buena quema calórica con bajo impacto articular.',
+    rows:[
+      {f:'Intensidad cardiovascular', v:3, good:true},
+      {f:'Impacto articular', v:2, good:false},
+      {f:'Fatiga muscular', v:3, good:false},
+      {f:'Quema calórica', v:3, good:true},
+      {f:'Preserva músculo', v:4, good:true},
+      {f:'Uso en volumen', v:3, good:true},
+      {f:'Uso en definición', v:5, good:true},
+      {f:'Recuperación activa', v:2, good:true},
+    ],
+    chips:[
+      {t:'Glúteos/Isquios',c:'blue'},{t:'Estándar en definición',c:'green'},{t:'Sin impacto brusco',c:'gold'}
+    ]
+  },
+  caminata_suave:{
+    emoji:'🚶', name:'Caminata suave',
+    desc:'La modalidad más conservadora. Impacto mínimo, fatiga casi nula. Funciona como recuperación activa real. La base de cualquier protocolo.',
+    rows:[
+      {f:'Intensidad cardiovascular', v:2, good:true},
+      {f:'Impacto articular', v:1, good:false},
+      {f:'Fatiga muscular', v:1, good:false},
+      {f:'Quema calórica', v:2, good:true},
+      {f:'Preserva músculo', v:5, good:true},
+      {f:'Uso en volumen', v:5, good:true},
+      {f:'Uso en definición', v:3, good:true},
+      {f:'Recuperación activa', v:5, good:true},
+    ],
+    chips:[
+      {t:'Recuperación activa real',c:'green'},{t:'Uso diario',c:'gold'},{t:'Todas las etapas',c:'blue'}
+    ]
+  }
+};
+
+const RESULTS = {
+  volumen:{
+    rendimiento:{modal:'caminata_suave',badge:'Primera opción',badgeT:'green',tip:'<strong>En volumen, el cardio no debe robar energía para las pesas.</strong> La caminata suave es la única modalidad que no interfiere con la recuperación ni el superávit calórico. Realízala post-entrenamiento o en días separados, 20-40 min a ritmo conversacional.',freq:'3-5x semana',dur:'20-40 min',kcal:130},
+    grasa:{modal:'caminata_inclinada',badge:'Recomendado',badgeT:'blue',tip:'<strong>Si quieres quemar algo de grasa sin comprometer el músculo.</strong> La caminata inclinada aumenta el gasto calórico significativamente sin la fatiga sistémica de la escaladora. Limítala a 2-3x semana para no comprometer la recuperación.',freq:'2-3x semana',dur:'20-30 min',kcal:220},
+    recuperacion:{modal:'caminata_suave',badge:'Ideal para ti',badgeT:'green',tip:'<strong>La caminata suave es la única modalidad que actúa como recuperación activa real.</strong> Mejora el flujo sanguíneo y la eliminación de desechos metabólicos sin generar nueva fatiga. Puedes hacerla diariamente si la intensidad es baja.',freq:'4-6x semana',dur:'20-45 min',kcal:130},
+    articulaciones:{modal:'bicicleta',badge:'Más seguro',badgeT:'green',tip:'<strong>Con articulaciones comprometidas en volumen,</strong> la bicicleta estática es tu herramienta. Impacto articular casi nulo, buena quema calórica y no compromete la recuperación muscular. Asegúrate de ajustar el asiento a la altura correcta.',freq:'2-3x semana',dur:'20-30 min',kcal:250},
+  },
+  definicion:{
+    rendimiento:{modal:'bicicleta',badge:'Primera opción',badgeT:'green',tip:'<strong>En definición priorizando rendimiento,</strong> la bicicleta LISS te da el mayor gasto calórico con menor fatiga sistémica. Reserva el HIIT para días separados de las pesas. Post-entrenamiento de tren superior es el momento ideal.',freq:'3-4x semana',dur:'25-40 min',kcal:250},
+    grasa:{modal:'caminata_inclinada',badge:'Estándar dorado',badgeT:'green',tip:'<strong>La caminata inclinada es el cardio reina en definición.</strong> Alta activación de glúteos e isquios, buena quema calórica y fatiga muscular controlada. 4-5x semana, 30-45 min. Puedes combinar con bicicleta LISS y escaladora puntual.',freq:'4-5x semana',dur:'30-45 min',kcal:220},
+    recuperacion:{modal:'caminata_suave',badge:'Base diaria',badgeT:'blue',tip:'<strong>La caminata suave puede hacerse todos los días en definición</strong> y contribuye al NEAT de manera significativa. 30-60 min diarios suman más de lo que parece al déficit calórico sin afectar la recuperación para las sesiones de pesas.',freq:'5-7x semana',dur:'30-60 min',kcal:130},
+    articulaciones:{modal:'bicicleta',badge:'Seguro y efectivo',badgeT:'green',tip:'<strong>Definición con articulaciones comprometidas:</strong> la bicicleta te da alta quema calórica con mínimo estrés articular. Combínala con caminata suave en los demás días. Evita escaladora y caminata inclinada hasta resolver el problema articular.',freq:'3-4x semana',dur:'25-35 min',kcal:250},
+  },
+  mantencion:{
+    rendimiento:{modal:'caminata_suave',badge:'Base sostenible',badgeT:'gold',tip:'<strong>En mantención, la consistencia manda sobre la intensidad.</strong> 5-7x semana de caminata suave es más efectivo que sesiones intensas esporádicas. Puedes sumar bicicleta o escaladora puntualmente según cómo te sientas cada semana.',freq:'5-7x semana',dur:'20-45 min',kcal:130},
+    grasa:{modal:'caminata_inclinada',badge:'Recomendado',badgeT:'blue',tip:'<strong>Para mantener composición:</strong> alterna caminata inclinada (2-3x semana) con caminata suave diaria. Puedes sumar bicicleta como variante para no aburrirte. La variedad en mantención es clave para la adherencia a largo plazo.',freq:'2-3x semana',dur:'25-35 min',kcal:220},
+    recuperacion:{modal:'caminata_suave',badge:'El más sostenible',badgeT:'green',tip:'<strong>En mantención sin presión de déficit,</strong> el cardio debe ser placentero y sostenible. La caminata suave es la modalidad más fácil de sostener como hábito permanente. Hazla parte de tu rutina diaria y no la sentirás como un esfuerzo.',freq:'5-7x semana',dur:'20-40 min',kcal:130},
+    articulaciones:{modal:'bicicleta',badge:'Perfecto',badgeT:'green',tip:'<strong>Con articulaciones sensibles en mantención,</strong> la bicicleta es ideal como base cardiovascular permanente. 2-3x semana es suficiente para mantener salud cardiovascular sin desgaste articular. Complementa con caminata suave los demás días.',freq:'2-3x semana',dur:'20-30 min',kcal:250},
+  }
+};
+
+const WEEKS = {
+  volumen:{
+    days:[
+      {n:'Lun',i:'🏋️',m:'Pesas',d:'Caminata 20\' post',a:'#5A9E72'},
+      {n:'Mar',i:'🚶',m:'Caminata',d:'30 min suave',a:'#5A9E72'},
+      {n:'Mié',i:'🏋️',m:'Pesas',d:'Caminata 20\' post',a:'#5A9E72'},
+      {n:'Jue',i:'🚴',m:'Bicicleta',d:'LISS 25 min',a:'#4A85C8'},
+      {n:'Vie',i:'🏋️',m:'Pesas',d:'Caminata 20\' post',a:'#5A9E72'},
+      {n:'Sáb',i:'🚶',m:'Caminata',d:'40 min libre',a:'#5A9E72'},
+      {n:'Dom',i:'😴',m:'Descanso',d:'total',a:'#3A3A3A',rest:true},
+    ],
+    tip:'<strong>En volumen:</strong> caminata suave como base. Evita la escaladora en la misma semana con piernas intensas. El objetivo del cardio es sumar salud sin restar recuperación para las pesas.'
+  },
+  definicion:{
+    days:[
+      {n:'Lun',i:'🏋️',m:'Pesas',d:'+ Cam. inclinada 30\'',a:'#C9A96E'},
+      {n:'Mar',i:'🚴',m:'Bicicleta',d:'LISS 35 min',a:'#4A85C8'},
+      {n:'Mié',i:'🏋️',m:'Pesas',d:'+ Cam. inclinada 30\'',a:'#C9A96E'},
+      {n:'Jue',i:'🪜',m:'Escaladora',d:'25 min (no piernas)',a:'#C8881A'},
+      {n:'Vie',i:'🏋️',m:'Pesas',d:'+ Bicicleta 30\'',a:'#4A85C8'},
+      {n:'Sáb',i:'⛰️',m:'Cam. inclin.',d:'40 min',a:'#C9A96E'},
+      {n:'Dom',i:'🚶',m:'Caminata',d:'suave 45 min',a:'#5A9E72'},
+    ],
+    tip:'<strong>En definición:</strong> caminata inclinada + bicicleta LISS son la base. Escaladora 2-3x semana en días sin piernas. La caminata suave suma como NEAT diario sin costo de recuperación.'
+  },
+  mantencion:{
+    days:[
+      {n:'Lun',i:'🏋️',m:'Pesas',d:'+ Caminata 25\'',a:'#5A9E72'},
+      {n:'Mar',i:'🚴',m:'Bicicleta',d:'30 min libre',a:'#4A85C8'},
+      {n:'Mié',i:'🏋️',m:'Pesas',d:'+ Caminata 25\'',a:'#5A9E72'},
+      {n:'Jue',i:'⛰️',m:'Cam. inclin.',d:'30 min',a:'#C9A96E'},
+      {n:'Vie',i:'🏋️',m:'Pesas',d:'+ Caminata 25\'',a:'#5A9E72'},
+      {n:'Sáb',i:'🪜',m:'Escaladora',d:'20 min o libre',a:'#C8881A'},
+      {n:'Dom',i:'😴',m:'Descanso',d:'total',a:'#3A3A3A',rest:true},
+    ],
+    tip:'<strong>En mantención:</strong> sé flexible. Alterna modalidades según energía y motivación. La consistencia importa más que la modalidad específica. 3-5 sesiones/semana es más que suficiente.'
+  }
+};
+
+const CALS = {
+  low: [{n:'Escaladora',b:220},{n:'Bicicleta LISS',b:150},{n:'Caminata inclinada',b:150},{n:'Caminata suave',b:90}],
+  mod: [{n:'Escaladora',b:320},{n:'Bicicleta LISS',b:250},{n:'Caminata inclinada',b:220},{n:'Caminata suave',b:130}],
+  high:[{n:'Escaladora',b:400},{n:'Bicicleta LISS',b:350},{n:'Caminata inclinada',b:280},{n:'Caminata suave',b:160}],
+};
+
+const FAQS = [
+  {q:'¿Puedo hacer cardio en ayunas?',a:'Sí, pero no es mágico. El cardio en ayunas no quema significativamente más grasa que el cardio post-comida cuando se igualan las calorías totales del día. Si lo toleras bien y te da energía, úsalo. Si te marea o baja tu rendimiento general, evítalo.'},
+  {q:'¿Cuánto cardio es demasiado?',a:'En volumen: más de 180-200 min/semana puede interferir con la ganancia muscular. En definición: hasta 300-350 min/semana es manejable con intensidad moderada. La señal de alarma real es la fatiga acumulada y la pérdida de fuerza progresiva en las pesas.'},
+  {q:'¿La escaladora me "come" el músculo de piernas?',a:'No directamente, pero si se usa en exceso junto al entrenamiento de piernas, compromete la calidad del entrenamiento y la recuperación. Esto sí puede frenar el progreso a largo plazo. Úsala con inteligencia: nunca el mismo día que piernas intensas.'},
+  {q:'¿HIIT o LISS para perder grasa?',a:'Depende del contexto. El HIIT quema más calorías en menos tiempo y genera mayor EPOC post-ejercicio, pero fatiga más. El LISS es más sostenible, menos agotador y mejor para preservar masa muscular en déficit. Una mezcla de ambos suele dar mejores resultados que cualquiera solo.'},
+  {q:'¿Tengo dolor de rodilla, qué hago?',a:'Bicicleta estática (con asiento a altura correcta) y caminata suave plana son tus opciones más seguras. Evita escaladora y caminata inclinada hasta resolver el problema. La bicicleta es la única modalidad sin impacto compresivo en la rodilla. Consulta a tu médico o fisioterapeuta ante dolor persistente.'},
+  {q:'¿Cuánto esperar entre cardio y pesas el mismo día?',a:'Idealmente 4-6 horas entre sesiones para maximizar recuperación y rendimiento. Si no es posible esa separación, haz pesas primero y cardio después. Nunca hagas cardio intenso (HIIT o escaladora) antes de pesas si tu objetivo es rendimiento en fuerza.'},
+  {q:'¿El cardio afecta la síntesis proteica?',a:'El cardio excesivo o mal programado puede elevar el cortisol y reducir la ventana anabólica post-entrenamiento. La caminata suave prácticamente no afecta la síntesis proteica. La escaladora e HIIT intensos sí pueden hacerlo si se acumulan en exceso o se colocan mal en el día.'},
+];
+
+// ── HELPERS ──────────────────────────────────────────────────────────
+let calIntensity = 'mod';
+
+function pips(v,max,colorClass){
+  let h='';
+  for(let i=1;i<=max;i++){
+    h+=`<div class="pip${i<=v?' on-'+colorClass:''}"></div>`;
+  }
+  return`<div class="pip-row">${h}</div>`;
+}
+
+function chipColor(c){
+  return{green:'color:var(--green);background:var(--green-bg)',gold:'color:var(--gold);background:var(--gold-glow)',blue:'color:var(--blue);background:var(--blue-bg)',red:'color:var(--red);background:var(--red-bg)'}[c]||'';
+}
+
+// ── SELECTOR ──────────────────────────────────────────────────────────
+function buildResult(){
+  const etapa   = document.getElementById('sel-etapa').value;
+  const obj     = document.getElementById('sel-objetivo').value;
+  const dia     = document.getElementById('sel-dia').value;
+  const art     = document.getElementById('sel-articular').value;
+
+  let r = RESULTS[etapa][obj];
+
+  // Override por articular
+  if(art!=='ok'){
+    if(['escaladora','caminata_inclinada'].includes(r.modal)&&art==='rodilla'){
+      r=RESULTS[etapa]['articulaciones'];
+    }
+    if(r.modal==='escaladora'&&art==='tobillo'){
+      r=RESULTS[etapa]['articulaciones'];
+    }
+  }
+
+  // Warning día piernas
+  let warningHtml='';
+  if(dia==='post_inf'){
+    if(r.modal==='escaladora'){
+      r=RESULTS[etapa]['rendimiento'];
+      warningHtml=`<div class="badge badge-amber" style="margin-bottom:12px;">⚠ Ajustado — escaladora incompatible con día de piernas</div>`;
+    } else {
+      warningHtml=`<div class="badge badge-amber" style="margin-bottom:12px;">⚠ Día de piernas — mantén intensidad baja</div>`;
+    }
+  }
+  if(dia==='descanso'){
+    warningHtml=`<div class="badge badge-green" style="margin-bottom:12px;">✓ Día libre — puedes ser más exigente</div>`;
+  }
+
+  const mi = MODAL_INFO[r.modal];
+  const badgeClass = `badge-${r.badgeT}`;
+
+  document.getElementById('result-output').innerHTML=`
+<div class="result-card">
+  <div class="result-top">
+    <div class="result-top-row">
+      <div class="result-emoji">${mi.emoji}</div>
+      <div style="flex:1;min-width:0">
+        <div class="result-name">${mi.name}</div>
+        <div class="result-sub">${r.freq} · ${r.dur}</div>
+      </div>
+    </div>
+    <div class="result-badge-wrap" style="margin-top:14px">
+      ${warningHtml}
+      <div class="badge ${badgeClass}">${r.badge}</div>
+    </div>
+  </div>
+
+  <div class="metrics-grid">
+    <div class="metric-item">
+      <div class="metric-label-sm">Impacto articular</div>
+      ${pips(MODAL_INFO[r.modal].rows[1].v,5,'red')}
+      <div class="metric-val-lg">${['','Mín.','Bajo','Mod.','Alto','Muy alto'][MODAL_INFO[r.modal].rows[1].v]}</div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-label-sm">Fatiga muscular</div>
+      ${pips(MODAL_INFO[r.modal].rows[2].v,5,'red')}
+      <div class="metric-val-lg">${['','Mín.','Baja','Media','Alta','Muy alta'][MODAL_INFO[r.modal].rows[2].v]}</div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-label-sm">Quema calórica</div>
+      ${pips(MODAL_INFO[r.modal].rows[3].v,5,'gold')}
+      <div class="metric-val-lg">${['','Baja','Baja','Media','Alta','Muy alta'][MODAL_INFO[r.modal].rows[3].v]}</div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-label-sm">Kcal / 30 min</div>
+      <div class="metric-val-kcal">~${r.kcal}</div>
+      <div class="metric-sub">70 kg · int. moderada</div>
+    </div>
+  </div>
+
+  <div class="result-tip">
+    <div class="tip-inner">${r.tip}</div>
+  </div>
+</div>`;
+}
+
+// ── COMPARATIVA ──────────────────────────────────────────────────────
+function buildComp(){
+  const keys=['escaladora','bicicleta','caminata_inclinada','caminata_suave'];
+  let html='';
+  keys.forEach((k,ki)=>{
+    const m=MODAL_INFO[k];
+    const featured=k==='caminata_inclinada';
+    const rowsHtml=m.rows.map(r=>{
+      const color=r.good?'gold':'red';
+      return`<div class="comp-row">
+        <span class="comp-factor">${r.f}</span>
+        <div class="comp-pips">${Array.from({length:5},(_,i)=>`<div class="pip${i<r.v?' on-'+color:''}"></div>`).join('')}</div>
+      </div>`;
+    }).join('');
+    const chipsHtml=m.chips.map(c=>`<span class="comp-chip" style="${chipColor(c.c)};padding:4px 8px;border-radius:4px;font-size:10px;font-weight:600">${c.t}</span>`).join('');
+    html+=`<div class="comp-modal-card${featured?' featured':''}">
+      <div class="comp-card-header" onclick="toggleComp(this,${ki})">
+        <span class="comp-emoji">${m.emoji}</span>
+        <span class="comp-name">${m.name}</span>
+        ${featured?`<span class="badge badge-gold" style="font-size:9px;padding:3px 7px;margin-right:6px">Popular</span>`:''}
+        <span class="comp-arrow">⌄</span>
+      </div>
+      <div class="comp-body" id="comp-body-${ki}">
+        <div style="padding:12px 16px 8px;font-size:12px;color:var(--text2);line-height:1.6">${m.desc}</div>
+        <div style="padding:0 16px 10px;display:flex;flex-wrap:wrap;gap:6px">${chipsHtml}</div>
+        ${rowsHtml}
+      </div>
+    </div>`;
+  });
+  document.getElementById('comp-cards').innerHTML=html;
+}
+
+function toggleComp(header,idx){
+  const body=document.getElementById('comp-body-'+idx);
+  const arrow=header.querySelector('.comp-arrow');
+  const isOpen=body.classList.contains('open');
+  body.classList.toggle('open',!isOpen);
+  arrow.classList.toggle('open',!isOpen);
+  header.classList.toggle('open',!isOpen);
+}
+
+// ── CALORÍAS ──────────────────────────────────────────────────────────
+function setInt(v,btn){
+  calIntensity=v;
+  document.querySelectorAll('.cal-int-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  updateCals();
+}
+
+function updateCals(){
+  const w=parseInt(document.getElementById('weight-slider').value);
+  document.getElementById('weight-out').textContent=w+' kg';
+  const data=CALS[calIntensity];
+  const maxCal=data[0].b*(w/70);
+  let html='';
+  data.forEach(item=>{
+    const kcal=Math.round(item.b*(w/70));
+    const pct=Math.round((kcal/maxCal)*100);
+    html+=`<div class="cal-row">
+      <span class="cal-name">${item.n}</span>
+      <div class="cal-bar-track"><div class="cal-bar-fill" style="width:${pct}%"></div></div>
+      <span class="cal-num">~${kcal} kcal</span>
+    </div>`;
+  });
+  document.getElementById('cal-bars').innerHTML=html;
+}
+
+// ── SEMANA ────────────────────────────────────────────────────────────
+function buildWeek(phase,btn){
+  if(btn){
+    document.querySelectorAll('.phase-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+  const data=WEEKS[phase];
+  let html='';
+  data.days.forEach(d=>{
+    html+=`<div class="day-card${d.rest?' rest':''}">
+      <div class="day-accent-bar" style="background:${d.a}"></div>
+      <div class="day-name">${d.n}</div>
+      <div class="day-icon-wrap">${d.i}</div>
+      <div class="day-main">${d.m}</div>
+      <div class="day-detail">${d.d}</div>
+    </div>`;
+  });
+  document.getElementById('week-inner').innerHTML=html;
+  document.getElementById('week-tip').innerHTML=data.tip;
+}
+
+// ── FAQ ───────────────────────────────────────────────────────────────
+function buildFaq(){
+  let html='';
+  FAQS.forEach((f,i)=>{
+    html+=`<div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(${i},this)">
+        <span class="faq-q-text">${f.q}</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a" id="faq-a-${i}">${f.a}</div>
+    </div>`;
+  });
+  document.getElementById('faq-list').innerHTML=html;
+}
+
+function toggleFaq(i,row){
+  const a=document.getElementById('faq-a-'+i);
+  const icon=row.querySelector('.faq-icon');
+  a.classList.toggle('open');
+  icon.classList.toggle('open');
+}
+
+// ── TABS ──────────────────────────────────────────────────────────────
+function switchTab(id,btn){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  btn.classList.add('active');
+  btn.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────
+buildResult();
+buildComp();
+updateCals();
+buildWeek('volumen');
+buildFaq();
+</script>
+</body>
+</html>

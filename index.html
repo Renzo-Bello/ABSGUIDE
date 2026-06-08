@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0A0A0A">
-<title>Protocolo Cardio · Guía Privada</title>
+<title>Protocolo Abdomen · Guía Privada</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -20,7 +20,6 @@ body{
   overflow-x:hidden;
   -webkit-font-smoothing:antialiased;
 }
-
 :root{
   --gold:#C9A96E;
   --gold-dim:#8A6D3F;
@@ -44,421 +43,176 @@ body{
   --r-safe-top:env(safe-area-inset-top,0px);
   --r-safe-bottom:env(safe-area-inset-bottom,0px);
 }
-
-/* ── SCROLLBAR ── */
 ::-webkit-scrollbar{width:3px;height:3px}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:var(--gold-dim);border-radius:2px}
 
-/* ── HEADER ── */
+/* HEADER */
 .app-header{
   position:sticky;top:0;z-index:100;
   background:rgba(10,10,10,0.92);
-  backdrop-filter:blur(16px);
-  -webkit-backdrop-filter:blur(16px);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
   border-bottom:1px solid var(--gold-line);
   padding:calc(12px + var(--r-safe-top)) 20px 12px;
 }
-.header-inner{
-  display:flex;align-items:center;justify-content:space-between;
-  max-width:480px;margin:0 auto;
-}
-.header-brand{
-  display:flex;flex-direction:column;gap:1px;
-}
-.header-eyebrow{
-  font-size:9px;letter-spacing:3px;text-transform:uppercase;
-  color:var(--gold);font-weight:500;
-}
-.header-title{
-  font-family:'Cormorant Garamond',serif;
-  font-size:20px;font-weight:700;color:var(--text);
-  line-height:1;
-}
-.header-badge{
-  font-size:10px;font-weight:500;
-  background:var(--gold-glow);
-  border:1px solid var(--gold-line);
-  color:var(--gold);
-  padding:4px 10px;border-radius:20px;
-  letter-spacing:0.5px;
-}
+.header-inner{display:flex;align-items:center;justify-content:space-between;max-width:480px;margin:0 auto}
+.header-brand{display:flex;flex-direction:column;gap:1px}
+.header-eyebrow{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:500}
+.header-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--text);line-height:1}
+.header-badge{font-size:10px;font-weight:500;background:var(--gold-glow);border:1px solid var(--gold-line);color:var(--gold);padding:4px 10px;border-radius:20px;letter-spacing:0.5px}
 
-/* ── NAV TABS ── */
-.nav-tabs{
-  display:flex;
-  overflow-x:auto;
-  -webkit-overflow-scrolling:touch;
-  scrollbar-width:none;
-  gap:0;
-  background:var(--ink2);
-  border-bottom:1px solid var(--gold-line);
-  padding:0 4px;
-  max-width:100%;
-}
+/* NAV */
+.nav-tabs{display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:0;background:var(--ink2);border-bottom:1px solid var(--gold-line);padding:0 4px;max-width:100%}
 .nav-tabs::-webkit-scrollbar{display:none}
-.nav-tab{
-  flex-shrink:0;
-  font-family:'Outfit',sans-serif;
-  font-size:12px;font-weight:400;
-  color:var(--text3);
-  padding:12px 14px;
-  border:none;background:none;cursor:pointer;
-  border-bottom:2px solid transparent;
-  transition:all 0.2s;
-  white-space:nowrap;
-  letter-spacing:0.3px;
-}
-.nav-tab.active{
-  color:var(--gold);
-  border-bottom-color:var(--gold);
-  font-weight:500;
-}
+.nav-tab{flex-shrink:0;font-family:'Outfit',sans-serif;font-size:12px;font-weight:400;color:var(--text3);padding:12px 14px;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;transition:all 0.2s;white-space:nowrap;letter-spacing:0.3px}
+.nav-tab.active{color:var(--gold);border-bottom-color:var(--gold);font-weight:500}
 .nav-tab:active{opacity:0.7}
 
-/* ── PANELS ── */
+/* PANELS */
 .panel{display:none;padding:20px;max-width:480px;margin:0 auto}
 .panel.active{display:block}
 
-/* ── SECTION LABEL ── */
-.section-label{
-  font-size:10px;letter-spacing:2.5px;text-transform:uppercase;
-  color:var(--text3);font-weight:500;margin-bottom:14px;
-}
+/* SECTION LABEL */
+.section-label{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--text3);font-weight:500;margin-bottom:14px}
 
-/* ── SELECT CUSTOM ── */
+/* SELECT */
 .field-group{margin-bottom:14px}
-.field-label{
-  display:block;font-size:11px;font-weight:500;
-  letter-spacing:1.5px;text-transform:uppercase;
-  color:var(--text3);margin-bottom:7px;
-}
-.field-select{
-  width:100%;
-  font-family:'Outfit',sans-serif;font-size:14px;font-weight:400;
-  color:var(--text);
-  background:var(--ink3);
-  border:1px solid var(--ink4);
-  border-radius:10px;padding:13px 40px 13px 14px;
-  appearance:none;-webkit-appearance:none;
-  cursor:pointer;
-  transition:border-color 0.2s;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%236E6A63' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;background-position:right 14px center;
-}
+.field-label{display:block;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);margin-bottom:7px}
+.field-select{width:100%;font-family:'Outfit',sans-serif;font-size:14px;font-weight:400;color:var(--text);background:var(--ink3);border:1px solid var(--ink4);border-radius:10px;padding:13px 40px 13px 14px;appearance:none;-webkit-appearance:none;cursor:pointer;transition:border-color 0.2s;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%236E6A63' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
 .field-select:focus{outline:none;border-color:var(--gold-dim)}
 .field-select option{background:#1E1E1E;color:#F0EDE8}
 
-/* ── RESULT CARD ── */
-.result-card{
-  border:1px solid var(--gold-dim);
-  border-radius:16px;overflow:hidden;margin-top:4px;
-  animation:fadeUp 0.3s ease;
-}
+/* RESULT CARD - DUAL EXERCISE */
+.result-card{border:1px solid var(--gold-dim);border-radius:16px;overflow:hidden;margin-top:4px;animation:fadeUp 0.3s ease}
 @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 
-.result-top{
-  background:linear-gradient(135deg,#1A1308 0%,#0F0B05 100%);
-  padding:20px;
-  border-bottom:1px solid var(--gold-line);
-  position:relative;overflow:hidden;
-}
-.result-top::before{
-  content:'';position:absolute;top:-30px;right:-30px;
-  width:120px;height:120px;border-radius:50%;
-  background:radial-gradient(circle,rgba(201,169,110,0.08) 0%,transparent 70%);
-  pointer-events:none;
-}
-.result-top-row{display:flex;align-items:flex-start;gap:14px}
-.result-emoji{
-  width:48px;height:48px;border-radius:12px;
-  background:var(--gold-glow);border:1px solid var(--gold-line);
-  display:flex;align-items:center;justify-content:center;
-  font-size:22px;flex-shrink:0;
-}
-.result-name{
-  font-family:'Cormorant Garamond',serif;
-  font-size:24px;font-weight:700;color:var(--text);line-height:1.1;
-}
-.result-sub{font-size:12px;color:var(--gold);margin-top:4px;font-weight:400}
-.result-badge-wrap{margin-top:12px}
-.badge{
-  display:inline-flex;align-items:center;gap:5px;
-  font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;
-  padding:5px 10px;border-radius:6px;
-}
+.result-header{background:linear-gradient(135deg,#1A1308 0%,#0F0B05 100%);padding:16px 20px;border-bottom:1px solid var(--gold-line);position:relative;overflow:hidden}
+.result-header::before{content:'';position:absolute;top:-30px;right:-30px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(201,169,110,0.08) 0%,transparent 70%);pointer-events:none}
+.result-header-top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.result-header-label{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);font-weight:500}
+
+/* Ejercicio individual dentro del resultado */
+.ex-block{background:var(--ink2);border-bottom:1px solid var(--gold-line)}
+.ex-block:last-child{border-bottom:none}
+.ex-block-top{padding:16px 20px 12px;position:relative;overflow:hidden}
+.ex-block-num{display:inline-block;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);font-weight:500;margin-bottom:8px}
+.ex-block-row{display:flex;align-items:flex-start;gap:12px}
+.ex-block-emoji{width:44px;height:44px;border-radius:10px;background:var(--gold-glow);border:1px solid var(--gold-line);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.ex-block-name{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:700;color:var(--text);line-height:1.1}
+.ex-block-sub{font-size:11px;color:var(--gold);margin-top:3px;font-weight:400}
+.ex-block-badge{margin-top:10px}
+
+.metrics-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px 16px;background:var(--ink);border-bottom:1px solid var(--gold-line)}
+.metric-item{background:var(--ink3);border-radius:10px;padding:12px 10px;display:flex;flex-direction:column;gap:6px}
+.metric-label-sm{font-size:10px;color:var(--text3);font-weight:500;letter-spacing:0.5px}
+.metric-val-lg{font-size:16px;font-weight:600;color:var(--text);line-height:1}
+.metric-val-gold{font-size:18px;font-weight:600;color:var(--gold);line-height:1}
+.metric-sub{font-size:9px;color:var(--text3)}
+
+.pip-row{display:flex;gap:3px}
+.pip{width:18px;height:4px;border-radius:2px;background:var(--ink4);transition:background 0.3s}
+.pip.on-gold{background:var(--gold)}
+.pip.on-green{background:var(--green)}
+.pip.on-red{background:var(--red)}
+.pip.on-blue{background:var(--blue)}
+.pip.on-amber{background:var(--amber)}
+
+.ex-tip{padding:14px 16px;background:var(--ink2)}
+.tip-inner{border-left:2px solid var(--gold);padding:10px 12px;background:var(--gold-glow);border-radius:0 8px 8px 0;font-size:12.5px;line-height:1.6;color:var(--text2)}
+.tip-inner strong{color:var(--text);font-weight:500}
+
+/* Divisor entre los dos ejercicios */
+.ex-divider{display:flex;align-items:center;gap:10px;padding:10px 20px;background:var(--ink);border-top:1px solid var(--ink4);border-bottom:1px solid var(--ink4)}
+.ex-divider-line{flex:1;height:1px;background:var(--ink4)}
+.ex-divider-text{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);font-weight:500;white-space:nowrap}
+
+.badge{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:5px 10px;border-radius:6px}
 .badge-green{background:var(--green-bg);color:var(--green)}
 .badge-amber{background:var(--amber-bg);color:var(--amber)}
 .badge-red{background:var(--red-bg);color:var(--red)}
 .badge-blue{background:var(--blue-bg);color:var(--blue)}
 .badge-gold{background:var(--gold-glow);color:var(--gold)}
 
-.metrics-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:8px;
-  padding:16px;
-  background:var(--ink2);
-  border-bottom:1px solid var(--gold-line);
-}
-.metric-item{
-  background:var(--ink3);border-radius:10px;padding:12px 10px;
-  display:flex;flex-direction:column;gap:6px;
-}
-.metric-top-row{display:flex;align-items:center;justify-content:space-between}
-.metric-label-sm{font-size:10px;color:var(--text3);font-weight:500;letter-spacing:0.5px}
-.metric-val-lg{font-size:16px;font-weight:600;color:var(--text);line-height:1}
-.metric-val-kcal{font-size:20px;font-weight:600;color:var(--gold);line-height:1}
-.metric-sub{font-size:9px;color:var(--text3)}
-
-.pip-row{display:flex;gap:3px}
-.pip{
-  width:18px;height:4px;border-radius:2px;
-  background:var(--ink4);
-  transition:background 0.3s;
-}
-.pip.on-gold{background:var(--gold)}
-.pip.on-green{background:var(--green)}
-.pip.on-red{background:var(--red)}
-
-.result-tip{
-  padding:16px;background:var(--ink2);
-}
-.tip-inner{
-  border-left:2px solid var(--gold);
-  padding:10px 12px;
-  background:var(--gold-glow);
-  border-radius:0 8px 8px 0;
-  font-size:13px;line-height:1.6;color:var(--text2);
-}
-.tip-inner strong{color:var(--text);font-weight:500}
-
-/* ── COMPARATIVA ── */
-.comp-intro{
-  font-size:13px;color:var(--text2);line-height:1.6;
-  margin-bottom:20px;
-}
+/* EJERCICIOS - COMPARATIVA */
+.ex-intro{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:20px}
 .comp-cards{display:flex;flex-direction:column;gap:10px}
-.comp-modal-card{
-  border:1px solid var(--ink4);border-radius:12px;overflow:hidden;
-  transition:border-color 0.2s;
-}
+.comp-modal-card{border:1px solid var(--ink4);border-radius:12px;overflow:hidden;transition:border-color 0.2s}
 .comp-modal-card.featured{border-color:var(--gold-dim)}
-.comp-card-header{
-  padding:14px 16px;
-  display:flex;align-items:center;gap:12px;
-  cursor:pointer;
-  background:var(--ink2);
-  border-bottom:1px solid transparent;
-  transition:all 0.2s;
-  -webkit-user-select:none;user-select:none;
-}
+.comp-card-header{padding:14px 16px;display:flex;align-items:center;gap:12px;cursor:pointer;background:var(--ink2);border-bottom:1px solid transparent;transition:all 0.2s;-webkit-user-select:none;user-select:none}
 .comp-card-header.open{border-bottom-color:var(--ink4)}
 .comp-emoji{font-size:20px;width:36px;text-align:center;flex-shrink:0}
 .comp-name{font-size:14px;font-weight:500;color:var(--text);flex:1}
-.comp-arrow{
-  color:var(--text3);font-size:16px;
-  transition:transform 0.25s;
-  font-weight:300;
-}
+.comp-arrow{color:var(--text3);font-size:16px;transition:transform 0.25s;font-weight:300}
 .comp-arrow.open{transform:rotate(180deg)}
-.comp-body{
-  display:none;padding:0;
-  background:var(--ink);
-}
+.comp-body{display:none;padding:0;background:var(--ink)}
 .comp-body.open{display:block}
-.comp-row{
-  display:flex;align-items:center;padding:11px 16px;
-  border-bottom:1px solid var(--ink3);
-  gap:12px;
-}
+.comp-row{display:flex;align-items:center;padding:11px 16px;border-bottom:1px solid var(--ink3);gap:12px}
 .comp-row:last-child{border-bottom:none}
 .comp-factor{font-size:12px;color:var(--text3);flex:1;min-width:0}
 .comp-pips{display:flex;gap:3px;flex-shrink:0}
-.comp-chip{
-  font-size:10px;font-weight:600;padding:3px 8px;border-radius:4px;
-  white-space:nowrap;
-}
+.comp-chip{font-size:10px;font-weight:600;padding:3px 8px;border-radius:4px;white-space:nowrap}
 
-/* ── CALORÍAS ── */
-.cal-card{
-  background:var(--ink2);border:1px solid var(--ink4);
-  border-radius:14px;padding:18px;margin-bottom:14px;
-}
-.cal-card-header{
-  display:flex;align-items:center;justify-content:space-between;
-  margin-bottom:14px;
-}
-.cal-title{font-size:13px;font-weight:500;color:var(--text)}
-.cal-sub{font-size:11px;color:var(--text3);margin-top:2px}
-.weight-slider-wrap{
-  display:flex;align-items:center;gap:12px;margin-bottom:20px;
-}
-.weight-slider-wrap label{font-size:12px;color:var(--text2);white-space:nowrap}
-input[type=range]{
-  -webkit-appearance:none;appearance:none;
-  width:100%;height:4px;border-radius:2px;
-  background:var(--ink4);outline:none;cursor:pointer;
-}
-input[type=range]::-webkit-slider-thumb{
-  -webkit-appearance:none;appearance:none;
-  width:20px;height:20px;border-radius:50%;
-  background:var(--gold);cursor:pointer;
-  border:2px solid var(--ink);
-  box-shadow:0 0 0 3px rgba(201,169,110,0.15);
-}
-input[type=range]::-moz-range-thumb{
-  width:20px;height:20px;border-radius:50%;
-  background:var(--gold);cursor:pointer;
-  border:2px solid var(--ink);
-}
-.weight-val{
-  font-size:14px;font-weight:600;color:var(--gold);
-  min-width:48px;text-align:right;white-space:nowrap;
-}
-.cal-bars{display:flex;flex-direction:column;gap:10px}
-.cal-row{display:flex;align-items:center;gap:10px}
-.cal-name{font-size:12px;color:var(--text2);width:110px;flex-shrink:0}
-.cal-bar-track{
-  flex:1;height:6px;background:var(--ink4);
-  border-radius:3px;overflow:hidden;
-}
-.cal-bar-fill{
-  height:100%;border-radius:3px;background:var(--gold);
-  transition:width 0.5s cubic-bezier(.4,0,.2,1);
-}
-.cal-num{
-  font-size:12px;font-weight:600;color:var(--gold);
-  min-width:62px;text-align:right;
-}
-.cal-int-tabs{
-  display:flex;gap:6px;margin-bottom:16px;
-}
-.cal-int-btn{
-  font-family:'Outfit',sans-serif;font-size:11px;font-weight:500;
-  padding:6px 12px;border-radius:20px;border:1px solid var(--ink4);
-  background:none;color:var(--text3);cursor:pointer;
-  transition:all 0.15s;
-}
-.cal-int-btn.active{
-  background:var(--gold-glow);border-color:var(--gold-line);color:var(--gold);
-}
+/* VOLUMEN */
+.vol-card{background:var(--ink2);border:1px solid var(--ink4);border-radius:14px;padding:18px;margin-bottom:14px}
+.vol-card-title{font-size:13px;font-weight:500;color:var(--text);margin-bottom:4px}
+.vol-card-sub{font-size:11px;color:var(--text3);margin-bottom:14px}
+.vol-bars{display:flex;flex-direction:column;gap:10px}
+.vol-row{display:flex;align-items:center;gap:10px}
+.vol-name{font-size:12px;color:var(--text2);width:140px;flex-shrink:0}
+.vol-bar-track{flex:1;height:6px;background:var(--ink4);border-radius:3px;overflow:hidden}
+.vol-bar-fill{height:100%;border-radius:3px;background:var(--gold);transition:width 0.5s cubic-bezier(.4,0,.2,1)}
+.vol-num{font-size:12px;font-weight:600;color:var(--gold);min-width:36px;text-align:right}
 
-/* ── SEMANA ── */
-.phase-tabs{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap}
-.phase-btn{
-  font-family:'Outfit',sans-serif;font-size:12px;font-weight:500;
-  padding:8px 16px;border-radius:20px;
-  border:1px solid var(--ink4);
-  background:none;color:var(--text3);cursor:pointer;
-  transition:all 0.2s;
-}
-.phase-btn.active{
-  background:var(--ink);border-color:var(--gold-dim);
-  color:var(--gold);
-}
-.week-scroll{
-  overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;
-  margin:0 -20px;padding:0 20px;
-  padding-bottom:4px;
-}
+.cal-int-tabs{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap}
+.cal-int-btn{font-family:'Outfit',sans-serif;font-size:11px;font-weight:500;padding:6px 12px;border-radius:20px;border:1px solid var(--ink4);background:none;color:var(--text3);cursor:pointer;transition:all 0.15s}
+.cal-int-btn.active{background:var(--gold-glow);border-color:var(--gold-line);color:var(--gold)}
+
+/* SEMANA */
+.level-tabs{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap}
+.level-btn{font-family:'Outfit',sans-serif;font-size:12px;font-weight:500;padding:8px 16px;border-radius:20px;border:1px solid var(--ink4);background:none;color:var(--text3);cursor:pointer;transition:all 0.2s}
+.level-btn.active{background:var(--ink);border-color:var(--gold-dim);color:var(--gold)}
+
+.week-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:0 -20px;padding:0 20px;padding-bottom:4px}
 .week-scroll::-webkit-scrollbar{display:none}
-.week-inner{
-  display:flex;gap:8px;
-  width:max-content;
-  padding-right:20px;
-}
-.day-card{
-  width:88px;flex-shrink:0;
-  background:var(--ink2);border:1px solid var(--ink4);
-  border-radius:12px;padding:12px 8px;
-  display:flex;flex-direction:column;align-items:center;gap:6px;
-  position:relative;overflow:hidden;
-}
+.week-inner{display:flex;gap:8px;width:max-content;padding-right:20px}
+.day-card{width:88px;flex-shrink:0;background:var(--ink2);border:1px solid var(--ink4);border-radius:12px;padding:12px 8px;display:flex;flex-direction:column;align-items:center;gap:6px;position:relative;overflow:hidden}
 .day-card.rest{opacity:0.5}
-.day-accent-bar{
-  position:absolute;top:0;left:0;right:0;height:2px;
-}
-.day-name{
-  font-size:9px;letter-spacing:2px;text-transform:uppercase;
-  color:var(--text3);font-weight:500;
-}
+.day-accent-bar{position:absolute;top:0;left:0;right:0;height:2px}
+.day-name{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);font-weight:500}
 .day-icon-wrap{font-size:20px;line-height:1}
-.day-main{
-  font-size:11px;font-weight:500;color:var(--text);
-  text-align:center;line-height:1.3;
-}
-.day-detail{
-  font-size:10px;color:var(--text3);text-align:center;line-height:1.4;
-}
-.week-tip{
-  margin-top:16px;padding:14px;
-  background:var(--ink2);border:1px solid var(--ink4);
-  border-radius:12px;border-left:3px solid var(--gold);
-  font-size:12.5px;color:var(--text2);line-height:1.6;
-}
+.day-main{font-size:11px;font-weight:500;color:var(--text);text-align:center;line-height:1.3}
+.day-detail{font-size:10px;color:var(--text3);text-align:center;line-height:1.4}
+
+.week-tip{margin-top:16px;padding:14px;background:var(--ink2);border:1px solid var(--ink4);border-radius:12px;border-left:3px solid var(--gold);font-size:12.5px;color:var(--text2);line-height:1.6}
 .week-tip strong{color:var(--text);font-weight:500}
 
-/* ── INFO BANNER ── */
-.info-banner{
-  background:var(--ink2);border:1px solid var(--ink4);border-radius:12px;
-  padding:14px;margin-top:14px;
-  font-size:12px;color:var(--text3);line-height:1.6;
-}
+/* INFO BANNER */
+.info-banner{background:var(--ink2);border:1px solid var(--ink4);border-radius:12px;padding:14px;margin-top:14px;font-size:12px;color:var(--text3);line-height:1.6}
 .info-banner strong{color:var(--text2);font-weight:500}
 
-/* ── FAQ ── */
-.faq-item{
-  border-bottom:1px solid var(--ink3);
-}
+/* FAQ */
+.faq-item{border-bottom:1px solid var(--ink3)}
 .faq-item:last-child{border-bottom:none}
-.faq-q{
-  display:flex;align-items:center;justify-content:space-between;gap:12px;
-  padding:16px 0;cursor:pointer;-webkit-user-select:none;user-select:none;
-}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 0;cursor:pointer;-webkit-user-select:none;user-select:none}
 .faq-q-text{font-size:13px;font-weight:500;color:var(--text);line-height:1.4;flex:1}
-.faq-icon{
-  color:var(--gold);font-size:18px;flex-shrink:0;font-weight:300;
-  transition:transform 0.2s;
-}
+.faq-icon{color:var(--gold);font-size:18px;flex-shrink:0;font-weight:300;transition:transform 0.2s}
 .faq-icon.open{transform:rotate(45deg)}
-.faq-a{
-  display:none;
-  font-size:12.5px;color:var(--text2);line-height:1.6;
-  padding:0 0 16px;
-}
+.faq-a{display:none;font-size:12.5px;color:var(--text2);line-height:1.6;padding:0 0 16px}
 .faq-a.open{display:block}
 
-/* ── DIVIDER ── */
-.gold-divider{
-  height:1px;background:var(--gold-line);margin:20px 0;
-}
+/* DIVIDER */
+.gold-divider{height:1px;background:var(--gold-line);margin:20px 0}
 
-/* ── HERO BANNER ── */
-.hero{
-  background:linear-gradient(160deg,#1A1308 0%,#0A0A0A 60%);
-  padding:28px 20px 24px;
-  border-bottom:1px solid var(--gold-line);
-  max-width:480px;margin:0 auto;
-}
-.hero-eyebrow{
-  font-size:10px;letter-spacing:3px;text-transform:uppercase;
-  color:var(--gold);font-weight:500;margin-bottom:10px;
-  display:flex;align-items:center;gap:8px;
-}
-.hero-eyebrow::before{
-  content:'';width:20px;height:1px;background:var(--gold);display:block;
-}
-.hero-h{
-  font-family:'Cormorant Garamond',serif;
-  font-size:32px;font-weight:700;color:var(--text);
-  line-height:1.1;margin-bottom:10px;
-}
+/* HERO */
+.hero{background:linear-gradient(160deg,#1A1308 0%,#0A0A0A 60%);padding:28px 20px 24px;border-bottom:1px solid var(--gold-line);max-width:480px;margin:0 auto}
+.hero-eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.hero-eyebrow::before{content:'';width:20px;height:1px;background:var(--gold);display:block}
+.hero-h{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:700;color:var(--text);line-height:1.1;margin-bottom:10px}
 .hero-h em{color:var(--gold);font-style:italic}
 .hero-p{font-size:13px;color:var(--text2);line-height:1.6}
 
-/* ── BOTTOM SAFE ── */
 .safe-bottom{height:calc(16px + var(--r-safe-bottom))}
 
-/* ── RESPONSIVE ── */
 @media(min-width:480px){
   .app-header,.panel,.nav-tabs-wrap,.hero{max-width:480px;margin-left:auto;margin-right:auto}
   .nav-tabs-wrap{display:flex;justify-content:center}
@@ -471,7 +225,7 @@ input[type=range]::-moz-range-thumb{
   <div class="header-inner">
     <div class="header-brand">
       <span class="header-eyebrow">SLAB | RENZO BELLO</span>
-      <span class="header-title">Protocolo Cardio</span>
+      <span class="header-title">Protocolo Abdomen</span>
     </div>
     <span class="header-badge">@reennzolifts</span>
   </div>
@@ -479,64 +233,63 @@ input[type=range]::-moz-range-thumb{
 
 <div style="background:#0A0A0A;">
   <div class="hero">
-    <div class="hero-eyebrow">SLAB | ASESORIAS PERSONALIZADAS</div>
-    <h1 class="hero-h">Elige el cardio<br><em>correcto</em> para ti</h1>
-    <p class="hero-p">Escaladora, bicicleta, caminata suave o inclinada. Todo lo que importa para tu etapa y objetivo.</p>
+    <div class="hero-eyebrow">SLAB | ASESORÍAS PERSONALIZADAS</div>
+    <h1 class="hero-h">Construye un core<br><em>real y funcional</em></h1>
+    <p class="hero-p">Recto abdominal, oblicuos, transverso y core profundo. Dos ejercicios concretos para cada zona, nivel y equipamiento. Sin mitos.</p>
   </div>
 </div>
 
 <div style="position:sticky;top:57px;z-index:99;background:var(--ink2);">
   <nav class="nav-tabs" role="tablist" aria-label="Secciones">
     <button class="nav-tab active" onclick="switchTab('selector',this)" role="tab">Selector</button>
-    <button class="nav-tab" onclick="switchTab('comparativa',this)" role="tab">Comparativa</button>
-    <button class="nav-tab" onclick="switchTab('calorias',this)" role="tab">Calorías</button>
+    <button class="nav-tab" onclick="switchTab('ejercicios',this)" role="tab">Ejercicios</button>
+    <button class="nav-tab" onclick="switchTab('volumen',this)" role="tab">Volumen</button>
     <button class="nav-tab" onclick="switchTab('semana',this)" role="tab">Plan semanal</button>
     <button class="nav-tab" onclick="switchTab('faq',this)" role="tab">FAQ</button>
   </nav>
 </div>
 
-<!-- ════════════════════════════════════
-     PANEL: SELECTOR
-════════════════════════════════════ -->
+<!-- SELECTOR -->
 <section class="panel active" id="panel-selector" role="tabpanel">
   <div class="section-label">Tu perfil</div>
 
   <div class="field-group">
-    <label class="field-label" for="sel-etapa">Etapa actual</label>
-    <select class="field-select" id="sel-etapa" onchange="buildResult()">
-      <option value="volumen">Volumen — construir masa muscular</option>
-      <option value="definicion">Definición — perder grasa</option>
-      <option value="mantencion">Mantención — mantener composición</option>
+    <label class="field-label" for="sel-nivel">Nivel de fuerza</label>
+    <select class="field-select" id="sel-nivel" onchange="buildResult()">
+      <option value="basico">Básico — inicio o regreso al entrenamiento</option>
+      <option value="intermedio">Intermedio — 6+ meses de entrenamiento constante</option>
+      <option value="avanzado">Avanzado — 2+ años, buena base técnica</option>
+      <option value="elite">Élite — atleta, alto control corporal</option>
     </select>
   </div>
 
   <div class="field-group">
-    <label class="field-label" for="sel-objetivo">Objetivo del cardio</label>
+    <label class="field-label" for="sel-zona">Zona prioritaria</label>
+    <select class="field-select" id="sel-zona" onchange="buildResult()">
+      <option value="recto">Recto abdominal — los cuadros</option>
+      <option value="oblicuos">Oblicuos — cintura y flancos</option>
+      <option value="core">Core profundo — transverso y estabilidad</option>
+      <option value="lumbar">Zona lumbar — equilibrio posterior</option>
+    </select>
+  </div>
+
+  <div class="field-group">
+    <label class="field-label" for="sel-objetivo">Objetivo principal</label>
     <select class="field-select" id="sel-objetivo" onchange="buildResult()">
-      <option value="rendimiento">Preservar rendimiento en pesas</option>
-      <option value="grasa">Maximizar quema de grasa</option>
-      <option value="recuperacion">Recuperación activa</option>
-      <option value="articulaciones">Proteger articulaciones</option>
+      <option value="fuerza">Ganar fuerza y grosor muscular</option>
+      <option value="definicion">Definición y marcación visual</option>
+      <option value="funcional">Rendimiento funcional / deporte</option>
+      <option value="rehabilitacion">Rehabilitación / dolor lumbar</option>
     </select>
   </div>
 
   <div class="field-group">
-    <label class="field-label" for="sel-dia">Contexto del día</label>
-    <select class="field-select" id="sel-dia" onchange="buildResult()">
-      <option value="post_sup">Post-entreno de tren superior</option>
-      <option value="post_inf">Post-entreno de piernas</option>
-      <option value="descanso">Día de descanso</option>
-      <option value="independiente">Sesión independiente de pesas</option>
-    </select>
-  </div>
-
-  <div class="field-group">
-    <label class="field-label" for="sel-articular">Estado articular</label>
-    <select class="field-select" id="sel-articular" onchange="buildResult()">
-      <option value="ok">Sin limitaciones</option>
-      <option value="rodilla">Rodilla sensible / condromalacia</option>
-      <option value="cadera">Cadera o espalda baja</option>
-      <option value="tobillo">Tobillo sensible</option>
+    <label class="field-label" for="sel-equipo">Equipamiento disponible</label>
+    <select class="field-select" id="sel-equipo" onchange="buildResult()">
+      <option value="gym">Gimnasio completo</option>
+      <option value="casa">Casa sin equipamiento</option>
+      <option value="basico_eq">Casa con mancuernas / banda</option>
+      <option value="barra">Solo barra de dominadas</option>
     </select>
   </div>
 
@@ -544,65 +297,61 @@ input[type=range]::-moz-range-thumb{
   <div class="safe-bottom"></div>
 </section>
 
-<!-- ════════════════════════════════════
-     PANEL: COMPARATIVA
-════════════════════════════════════ -->
-<section class="panel" id="panel-comparativa" role="tabpanel">
-  <div class="section-label">Las 4 modalidades</div>
-  <p class="comp-intro">Tocá cada modalidad para ver su análisis completo.</p>
-  <div class="comp-cards" id="comp-cards"></div>
+<!-- EJERCICIOS -->
+<section class="panel" id="panel-ejercicios" role="tabpanel">
+  <div class="section-label">Las zonas del abdomen</div>
+  <p class="ex-intro">Toca cada zona para ver el análisis completo y ejercicios recomendados.</p>
+  <div class="comp-cards" id="ex-cards"></div>
   <div class="safe-bottom"></div>
 </section>
 
-<!-- ════════════════════════════════════
-     PANEL: CALORÍAS
-════════════════════════════════════ -->
-<section class="panel" id="panel-calorias" role="tabpanel">
-  <div class="section-label">Estimado por 30 minutos</div>
+<!-- VOLUMEN -->
+<section class="panel" id="panel-volumen" role="tabpanel">
+  <div class="section-label">Dificultad por nivel</div>
 
-  <div class="cal-card">
-    <div class="weight-slider-wrap">
-      <label for="weight-slider">Peso corporal</label>
-      <input type="range" id="weight-slider" min="45" max="130" value="70" step="1" oninput="updateCals()">
-      <span class="weight-val" id="weight-out">70 kg</span>
-    </div>
+  <div class="vol-card">
+    <div class="vol-card-title">Demanda por ejercicio</div>
+    <div class="vol-card-sub">Selecciona tu nivel para ver los valores relativos</div>
     <div class="cal-int-tabs">
-      <button class="cal-int-btn" onclick="setInt('low',this)">Baja</button>
-      <button class="cal-int-btn active" onclick="setInt('mod',this)">Moderada</button>
-      <button class="cal-int-btn" onclick="setInt('high',this)">Alta</button>
+      <button class="cal-int-btn" onclick="setNivelVol('basico',this)">Básico</button>
+      <button class="cal-int-btn active" onclick="setNivelVol('intermedio',this)">Intermedio</button>
+      <button class="cal-int-btn" onclick="setNivelVol('avanzado',this)">Avanzado</button>
+      <button class="cal-int-btn" onclick="setNivelVol('elite',this)">Élite</button>
     </div>
-    <div class="cal-bars" id="cal-bars"></div>
+    <div class="vol-bars" id="vol-bars"></div>
   </div>
 
   <div class="info-banner">
-    <strong>Más calorías ≠ mejor opción.</strong> La escaladora quema más pero también fatiga más. En volumen o si tienes piernas el mismo día, la caminata suave o la bicicleta LISS son superiores aunque quemen menos.
+    <strong>Más difícil no significa mejor.</strong> Un ejercicio que no puedes ejecutar bien activa menos músculo que uno básico bien hecho. Domina la técnica antes de progresar de nivel.
   </div>
 
   <div class="gold-divider"></div>
-  <div class="section-label">Factores que afectan el gasto</div>
+  <div class="section-label">Principios de progresión</div>
   <div style="display:flex;flex-direction:column;gap:8px">
     <div class="info-banner" style="margin-top:0">
-      <strong>Peso corporal</strong> — Más peso = más calorías. La variación es aprox. ±10 kcal por cada 5 kg adicionales en 30 min.
+      <strong>Tensión, no repeticiones.</strong> El músculo crece bajo tensión mecánica. Mejor 12 repeticiones lentas con contracción total que 40 repeticiones balanceadas sin control.
     </div>
     <div class="info-banner" style="margin-top:0">
-      <strong>Condición física</strong> — A mayor condición aeróbica, menor gasto relativo a la misma intensidad. El cuerpo se adapta.
+      <strong>Progresión real.</strong> Agrega carga, cambia el ángulo o aumenta la palanca cada 2 a 3 semanas. Sin progresión no hay adaptación. Llevar un registro básico es clave.
     </div>
     <div class="info-banner" style="margin-top:0">
-      <strong>Composición corporal</strong> — Mayor masa muscular eleva el metabolismo basal y el gasto en cardio.
+      <strong>Frecuencia óptima.</strong> El abdomen se recupera rápido — de 2 a 4 sesiones semanales es el rango ideal según tu nivel. No es necesario entrenarlo todos los días.
+    </div>
+    <div class="info-banner" style="margin-top:0">
+      <strong>Los abdominales se ven en la cocina.</strong> Un recto abdominal fuerte puede existir aunque no sea visible. La grasa subcutánea cubre cualquier desarrollo. El déficit calórico define, no los crunches.
     </div>
   </div>
   <div class="safe-bottom"></div>
 </section>
 
-<!-- ════════════════════════════════════
-     PANEL: SEMANA
-════════════════════════════════════ -->
+<!-- SEMANA -->
 <section class="panel" id="panel-semana" role="tabpanel">
   <div class="section-label">Protocolo semanal</div>
-  <div class="phase-tabs">
-    <button class="phase-btn active" onclick="buildWeek('volumen',this)">Volumen</button>
-    <button class="phase-btn" onclick="buildWeek('definicion',this)">Definición</button>
-    <button class="phase-btn" onclick="buildWeek('mantencion',this)">Mantención</button>
+  <div class="level-tabs">
+    <button class="level-btn active" onclick="buildWeek('basico',this)">Básico</button>
+    <button class="level-btn" onclick="buildWeek('intermedio',this)">Intermedio</button>
+    <button class="level-btn" onclick="buildWeek('avanzado',this)">Avanzado</button>
+    <button class="level-btn" onclick="buildWeek('elite',this)">Élite</button>
   </div>
   <div class="week-scroll">
     <div class="week-inner" id="week-inner"></div>
@@ -610,24 +359,25 @@ input[type=range]::-moz-range-thumb{
   <div class="week-tip" id="week-tip"></div>
 
   <div class="gold-divider"></div>
-  <div class="section-label">Reglas de oro</div>
+  <div class="section-label">Cuándo agregar abdominales a tu rutina</div>
   <div style="display:flex;flex-direction:column;gap:8px">
     <div class="info-banner" style="margin-top:0">
-      <strong>Pesas primero, siempre.</strong> Si haces cardio el mismo día que pesas, haz pesas antes. El cardio pre-pesas compromete la calidad del entrenamiento de fuerza.
+      <strong>Al final de cualquier sesión.</strong> Entrenar abdominales al inicio puede fatigar el core y reducir la estabilidad en ejercicios principales como sentadilla o peso muerto.
     </div>
     <div class="info-banner" style="margin-top:0">
-      <strong>Separar 4-6h si es posible.</strong> La separación ideal entre cardio intenso y pesas es de 4 a 6 horas para maximizar la recuperación entre sesiones.
+      <strong>Después de día de piernas, con cuidado.</strong> La fatiga del core por sentadillas y peso muerto ya fue alta. Un bloque corto e intenso de abdominales es mejor que uno largo en esos días.
     </div>
     <div class="info-banner" style="margin-top:0">
-      <strong>Escaladora + piernas = mala combinación.</strong> Nunca uses escaladora el mismo día que entrenes piernas intensamente. La fatiga muscular se superpone y baja la calidad de ambas sesiones.
+      <strong>Día de descanso activo.</strong> El core se recupera en 24 a 48 horas. Un día dedicado a movilidad más abdominales es una opción válida para separarlo del entrenamiento principal.
+    </div>
+    <div class="info-banner" style="margin-top:0">
+      <strong>Orden dentro del bloque.</strong> Comienza con estabilidad (planchas, hollow), luego flexión de columna (crunches con carga), y termina con rotación (oblicuos).
     </div>
   </div>
   <div class="safe-bottom"></div>
 </section>
 
-<!-- ════════════════════════════════════
-     PANEL: FAQ
-════════════════════════════════════ -->
+<!-- FAQ -->
 <section class="panel" id="panel-faq" role="tabpanel">
   <div class="section-label">Preguntas frecuentes</div>
   <div id="faq-list"></div>
@@ -636,256 +386,800 @@ input[type=range]::-moz-range-thumb{
 
 <script>
 // ── DATA ──────────────────────────────────────────────────────────────
-const MODAL_INFO = {
-  escaladora:{
-    emoji:'🪜', name:'Escaladora',
-    desc:'Simula subir escaleras de forma continua. La modalidad más exigente de las cuatro: alta demanda CV, muscular y sistémica.',
-    rows:[
-      {f:'Intensidad cardiovascular', v:5, good:true},
-      {f:'Impacto articular', v:3, good:false},
-      {f:'Fatiga muscular', v:5, good:false},
-      {f:'Quema calórica', v:5, good:true},
-      {f:'Preserva músculo', v:2, good:true},
-      {f:'Uso en volumen', v:1, good:true},
-      {f:'Uso en definición', v:4, good:true},
-      {f:'Recuperación activa', v:1, good:true},
-    ],
-    chips:[
-      {t:'Glúteos/Cuádriceps',c:'blue'},{t:'No en día de piernas',c:'red'},{t:'Definición avanzada',c:'gold'}
-    ]
-  },
-  bicicleta:{
-    emoji:'🚴', name:'Bicicleta estática',
-    desc:'Bajo impacto articular, alta quema calórica. Versátil para LISS o HIIT. Ideal para personas con rodillas sensibles.',
-    rows:[
-      {f:'Intensidad cardiovascular', v:4, good:true},
-      {f:'Impacto articular', v:1, good:false},
-      {f:'Fatiga muscular', v:2, good:false},
-      {f:'Quema calórica', v:4, good:true},
-      {f:'Preserva músculo', v:4, good:true},
-      {f:'Uso en volumen', v:3, good:true},
-      {f:'Uso en definición', v:5, good:true},
-      {f:'Recuperación activa', v:3, good:true},
-    ],
-    chips:[
-      {t:'Articulaciones amigable',c:'green'},{t:'LISS y HIIT',c:'blue'},{t:'Todas las etapas',c:'gold'}
-    ]
-  },
-  caminata_inclinada:{
-    emoji:'⛰️', name:'Caminata inclinada',
-    desc:'Caminata en trotadora con 8-15% de inclinación. El punto medio perfecto: buena quema calórica con bajo impacto articular.',
-    rows:[
-      {f:'Intensidad cardiovascular', v:3, good:true},
-      {f:'Impacto articular', v:2, good:false},
-      {f:'Fatiga muscular', v:3, good:false},
-      {f:'Quema calórica', v:3, good:true},
-      {f:'Preserva músculo', v:4, good:true},
-      {f:'Uso en volumen', v:3, good:true},
-      {f:'Uso en definición', v:5, good:true},
-      {f:'Recuperación activa', v:2, good:true},
-    ],
-    chips:[
-      {t:'Glúteos/Isquios',c:'blue'},{t:'Estándar en definición',c:'green'},{t:'Sin impacto brusco',c:'gold'}
-    ]
-  },
-  caminata_suave:{
-    emoji:'🚶', name:'Caminata suave',
-    desc:'La modalidad más conservadora. Impacto mínimo, fatiga casi nula. Funciona como recuperación activa real. La base de cualquier protocolo.',
-    rows:[
-      {f:'Intensidad cardiovascular', v:2, good:true},
-      {f:'Impacto articular', v:1, good:false},
-      {f:'Fatiga muscular', v:1, good:false},
-      {f:'Quema calórica', v:2, good:true},
-      {f:'Preserva músculo', v:5, good:true},
-      {f:'Uso en volumen', v:5, good:true},
-      {f:'Uso en definición', v:3, good:true},
-      {f:'Recuperación activa', v:5, good:true},
-    ],
-    chips:[
-      {t:'Recuperación activa real',c:'green'},{t:'Uso diario',c:'gold'},{t:'Todas las etapas',c:'blue'}
-    ]
-  }
-};
 
+// RESULTS: [nivel][zona][equipo] => { ex1, ex2 }
 const RESULTS = {
-  volumen:{
-    rendimiento:{modal:'caminata_suave',badge:'Primera opción',badgeT:'green',tip:'<strong>En volumen, el cardio no debe robar energía para las pesas.</strong> La caminata suave es la única modalidad que no interfiere con la recuperación ni el superávit calórico. Realízala post-entrenamiento o en días separados, 20-40 min a ritmo conversacional.',freq:'3-5x semana',dur:'20-40 min',kcal:130},
-    grasa:{modal:'caminata_inclinada',badge:'Recomendado',badgeT:'blue',tip:'<strong>Si quieres quemar algo de grasa sin comprometer el músculo.</strong> La caminata inclinada aumenta el gasto calórico significativamente sin la fatiga sistémica de la escaladora. Limítala a 2-3x semana para no comprometer la recuperación.',freq:'2-3x semana',dur:'20-30 min',kcal:220},
-    recuperacion:{modal:'caminata_suave',badge:'Ideal para ti',badgeT:'green',tip:'<strong>La caminata suave es la única modalidad que actúa como recuperación activa real.</strong> Mejora el flujo sanguíneo y la eliminación de desechos metabólicos sin generar nueva fatiga. Puedes hacerla diariamente si la intensidad es baja.',freq:'4-6x semana',dur:'20-45 min',kcal:130},
-    articulaciones:{modal:'bicicleta',badge:'Más seguro',badgeT:'green',tip:'<strong>Con articulaciones comprometidas en volumen,</strong> la bicicleta estática es tu herramienta. Impacto articular casi nulo, buena quema calórica y no compromete la recuperación muscular. Asegúrate de ajustar el asiento a la altura correcta.',freq:'2-3x semana',dur:'20-30 min',kcal:250},
+  basico:{
+    recto:{
+      gym:{
+        ex1:{emoji:'💪',name:'Crunch con contracción',sub:'3 × 15 repeticiones · pausar arriba 1 seg',badgeT:'green',badge:'✓ Ideal para empezar',
+          m1:'Técnica requerida',m1v:5,m1c:'gold',m2:'Intensidad',m2v:2,m2c:'green',m3:'3×15 reps',m4:'10 min',
+          tip:'<strong>Enfócate en la contracción, no en el rango.</strong> No necesitas subir todo el torso. Sube hasta que la zona lumbar se despegue del piso, pausa 1 segundo apretando el abdomen al máximo y baja despacio (3 segundos). Sin jalarte del cuello.'},
+        ex2:{emoji:'🔄',name:'Crunch inverso en banco',sub:'3 × 12 repeticiones · control total',badgeT:'green',badge:'✓ Parte baja del recto',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:2,m2c:'green',m3:'3×12 reps',m4:'8 min',
+          tip:'<strong>El crunch inverso trabaja la porción inferior del recto abdominal.</strong> Acostado en banco o suelo, rodillas al pecho enrollando la pelvis hacia arriba. La zona lumbar debe pegarse al suelo en la parte alta del movimiento. Evita el momentum.'}
+        },
+      casa:{
+        ex1:{emoji:'💪',name:'Crunch en el suelo',sub:'3 × 15 repeticiones · sin momentum',badgeT:'green',badge:'✓ Sin equipamiento',
+          m1:'Técnica requerida',m1v:5,m1c:'gold',m2:'Intensidad',m2v:2,m2c:'green',m3:'3×15 reps',m4:'10 min',
+          tip:'<strong>El crunch básico sigue siendo efectivo si se hace bien.</strong> Manos cruzadas en el pecho (no detrás del cuello). Sube lento, contrae arriba 1 segundo, baja en 3 segundos. La zona lumbar no se despega del suelo en ningún momento.'},
+        ex2:{emoji:'🦵',name:'Elevación de rodillas en el suelo',sub:'3 × 12 repeticiones · pelvis enrollada',badgeT:'green',badge:'✓ Parte baja del recto',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:2,m2c:'green',m3:'3×12 reps',m4:'8 min',
+          tip:'<strong>Acostado, lleva ambas rodillas al pecho enrollando la pelvis.</strong> No es una elevación de piernas — el movimiento viene de la pelvis, no de las caderas. Siente cómo se activa la zona baja del abdomen. Baja despacio sin que la zona lumbar se arquee.'}
+        },
+      basico_eq:{
+        ex1:{emoji:'💪',name:'Crunch con mancuerna',sub:'3 × 12 repeticiones · disco en el pecho',badgeT:'blue',badge:'↑ Añade carga',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:3,m2c:'gold',m3:'3×12 reps',m4:'10 min',
+          tip:'<strong>Sostén una mancuerna ligera contra el pecho para añadir resistencia al crunch.</strong> La carga fuerza al recto abdominal a trabajar contra peso real, no solo contra la gravedad. Empieza con poco peso y enfócate en mantener la calidad del movimiento.'},
+        ex2:{emoji:'🎽',name:'Rollout con banda elástica',sub:'3 × 10 repeticiones · rodillas en suelo',badgeT:'blue',badge:'↑ Progresión accesible',
+          m1:'Técnica requerida',m1v:3,m1c:'gold',m2:'Intensidad',m2v:3,m2c:'gold',m3:'3×10 reps',m4:'10 min',
+          tip:'<strong>Sujeta una banda a una puerta o punto fijo a la altura del suelo.</strong> Desde rodillas, extiéndete hacia adelante como en un rollout controlado por la tensión de la banda. Es una introducción a la excéntrica del recto antes de usar una rueda de abdominales.'}
+        },
+      barra:{
+        ex1:{emoji:'🤸',name:'Elevación de rodillas colgado',sub:'3 × 10 repeticiones · control en la bajada',badgeT:'blue',badge:'↑ Barra de dominadas',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:3,m2c:'gold',m3:'3×10 reps',m4:'10 min',
+          tip:'<strong>Colgado de la barra, lleva ambas rodillas al pecho enrollando la pelvis.</strong> No basta con subir las rodillas — la pelvis debe rotar hacia arriba para activar el recto inferior. Baja en 3 segundos. Cuando puedas hacer 3×12 con buena técnica, pasa a piernas rectas.'},
+        ex2:{emoji:'💪',name:'Crunch en el suelo',sub:'3 × 15 repeticiones · complemento al colgado',badgeT:'green',badge:'✓ Complemento básico',
+          m1:'Técnica requerida',m1v:5,m1c:'gold',m2:'Intensidad',m2v:2,m2c:'green',m3:'3×15 reps',m4:'8 min',
+          tip:'<strong>Complementa la elevación de rodillas con crunch clásico en el suelo para cubrir la porción superior del recto.</strong> El trabajo colgado activa la parte inferior; el crunch cierra el bloque con trabajo de la parte superior. Son los dos extremos del mismo músculo.'}
+        }
+    },
+    oblicuos:{
+      gym:{
+        ex1:{emoji:'🚲',name:'Crunch de bicicleta',sub:'3 × 12 repeticiones cada lado · lento',badgeT:'green',badge:'✓ Clásico para oblicuos',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:2,m2c:'green',m3:'3×12 cada lado',m4:'10 min',
+          tip:'<strong>El crunch de bicicleta activa oblicuos de forma efectiva cuando se hace lento.</strong> Codo hacia rodilla opuesta con rotación real del torso, no solo del brazo. La pierna contraria se extiende a baja altura. Pausa 1 segundo en la contracción máxima.'},
+        ex2:{emoji:'↔️',name:'Crunch lateral en el suelo',sub:'3 × 15 repeticiones cada lado',badgeT:'green',badge:'✓ Flexión lateral',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:2,m2c:'green',m3:'3×15 cada lado',m4:'8 min',
+          tip:'<strong>Acostado de lado, eleva el torso hacia el techo con el oblicuo del lado superior.</strong> La mano puede ir detrás de la oreja o extendida. Es un movimiento pequeño — no necesitas subir mucho. El objetivo es sentir el trabajo lateral, no alcanzar la rodilla.'}
+        },
+      casa:{
+        ex1:{emoji:'🚲',name:'Crunch de bicicleta',sub:'3 × 12 repeticiones cada lado · lento',badgeT:'green',badge:'✓ Sin equipamiento',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:2,m2c:'green',m3:'3×12 cada lado',m4:'10 min',
+          tip:'<strong>Uno de los mejores ejercicios de oblicuos sin equipamiento.</strong> La clave es ir despacio y rotar el torso de verdad. Muchas personas solo mueven el codo — el movimiento debe venir de la rotación de la caja torácica hacia la rodilla contraria.'},
+        ex2:{emoji:'🧍',name:'Flexión lateral de pie',sub:'3 × 15 repeticiones cada lado',badgeT:'green',badge:'✓ Oblicuo externo',
+          m1:'Técnica requerida',m1v:3,m1c:'green',m2:'Intensidad',m2v:2,m2c:'green',m3:'3×15 cada lado',m4:'8 min',
+          tip:'<strong>De pie, inclínate hacia un lado deslizando la mano por la pierna.</strong> Sin equipamiento el ejercicio es de baja intensidad, pero sirve para aprender la activación lateral. Para hacerlo más difícil, pon una mano detrás de la cabeza y alcanza más lejos.'}
+        },
+      basico_eq:{
+        ex1:{emoji:'🔄',name:'Russian twist con mancuerna',sub:'3 × 12 repeticiones cada lado',badgeT:'blue',badge:'↑ Con carga',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:3,m2c:'gold',m3:'3×12 cada lado',m4:'10 min',
+          tip:'<strong>Sentado a 45°, rota el torso llevando la mancuerna de lado a lado.</strong> La rotación viene del tronco, no de los brazos. Los pies pueden estar apoyados en el suelo al principio. Cuando domines la técnica, levanta los pies para mayor demanda de estabilización.'},
+        ex2:{emoji:'🎽',name:'Flexión lateral con banda',sub:'3 × 12 repeticiones cada lado',badgeT:'blue',badge:'↑ Oblicuo con resistencia',
+          m1:'Técnica requerida',m1v:3,m1c:'gold',m2:'Intensidad',m2v:3,m2c:'gold',m3:'3×12 cada lado',m4:'8 min',
+          tip:'<strong>Pisa la banda con un pie y sostén el otro extremo con la mano del mismo lado.</strong> Inclínate lateralmente contra la resistencia de la banda. Es el equivalente al cable lateral del gimnasio para casa. Mantén la cadera quieta — solo debe moverse el torso.'}
+        },
+      barra:{
+        ex1:{emoji:'🚲',name:'Crunch de bicicleta',sub:'3 × 12 repeticiones cada lado · lento',badgeT:'green',badge:'✓ Sin necesidad de barra',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:2,m2c:'green',m3:'3×12 cada lado',m4:'10 min',
+          tip:'<strong>Para oblicuos en básico, la barra de dominadas no es necesaria todavía.</strong> El crunch de bicicleta lento es la opción más efectiva con cero equipamiento. Cuando estés en nivel intermedio, las elevaciones con rotación colgado serán el siguiente paso.'},
+        ex2:{emoji:'↔️',name:'Crunch lateral en el suelo',sub:'3 × 15 repeticiones cada lado',badgeT:'green',badge:'✓ Flexión lateral',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:2,m2c:'green',m3:'3×15 cada lado',m4:'8 min',
+          tip:'<strong>Complementa el crunch de bicicleta con trabajo de flexión lateral pura.</strong> Juntos cubren las dos funciones del oblicuo: rotación y flexión lateral. Es el bloque completo de oblicuos para nivel básico sin necesidad de ningún equipamiento.'}
+        }
+    },
+    core:{
+      gym:{
+        ex1:{emoji:'⚙️',name:'Plancha frontal',sub:'3 × 20-30 seg · pelvis neutra',badgeT:'blue',badge:'🔑 Base del core',
+          m1:'Técnica requerida',m1v:5,m1c:'gold',m2:'Intensidad',m2v:2,m2c:'green',m3:'3×20-30 seg',m4:'10 min',
+          tip:'<strong>La plancha bien ejecutada es más valiosa que cualquier crunch.</strong> Pelvis neutra (no hundas la cadera ni la eleves), glúteos contraídos, empuja el suelo con los antebrazos. Si no puedes mantener la posición, reduce el tiempo. Calidad total sobre duración.'},
+        ex2:{emoji:'🐛',name:'Dead bug',sub:'3 × 8 repeticiones cada lado · muy lento',badgeT:'blue',badge:'🔑 Transverso profundo',
+          m1:'Técnica requerida',m1v:5,m1c:'gold',m2:'Intensidad',m2v:2,m2c:'green',m3:'3×8 cada lado',m4:'10 min',
+          tip:'<strong>El dead bug es el ejercicio más subestimado del gimnasio.</strong> Acostado boca arriba, zona lumbar pegada al suelo. Extiende el brazo y la pierna contrarios en simultáneo sin que la zona lumbar se arquee. Si el suelo se despega, detente. Esto enseña la estabilización real de la columna.'}
+        },
+      casa:{
+        ex1:{emoji:'⚙️',name:'Plancha frontal',sub:'3 × 20-30 seg · pelvis neutra',badgeT:'blue',badge:'🔑 Base del core',
+          m1:'Técnica requerida',m1v:5,m1c:'gold',m2:'Intensidad',m2v:2,m2c:'green',m3:'3×20-30 seg',m4:'10 min',
+          tip:'<strong>Sin equipamiento, la plancha es el ejercicio de core más importante que existe.</strong> No necesitas nada más que el suelo. La dificultad real no viene de aguantar tiempo, viene de mantener la posición perfecta: pelvis neutra, glúteos activos, cuello neutro.'},
+        ex2:{emoji:'🐦',name:'Bird-dog',sub:'3 × 10 repeticiones cada lado',badgeT:'blue',badge:'🔑 Estabilización lumbar',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:2,m2c:'green',m3:'3×10 cada lado',m4:'10 min',
+          tip:'<strong>En cuatro puntos, extiende el brazo y la pierna opuestos sin rotar la cadera.</strong> Imagina que tienes un vaso de agua sobre la espalda — no debe caerse. Pausa 2 segundos arriba. Este ejercicio activa directamente el transverso y los multífidos, los músculos más profundos del core.'}
+        },
+      basico_eq:{
+        ex1:{emoji:'⚙️',name:'Plancha frontal',sub:'3 × 25-35 seg · progresión estable',badgeT:'blue',badge:'🔑 Sin equipamiento necesario',
+          m1:'Técnica requerida',m1v:5,m1c:'gold',m2:'Intensidad',m2v:2,m2c:'green',m3:'3×25-35 seg',m4:'10 min',
+          tip:'<strong>La plancha no necesita equipamiento, pero sí máxima concentración.</strong> Con mancuernas o banda disponibles, el foco sigue siendo dominar la plancha clásica antes de agregar inestabilidad. Cuando puedas hacer 3×45 segundos perfectos, pasa al siguiente nivel.'},
+        ex2:{emoji:'🎽',name:'Pallof press con banda',sub:'3 × 10 repeticiones cada lado · sin rotar',badgeT:'blue',badge:'↑ Core anti-rotacional',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:3,m2c:'gold',m3:'3×10 cada lado',m4:'10 min',
+          tip:'<strong>Sujeta la banda a una puerta a la altura del pecho.</strong> De pie de costado a la puerta, sostén la banda con ambas manos en el pecho y empuja hacia adelante sin rotar el torso. La resistencia de la banda tira de ti hacia un lado — tu core resiste esa rotación. Esta es la función real del core en la vida diaria.'}
+        },
+      barra:{
+        ex1:{emoji:'⚙️',name:'Plancha frontal',sub:'3 × 20-30 seg · base obligatoria',badgeT:'blue',badge:'🔑 Antes de cualquier colgado',
+          m1:'Técnica requerida',m1v:5,m1c:'gold',m2:'Intensidad',m2v:2,m2c:'green',m3:'3×20-30 seg',m4:'10 min',
+          tip:'<strong>Antes de trabajar el core colgado de la barra, necesitas dominar la plancha.</strong> La estabilización isométrica es la base de cualquier trabajo dinámico en suspensión. No hay atajos: si la plancha cede, el trabajo colgado será compensado y menos efectivo.'},
+        ex2:{emoji:'🐛',name:'Dead bug',sub:'3 × 8 repeticiones cada lado · muy lento',badgeT:'blue',badge:'🔑 Transverso profundo',
+          m1:'Técnica requerida',m1v:5,m1c:'gold',m2:'Intensidad',m2v:2,m2c:'green',m3:'3×8 cada lado',m4:'10 min',
+          tip:'<strong>El dead bug no necesita la barra — es el mejor ejercicio de suelo para core profundo.</strong> Zona lumbar pegada al piso durante todo el movimiento. Si la espalda se arquea aunque sea un poco, has ido demasiado lejos. Empieza con rangos pequeños y auméntalos gradualmente.'}
+        }
+    },
+    lumbar:{
+      gym:{
+        ex1:{emoji:'🔙',name:'Superman en el suelo',sub:'3 × 12 repeticiones · 2 seg arriba',badgeT:'green',badge:'✓ Esencial en básico',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:2,m2c:'green',m3:'3×12 reps',m4:'8 min',
+          tip:'<strong>Acostado boca abajo, eleva brazos y piernas simultáneamente sosteniendo 2 segundos.</strong> No se trata de elevar mucho — se trata de activar el erector espinal y los glúteos con control. Es el ejercicio preventivo número uno para la zona lumbar y el más ignorado por la mayoría.'},
+        ex2:{emoji:'🐦',name:'Bird-dog',sub:'3 × 10 repeticiones cada lado · pausa arriba',badgeT:'green',badge:'✓ Equilibrio lumbar',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:2,m2c:'green',m3:'3×10 cada lado',m4:'10 min',
+          tip:'<strong>El bird-dog trabaja simultáneamente la lumbar y el core estabilizador.</strong> Es el puente perfecto entre el trabajo de core y el de lumbar. En cuatro puntos, extiende brazo y pierna opuestos manteniendo la espalda completamente plana. Pausa 2 segundos en la posición extendida.'}
+        },
+      casa:{
+        ex1:{emoji:'🔙',name:'Superman en el suelo',sub:'3 × 12 repeticiones · 2 seg arriba',badgeT:'green',badge:'✓ Sin equipamiento',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:2,m2c:'green',m3:'3×12 reps',m4:'8 min',
+          tip:'<strong>El superman es el ejercicio de lumbar más accesible que existe.</strong> Solo necesitas el suelo. Brazos extendidos hacia adelante, eleva brazos y piernas al mismo tiempo. Si sientes el trabajo en la zona baja de la espalda y los glúteos, lo estás haciendo bien.'},
+        ex2:{emoji:'🍑',name:'Puente de glúteos',sub:'3 × 15 repeticiones · 1 seg arriba',badgeT:'green',badge:'✓ Cadena posterior',
+          m1:'Técnica requerida',m1v:3,m1c:'green',m2:'Intensidad',m2v:2,m2c:'green',m3:'3×15 reps',m4:'8 min',
+          tip:'<strong>Acostado boca arriba, eleva la cadera contrayendo glúteos y lumbar simultáneamente.</strong> El puente de glúteos es técnicamente sencillo pero muy efectivo para activar la cadena posterior baja. Complementa el superman y reduce el riesgo de dolor lumbar. Básico y subestimado.'}
+        },
+      basico_eq:{
+        ex1:{emoji:'🔙',name:'Superman en el suelo',sub:'3 × 12 repeticiones · 2 seg arriba',badgeT:'green',badge:'✓ Base obligatoria',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:2,m2c:'green',m3:'3×12 reps',m4:'8 min',
+          tip:'<strong>Aunque tengas mancuernas disponibles, el superman es el punto de partida para la lumbar en básico.</strong> No hay razón para cargar antes de dominar la activación básica del erector espinal. Cuando el superman con 2 segundos de pausa se sienta fácil, pasa a las hiperextensiones con carga.'},
+        ex2:{emoji:'🍑',name:'Puente de glúteos con mancuerna',sub:'3 × 12 repeticiones · mancuerna en cadera',badgeT:'blue',badge:'↑ Con carga',
+          m1:'Técnica requerida',m1v:3,m1c:'gold',m2:'Intensidad',m2v:3,m2c:'gold',m3:'3×12 reps',m4:'10 min',
+          tip:'<strong>Coloca una mancuerna sobre las caderas para añadir resistencia al puente de glúteos.</strong> Esto convierte un ejercicio de activación en uno de verdadero trabajo muscular para glúteos y lumbar. Sostén la mancuerna con ambas manos y controla el descenso en 3 segundos.'}
+        },
+      barra:{
+        ex1:{emoji:'🔙',name:'Superman en el suelo',sub:'3 × 12 repeticiones · 2 seg arriba',badgeT:'green',badge:'✓ Base sin barra',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:2,m2c:'green',m3:'3×12 reps',m4:'8 min',
+          tip:'<strong>La barra de dominadas no aporta ventaja para el trabajo de lumbar en básico.</strong> El superman en el suelo es la base correcta. Cuando alcances el nivel intermedio, las hiperextensiones con peso corporal en banco colgante serán el siguiente paso natural.'},
+        ex2:{emoji:'🍑',name:'Puente de glúteos',sub:'3 × 15 repeticiones · 1 seg arriba',badgeT:'green',badge:'✓ Cadena posterior',
+          m1:'Técnica requerida',m1v:3,m1c:'green',m2:'Intensidad',m2v:2,m2c:'green',m3:'3×15 reps',m4:'8 min',
+          tip:'<strong>El puente de glúteos cierra el trabajo de cadena posterior baja.</strong> Superman activa el erector y los extensores de espalda; el puente activa glúteos y la unión lumbo-sacra. Son los dos ejercicios de lumbar más importantes para empezar, sin necesidad de ningún equipamiento especial.'}
+        }
+    }
   },
-  definicion:{
-    rendimiento:{modal:'bicicleta',badge:'Primera opción',badgeT:'green',tip:'<strong>En definición priorizando rendimiento,</strong> la bicicleta LISS te da el mayor gasto calórico con menor fatiga sistémica. Reserva el HIIT para días separados de las pesas. Post-entrenamiento de tren superior es el momento ideal.',freq:'3-4x semana',dur:'25-40 min',kcal:250},
-    grasa:{modal:'caminata_inclinada',badge:'Estándar dorado',badgeT:'green',tip:'<strong>La caminata inclinada es el cardio reina en definición.</strong> Alta activación de glúteos e isquios, buena quema calórica y fatiga muscular controlada. 4-5x semana, 30-45 min. Puedes combinar con bicicleta LISS y escaladora puntual.',freq:'4-5x semana',dur:'30-45 min',kcal:220},
-    recuperacion:{modal:'caminata_suave',badge:'Base diaria',badgeT:'blue',tip:'<strong>La caminata suave puede hacerse todos los días en definición</strong> y contribuye al NEAT de manera significativa. 30-60 min diarios suman más de lo que parece al déficit calórico sin afectar la recuperación para las sesiones de pesas.',freq:'5-7x semana',dur:'30-60 min',kcal:130},
-    articulaciones:{modal:'bicicleta',badge:'Seguro y efectivo',badgeT:'green',tip:'<strong>Definición con articulaciones comprometidas:</strong> la bicicleta te da alta quema calórica con mínimo estrés articular. Combínala con caminata suave en los demás días. Evita escaladora y caminata inclinada hasta resolver el problema articular.',freq:'3-4x semana',dur:'25-35 min',kcal:250},
+
+  intermedio:{
+    recto:{
+      gym:{
+        ex1:{emoji:'🏋️',name:'Ab rollout desde rodillas',sub:'3-4 × 10-12 repeticiones · control excéntrico',badgeT:'blue',badge:'↑ Progresión clave',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:3,m2c:'gold',m3:'3-4×10-12 reps',m4:'15 min',
+          tip:'<strong>El ab rollout es el salto más importante en nivel intermedio para el recto abdominal.</strong> Activa el músculo en fase excéntrica como ningún otro ejercicio. Desde rodillas, rueda hacia adelante lo más que puedas sin que la cadera caiga y regresa contrayendo el abdomen. Cuando puedas hacer 3×12 perfectos, pasa a hacerlo de pie.'},
+        ex2:{emoji:'⬆️',name:'Elevación de piernas colgado',sub:'3 × 10-12 repeticiones · rodillas dobladas',badgeT:'blue',badge:'↑ Porción inferior',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:3,m2c:'gold',m3:'3×10-12 reps',m4:'12 min',
+          tip:'<strong>Colgado de la barra, lleva las rodillas al pecho con enrollamiento de pelvis.</strong> No es un movimiento de caderas — la pelvis debe rotar hacia arriba para que el recto inferior trabaje de verdad. Baja en 3 segundos. Cuando puedas hacer 3×12 controlados, pasa a piernas rectas.'}
+        },
+      casa:{
+        ex1:{emoji:'🛞',name:'Ab rollout con rueda desde rodillas',sub:'3-4 × 10-12 repeticiones',badgeT:'blue',badge:'↑ Herramienta económica',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:3,m2c:'gold',m3:'3-4×10-12 reps',m4:'15 min',
+          tip:'<strong>Una rueda de abdominales cuesta muy poco y es el mejor implemento de core para casa.</strong> Desde rodillas, extiéndete hacia adelante controlando la bajada y regresa sin que la cadera caiga. No hay excusas: este ejercicio supera a cualquier crunch en activación del recto.'},
+        ex2:{emoji:'🦵',name:'Elevación de piernas en suelo',sub:'3 × 12 repeticiones · zona lumbar pegada al piso',badgeT:'blue',badge:'↑ Porción inferior',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:3,m2c:'gold',m3:'3×12 reps',m4:'10 min',
+          tip:'<strong>Acostado, piernas extendidas, eleva y baja lentamente sin que la zona lumbar se despegue del piso.</strong> Si el suelo se arquea, dobla ligeramente las rodillas. La versión sin barra de dominadas requiere más control ya que no hay agarre. Coloca las manos bajo las caderas si necesitas apoyo.'}
+        },
+      basico_eq:{
+        ex1:{emoji:'💪',name:'Crunch con disco en el pecho',sub:'3-4 × 12 repeticiones · con carga real',badgeT:'blue',badge:'↑ Añade tensión mecánica',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:3,m2c:'gold',m3:'3-4×12 reps',m4:'12 min',
+          tip:'<strong>Sostén una mancuerna o disco en el pecho durante el crunch.</strong> La carga extra obliga al recto abdominal a trabajar contra resistencia real. Empieza con 5 kg y aumenta cuando puedas hacer 3×12 con técnica perfecta. Es la forma más sencilla de añadir progresión al crunch sin equipamiento específico.'},
+        ex2:{emoji:'🎽',name:'Rollout con banda desde rodillas',sub:'3 × 10 repeticiones · banda anclada bajo',badgeT:'blue',badge:'↑ Excéntrica con banda',
+          m1:'Técnica requerida',m1v:3,m1c:'gold',m2:'Intensidad',m2v:3,m2c:'gold',m3:'3×10 reps',m4:'10 min',
+          tip:'<strong>Ancla la banda a un punto bajo (pie de una silla, puerta) y realiza el rollout desde rodillas.</strong> La banda reduce la resistencia en la parte más difícil (extendido) y la aumenta en el regreso. Es una transición inteligente hacia el rollout libre con rueda.'}
+        },
+      barra:{
+        ex1:{emoji:'⬆️',name:'Elevación de piernas colgado',sub:'3 × 10-12 repeticiones · rodillas primero',badgeT:'blue',badge:'↑ Progresión en barra',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:3,m2c:'gold',m3:'3×10-12 reps',m4:'12 min',
+          tip:'<strong>La barra de dominadas es perfecta para el recto inferior en nivel intermedio.</strong> Empieza con rodillas dobladas llevándolas al pecho con enrollamiento pélvico. El siguiente paso es piernas rectas a 90°. Controla siempre el descenso — la fase excéntrica es donde ocurre el mayor trabajo muscular.'},
+        ex2:{emoji:'🛞',name:'Ab rollout desde rodillas',sub:'3-4 × 10-12 repeticiones',badgeT:'blue',badge:'↑ Recto superior',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:3,m2c:'gold',m3:'3-4×10-12 reps',m4:'12 min',
+          tip:'<strong>Complementa la elevación colgada con el rollout desde rodillas para cubrir ambas porciones del recto.</strong> La elevación activa la porción inferior; el rollout activa la superior con trabajo excéntrico máximo. Son el dúo más efectivo para desarrollo completo del recto abdominal.'}
+        }
+    },
+    oblicuos:{
+      gym:{
+        ex1:{emoji:'🔄',name:'Russian twist con mancuerna',sub:'3 × 12-15 repeticiones cada lado',badgeT:'blue',badge:'↑ Rotación con carga',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:3,m2c:'gold',m3:'3×12-15 cada lado',m4:'12 min',
+          tip:'<strong>El Russian twist con peso activa los oblicuos de forma real cuando la rotación viene del tronco.</strong> Sentado a 45°, rota la caja torácica de lado a lado llevando la mancuerna. No son los brazos quienes giran — es el torso. Pies levantados del suelo para mayor dificultad.'},
+        ex2:{emoji:'🔀',name:'Polea baja en rotación',sub:'3 × 12 repeticiones cada lado · de pie',badgeT:'blue',badge:'↑ Tensión constante',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:3,m2c:'gold',m3:'3×12 cada lado',m4:'12 min',
+          tip:'<strong>De pie lateral a la polea baja, jala el cable cruzando el cuerpo de abajo hacia arriba.</strong> La polea mantiene tensión constante durante todo el rango de movimiento, algo que los pesos libres no logran. Pies firmes, la rotación viene desde la cadera y el torso, no de los brazos.'}
+        },
+      casa:{
+        ex1:{emoji:'🔄',name:'Russian twist sin peso',sub:'3 × 15-20 repeticiones cada lado · piernas arriba',badgeT:'blue',badge:'↑ Sin equipamiento',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:3,m2c:'gold',m3:'3×15-20 cada lado',m4:'10 min',
+          tip:'<strong>Sin peso, el Russian twist pierde intensidad pero gana en volumen.</strong> Levanta los pies del suelo para aumentar la demanda. La clave sigue siendo rotar el torso, no los brazos. Cuando se sienta fácil, agrega cualquier objeto con peso (botella llena, libro grueso) como resistencia provisional.'},
+        ex2:{emoji:'🌊',name:'Hollow rock lateral',sub:'3 × 8 rotaciones cada lado',badgeT:'blue',badge:'↑ Control rotacional',
+          m1:'Técnica requerida',m1v:3,m1c:'gold',m2:'Intensidad',m2v:3,m2c:'gold',m3:'3×8 cada lado',m4:'10 min',
+          tip:'<strong>Desde posición hollow (hombros y piernas elevados, zona lumbar pegada al suelo), rota lentamente el cuerpo hacia un lado y regresa.</strong> El movimiento es pequeño y controlado. Activa oblicuos internos y externos en co-contracción. Mucho más exigente de lo que parece.'}
+        },
+      basico_eq:{
+        ex1:{emoji:'🔄',name:'Russian twist con mancuerna',sub:'3 × 12-15 repeticiones cada lado',badgeT:'blue',badge:'↑ Con carga real',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:3,m2c:'gold',m3:'3×12-15 cada lado',m4:'12 min',
+          tip:'<strong>La mancuerna convierte el Russian twist en un ejercicio de verdadero desarrollo muscular.</strong> Empieza con 6-8 kg y progresa gradualmente. Si la forma se rompe (torso erguido colapsa, rotación se vuelve de brazos), reduce el peso. La técnica primero, la carga después.'},
+        ex2:{emoji:'🎽',name:'Flexión lateral con mancuerna',sub:'3 × 12 repeticiones cada lado',badgeT:'blue',badge:'↑ Oblicuo externo',
+          m1:'Técnica requerida',m1v:3,m1c:'gold',m2:'Intensidad',m2v:3,m2c:'gold',m3:'3×12 cada lado',m4:'10 min',
+          tip:'<strong>De pie, mancuerna en una mano, inclínate lateralmente controlando el descenso.</strong> El oblicuo del lado contrario controla excéntricamente la bajada; el del mismo lado ejecuta la subida. No uses momentum — el movimiento debe ser completamente controlado en ambas direcciones.'}
+        },
+      barra:{
+        ex1:{emoji:'🔄',name:'Russian twist con peso corporal',sub:'3 × 15-20 repeticiones cada lado · piernas arriba',badgeT:'blue',badge:'↑ Sin equipamiento extra',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:3,m2c:'gold',m3:'3×15-20 cada lado',m4:'10 min',
+          tip:'<strong>Para oblicuos en intermedio con solo barra disponible, el Russian twist con piernas elevadas es la mejor opción de suelo.</strong> La barra de dominadas se integra en el nivel avanzado con windshield wipers. Por ahora, enfócate en volumen de rotación controlada.'},
+        ex2:{emoji:'🤸',name:'Elevación de rodillas con rotación',sub:'3 × 8-10 repeticiones cada lado',badgeT:'blue',badge:'↑ Oblicuos en barra',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:4,m2c:'gold',m3:'3×8-10 cada lado',m4:'12 min',
+          tip:'<strong>Colgado de la barra, lleva las rodillas al pecho y rota hacia un lado en la parte alta del movimiento.</strong> Es la introducción a los windshield wipers del nivel avanzado. Exige control de la rotación bajo carga gravitacional. Si el movimiento se descontrola, vuelve a la elevación de rodillas sin rotación.'}
+        }
+    },
+    core:{
+      gym:{
+        ex1:{emoji:'🌊',name:'Hollow hold',sub:'3 × 25-35 seg · zona lumbar pegada al suelo',badgeT:'blue',badge:'↑ Core atlético',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:3,m2c:'gold',m3:'3×25-35 seg',m4:'12 min',
+          tip:'<strong>El hollow hold es la posición de core más transferible a cualquier movimiento atlético.</strong> Acostado, hombros y piernas elevados del suelo, zona lumbar completamente pegada al piso. Brazos extendidos sobre la cabeza para mayor dificultad. Si la lumbar se despega, dobla más las rodillas. Progresar en este ejercicio predice el progreso en casi todo lo demás.'},
+        ex2:{emoji:'🧲',name:'Pallof press en polea',sub:'3 × 10 repeticiones cada lado · de pie',badgeT:'blue',badge:'↑ Anti-rotación real',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:3,m2c:'gold',m3:'3×10 cada lado',m4:'12 min',
+          tip:'<strong>El Pallof press entrena la función más importante del core: resistir la rotación.</strong> De pie lateral a la polea, sostienes el cable en el pecho y empujas hacia adelante sin que el torso rote. La polea jala de ti constantemente y tu core resiste. Es la versión funcional de la plancha.'}
+        },
+      casa:{
+        ex1:{emoji:'🌊',name:'Hollow hold',sub:'3 × 25-35 seg · zona lumbar pegada al suelo',badgeT:'blue',badge:'↑ Core atlético sin equipamiento',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:3,m2c:'gold',m3:'3×25-35 seg',m4:'12 min',
+          tip:'<strong>El hollow hold no necesita nada más que el suelo y concentración total.</strong> Es la base del trabajo de core en gimnasia, calistenia y crossfit. Dominar esta posición durante 40+ segundos con perfecta técnica es un indicador real de fuerza de core. Sin equipamiento, este es el ejercicio más valioso del nivel intermedio.'},
+        ex2:{emoji:'⚙️',name:'Plancha con elevación de brazo',sub:'3 × 8 repeticiones cada lado · lento',badgeT:'blue',badge:'↑ Anti-rotación en plancha',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:3,m2c:'gold',m3:'3×8 cada lado',m4:'10 min',
+          tip:'<strong>Desde plancha sobre las manos, eleva un brazo hacia adelante sin rotar la cadera.</strong> La cadera quiere rotar — el core resiste. Pausa 2 segundos con el brazo extendido. Es la versión de peso corporal del Pallof press y desarrolla la misma capacidad anti-rotacional sin necesidad de poleas.'}
+        },
+      basico_eq:{
+        ex1:{emoji:'🌊',name:'Hollow hold',sub:'3 × 25-35 seg',badgeT:'blue',badge:'↑ Base obligatoria',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:3,m2c:'gold',m3:'3×25-35 seg',m4:'12 min',
+          tip:'<strong>Aunque tengas mancuernas disponibles, el hollow hold es el ejercicio de core intermedio más importante.</strong> No hay forma de reemplazarlo con peso libre. Domínalo antes de agregar cualquier implemento al trabajo de core. Es la base de todo lo que viene después.'},
+        ex2:{emoji:'🎽',name:'Pallof press con banda',sub:'3 × 10 repeticiones cada lado',badgeT:'blue',badge:'↑ Anti-rotación con banda',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:3,m2c:'gold',m3:'3×10 cada lado',m4:'10 min',
+          tip:'<strong>La banda elástica permite replicar el Pallof press en casa.</strong> Ancla la banda a una puerta o punto fijo a la altura del pecho. De costado al anclaje, sostén la banda frente al pecho y extiende los brazos hacia adelante sin rotar. Es uno de los ejercicios de core más funcionales que existen y se puede hacer en cualquier lugar.'}
+        },
+      barra:{
+        ex1:{emoji:'🌊',name:'Hollow hold',sub:'3 × 25-35 seg',badgeT:'blue',badge:'↑ Base del trabajo en barra',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:3,m2c:'gold',m3:'3×25-35 seg',m4:'12 min',
+          tip:'<strong>El hollow hold es la posición base de todo el trabajo avanzado en barra.</strong> Antes de intentar L-sits o toes to bar, necesitas dominar esta posición en el suelo. La misma activación de core que se requiere colgado se entrena primero en el suelo, sin la carga de sostenerse.'},
+        ex2:{emoji:'💪',name:'Hollow hold colgado en barra',sub:'3 × 10-15 seg · posición hollow colgado',badgeT:'blue',badge:'↑ Transferencia directa',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:4,m2c:'gold',m3:'3×10-15 seg',m4:'12 min',
+          tip:'<strong>Colgado de la barra, reproduce la posición hollow: hombros activos, cadera ligeramente hacia adelante, piernas ligeramente elevadas.</strong> Este es el punto de partida para cualquier trabajo avanzado en barra. Aguantar esta posición 15+ segundos con control es la señal de que estás listo para el nivel avanzado.'}
+        }
+    },
+    lumbar:{
+      gym:{
+        ex1:{emoji:'🏋️',name:'Buenos días con barra',sub:'3 × 10-12 repeticiones · barra en espalda baja',badgeT:'blue',badge:'↑ Erector espinal real',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:3,m2c:'gold',m3:'3×10-12 reps',m4:'12 min',
+          tip:'<strong>Los buenos días son el ejercicio de erector espinal más efectivo en nivel intermedio.</strong> Barra en espalda baja, bisagra de cadera hasta que el torso quede casi horizontal, regresa apretando los glúteos. Empieza con barra vacía o muy poco peso — la técnica es todo en este ejercicio.'},
+        ex2:{emoji:'🔙',name:'Hiperextensiones en banco GHD',sub:'3 × 12-15 repeticiones · peso corporal',badgeT:'blue',badge:'↑ Banco de espalda',
+          m1:'Técnica requerida',m1v:3,m1c:'gold',m2:'Intensidad',m2v:3,m2c:'gold',m3:'3×12-15 reps',m4:'10 min',
+          tip:'<strong>El banco de hiperextensión aísla el erector espinal con rango completo de movimiento.</strong> Caderas apoyadas en el banco, baja el torso hasta 90° y sube hasta quedar horizontal (no hiperextiendas). Cuando el peso corporal sea fácil, añade un disco en el pecho. Es el complemento ideal a los buenos días.'}
+        },
+      casa:{
+        ex1:{emoji:'🔙',name:'Superman con pausa extendida',sub:'3 × 10-12 repeticiones · 3 seg arriba',badgeT:'blue',badge:'↑ Progresión sin equipamiento',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:2,m2c:'green',m3:'3×10-12 reps',m4:'10 min',
+          tip:'<strong>En intermedio, el superman se hace con pausa extendida de 3 segundos arriba.</strong> El tiempo bajo tensión adicional aumenta el estímulo sin necesitar más peso. Otra progresión: Superman alterno (un brazo y la pierna opuesta a la vez), que exige más control del erector unilateralmente.'},
+        ex2:{emoji:'🍑',name:'Puente de glúteos con una pierna',sub:'3 × 10 repeticiones cada lado',badgeT:'blue',badge:'↑ Cadena posterior unilateral',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:3,m2c:'gold',m3:'3×10 cada lado',m4:'10 min',
+          tip:'<strong>El puente de glúteos con una sola pierna aumenta significativamente la exigencia sin necesitar equipamiento.</strong> Una pierna extendida hacia arriba, la otra apoyada en el suelo. La diferencia de carga es considerable. Controla que la cadera no rote durante el movimiento.'}
+        },
+      basico_eq:{
+        ex1:{emoji:'🏋️',name:'Buenos días con mancuernas',sub:'3 × 10-12 repeticiones · mancuernas en hombros',badgeT:'blue',badge:'↑ Bisagra con carga',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:3,m2c:'gold',m3:'3×10-12 reps',m4:'12 min',
+          tip:'<strong>Con mancuernas en los hombros, realiza la bisagra de cadera de los buenos días.</strong> Es una versión más accesible que la barra pero igualmente efectiva. Mantén la espalda neutral durante todo el recorrido y siente el estiramiento de los isquiotibiales en la bajada y la contracción del erector en la subida.'},
+        ex2:{emoji:'🍑',name:'Puente de glúteos con mancuerna',sub:'3 × 12 repeticiones · carga en cadera',badgeT:'blue',badge:'↑ Con carga real',
+          m1:'Técnica requerida',m1v:3,m1c:'gold',m2:'Intensidad',m2v:3,m2c:'gold',m3:'3×12 reps',m4:'10 min',
+          tip:'<strong>Mancuerna sobre las caderas, eleva la cadera controlando el descenso en 3 segundos.</strong> La carga adicional convierte este ejercicio en verdadero trabajo de glúteos y lumbar. Progresa aumentando el peso gradualmente. Es la versión en casa del hip thrust del gimnasio.'}
+        },
+      barra:{
+        ex1:{emoji:'🔙',name:'Superman con pausa extendida',sub:'3 × 10-12 repeticiones · 3 seg arriba',badgeT:'blue',badge:'↑ Sin necesidad de barra',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:2,m2c:'green',m3:'3×10-12 reps',m4:'10 min',
+          tip:'<strong>La barra de dominadas no aplica al trabajo de lumbar en intermedio.</strong> El superman con pausa extendida es la mejor opción disponible. La barra se vuelve relevante para lumbar en el nivel avanzado con ejercicios como el Jefferson curl colgado.'},
+        ex2:{emoji:'🍑',name:'Puente de glúteos con una pierna',sub:'3 × 10 repeticiones cada lado',badgeT:'blue',badge:'↑ Progresión sin peso',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:3,m2c:'gold',m3:'3×10 cada lado',m4:'10 min',
+          tip:'<strong>El puente de una pierna es una progresión exigente sin necesitar absolutamente nada.</strong> Duplica la carga sobre la pierna de apoyo y añade un componente de estabilización lateral. Cuando lo domines sin que la cadera rote, habrás preparado la cadena posterior para el nivel avanzado.'}
+        }
+    }
   },
-  mantencion:{
-    rendimiento:{modal:'caminata_suave',badge:'Base sostenible',badgeT:'gold',tip:'<strong>En mantención, la consistencia manda sobre la intensidad.</strong> 5-7x semana de caminata suave es más efectivo que sesiones intensas esporádicas. Puedes sumar bicicleta o escaladora puntualmente según cómo te sientas cada semana.',freq:'5-7x semana',dur:'20-45 min',kcal:130},
-    grasa:{modal:'caminata_inclinada',badge:'Recomendado',badgeT:'blue',tip:'<strong>Para mantener composición:</strong> alterna caminata inclinada (2-3x semana) con caminata suave diaria. Puedes sumar bicicleta como variante para no aburrirte. La variedad en mantención es clave para la adherencia a largo plazo.',freq:'2-3x semana',dur:'25-35 min',kcal:220},
-    recuperacion:{modal:'caminata_suave',badge:'El más sostenible',badgeT:'green',tip:'<strong>En mantención sin presión de déficit,</strong> el cardio debe ser placentero y sostenible. La caminata suave es la modalidad más fácil de sostener como hábito permanente. Hazla parte de tu rutina diaria y no la sentirás como un esfuerzo.',freq:'5-7x semana',dur:'20-40 min',kcal:130},
-    articulaciones:{modal:'bicicleta',badge:'Perfecto',badgeT:'green',tip:'<strong>Con articulaciones sensibles en mantención,</strong> la bicicleta es ideal como base cardiovascular permanente. 2-3x semana es suficiente para mantener salud cardiovascular sin desgaste articular. Complementa con caminata suave los demás días.',freq:'2-3x semana',dur:'20-30 min',kcal:250},
+
+  avanzado:{
+    recto:{
+      gym:{
+        ex1:{emoji:'🔥',name:'Dragon flag negativo',sub:'3 × 5-8 repeticiones · 4-5 seg de bajada',badgeT:'amber',badge:'⚡ Alta exigencia',
+          m1:'Técnica requerida',m1v:3,m1c:'amber',m2:'Intensidad',m2v:5,m2c:'red',m3:'3×5-8 reps',m4:'20 min',
+          tip:'<strong>El dragon flag negativo es el ejercicio de recto abdominal más desafiante sin equipamiento especial.</strong> Acostado en banco, apoya los hombros y eleva el cuerpo recto. Baja lentamente en 4-5 segundos manteniendo el cuerpo completamente rígido. Si la cadera cede, el ejercicio pierde sentido. Requiere dominar la elevación de piernas rectas con perfección.'},
+        ex2:{emoji:'🛞',name:'Ab rollout de pie',sub:'3 × 8-10 repeticiones · control total',badgeT:'amber',badge:'⚡ Excéntrico máximo',
+          m1:'Técnica requerida',m1v:3,m1c:'amber',m2:'Intensidad',m2v:5,m2c:'red',m3:'3×8-10 reps',m4:'15 min',
+          tip:'<strong>El rollout de pie (desde posición de pie, no de rodillas) lleva la activación excéntrica del recto al máximo.</strong> Si no puedes llegar al suelo sin que la cadera caiga, trabaja en la amplitud que te permita mantener el cuerpo rígido. Aumenta el rango gradualmente. Es uno de los ejercicios más difíciles para el recto abdominal.'}
+        },
+      casa:{
+        ex1:{emoji:'🛞',name:'Ab rollout de pie',sub:'3 × 8-10 repeticiones · rango progresivo',badgeT:'amber',badge:'⚡ Nivel avanzado en casa',
+          m1:'Técnica requerida',m1v:3,m1c:'amber',m2:'Intensidad',m2v:5,m2c:'red',m3:'3×8-10 reps',m4:'15 min',
+          tip:'<strong>Con solo una rueda de abdominales, tienes acceso al ejercicio de recto más difícil que se puede hacer en casa.</strong> Desde de pie, rueda hacia adelante lo que tu control permita y regresa. No hay forma de compensar la técnica aquí — el cuerpo debe mantenerse completamente rígido o el ejercicio se rompe.'},
+        ex2:{emoji:'🏋️',name:'Pike pushup excéntrico para core',sub:'3 × 6-8 repeticiones · bajada 5 seg',badgeT:'amber',badge:'⚡ Alternativa sin barra',
+          m1:'Técnica requerida',m1v:3,m1c:'amber',m2:'Intensidad',m2v:4,m2c:'amber',m3:'3×6-8 reps',m4:'12 min',
+          tip:'<strong>Posición de V invertida (piernas en el suelo, caderas arriba), baja la cabeza hacia el suelo lentamente como en un pike rollout.</strong> Sin rueda disponible, este movimiento entrena la misma activación excéntrica del recto en la porción superior. Más accesible que el rollout de pie pero igualmente exigente.'}
+        },
+      basico_eq:{
+        ex1:{emoji:'🔥',name:'Dragon flag negativo en suelo',sub:'3 × 5-8 repeticiones · agárrate de un mueble sólido',badgeT:'amber',badge:'⚡ Solo necesitas el suelo',
+          m1:'Técnica requerida',m1v:3,m1c:'amber',m2:'Intensidad',m2v:5,m2c:'red',m3:'3×5-8 reps',m4:'18 min',
+          tip:'<strong>El dragon flag puede hacerse en el suelo sujetándote de la pata de una silla o un mueble pesado.</strong> La superficie dura hace el ejercicio más difícil que en banco, pero el movimiento es idéntico. Eleva el cuerpo apoyando solo los hombros y baja lentamente en 4-5 segundos.'},
+        ex2:{emoji:'💪',name:'Crunch con mancuerna pesada',sub:'3-4 × 10 repeticiones · 8-12 kg',badgeT:'amber',badge:'⚡ Carga progresiva',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:4,m2c:'amber',m3:'3-4×10 reps',m4:'12 min',
+          tip:'<strong>Con carga significativa en el pecho, el crunch se convierte en un ejercicio de verdadero desarrollo muscular del recto.</strong> 8-12 kg según tu nivel. El objetivo es progresar la carga cada 2-3 semanas. Combinado con el dragon flag negativo, cubre las fases excéntrica e isométrica del recto.'}
+        },
+      barra:{
+        ex1:{emoji:'🏋️',name:'Toes to bar',sub:'3 × 6-10 repeticiones · piernas rectas',badgeT:'amber',badge:'⚡ Recto + cadena anterior',
+          m1:'Técnica requerida',m1v:3,m1c:'amber',m2:'Intensidad',m2v:5,m2c:'red',m3:'3×6-10 reps',m4:'15 min',
+          tip:'<strong>Colgado de la barra, lleva las piernas rectas hasta tocar la barra con los pies.</strong> El rango completo requiere también flexibilidad de isquiotibiales. Si no llegas con piernas rectas, llega hasta donde puedas sin doblar. La fase excéntrica (bajar lento) es la más importante para el desarrollo muscular.'},
+        ex2:{emoji:'🔥',name:'Dragon flag negativo en suelo',sub:'3 × 5-8 repeticiones',badgeT:'amber',badge:'⚡ Complemento al toes to bar',
+          m1:'Técnica requerida',m1v:3,m1c:'amber',m2:'Intensidad',m2v:5,m2c:'red',m3:'3×5-8 reps',m4:'15 min',
+          tip:'<strong>El toes to bar y el dragon flag negativo se complementan perfectamente.</strong> El toes to bar trabaja el recto con el cuerpo en suspensión; el dragon flag lo trabaja contra el suelo con mayor énfasis en la fase excéntrica. Juntos representan el pico del entrenamiento de recto sin máquinas especializadas.'}
+        }
+    },
+    oblicuos:{
+      gym:{
+        ex1:{emoji:'🌀',name:'Windshield wipers colgado',sub:'3 × 6-8 repeticiones cada lado · piernas a 90°',badgeT:'amber',badge:'⚡ Máximo en oblicuos',
+          m1:'Técnica requerida',m1v:3,m1c:'amber',m2:'Intensidad',m2v:5,m2c:'red',m3:'3×6-8 cada lado',m4:'18 min',
+          tip:'<strong>Colgado de la barra con piernas a 90°, pásalas de lado a lado controlando la rotación.</strong> Los oblicuos controlan excéntricamente la bajada de las piernas y trabajan concéntricamente en la subida. Empieza con rodillas dobladas para reducir el torque. Cuando llegues a 3×8 con piernas rectas, estarás en élite.'},
+        ex2:{emoji:'🔀',name:'Cable woodchop diagonal',sub:'3 × 10-12 repeticiones cada lado',badgeT:'amber',badge:'⚡ Potencia rotacional',
+          m1:'Técnica requerida',m1v:3,m1c:'amber',m2:'Intensidad',m2v:4,m2c:'amber',m3:'3×10-12 cada lado',m4:'12 min',
+          tip:'<strong>El woodchop en cable trabaja la potencia rotacional del core — la capacidad de generar fuerza con velocidad en la rotación.</strong> Desde arriba hacia abajo cruzando el cuerpo (o viceversa). A diferencia del Pallof press (anti-rotación), aquí entrenamos la rotación activa con resistencia. Clave para deportes de contacto y lanzamiento.'}
+        },
+      casa:{
+        ex1:{emoji:'🌀',name:'Hollow rock con rotación',sub:'3 × 8-10 repeticiones cada lado · controlado',badgeT:'amber',badge:'⚡ Rotación avanzada en suelo',
+          m1:'Técnica requerida',m1v:3,m1c:'amber',m2:'Intensidad',m2v:4,m2c:'amber',m3:'3×8-10 cada lado',m4:'15 min',
+          tip:'<strong>Desde posición hollow, rota el cuerpo hacia un lado y regresa con control total.</strong> Es la versión avanzada del hollow hold estático. La rotación crea tensión dinámica en los oblicuos que el ejercicio estático no puede generar. Mucho más difícil de lo que parece al describirlo.'},
+        ex2:{emoji:'⚙️',name:'Plancha lateral con elevación de cadera',sub:'3 × 10-12 repeticiones cada lado',badgeT:'amber',badge:'⚡ Oblicuo bajo tensión',
+          m1:'Técnica requerida',m1v:3,m1c:'amber',m2:'Intensidad',m2v:4,m2c:'amber',m3:'3×10-12 cada lado',m4:'12 min',
+          tip:'<strong>Desde plancha lateral, baja la cadera hasta casi tocar el suelo y vuelve arriba.</strong> Es la versión dinámica de la plancha lateral estática. El oblicuo trabaja bajo carga gravitacional en todo el rango. Pausa 1 segundo en la parte alta. Cuando se sienta fácil, eleva la pierna superior durante el movimiento.'}
+        },
+      basico_eq:{
+        ex1:{emoji:'🔄',name:'Russian twist con mancuerna pesada',sub:'3 × 10-12 repeticiones cada lado · 12-16 kg',badgeT:'amber',badge:'⚡ Carga máxima',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:4,m2c:'amber',m3:'3×10-12 cada lado',m4:'12 min',
+          tip:'<strong>Con 12-16 kg el Russian twist pasa a ser un ejercicio de verdadero desarrollo de oblicuos.</strong> La clave en avanzado es mantener la técnica perfecta con cargas altas. Si la rotación se vuelve de brazos o el torso colapsa, reduce el peso. Progresa la carga solo cuando la técnica sea sólida.'},
+        ex2:{emoji:'🎽',name:'Pallof press con banda + rotación',sub:'3 × 8-10 repeticiones cada lado',badgeT:'amber',badge:'⚡ Anti-rotación dinámica',
+          m1:'Técnica requerida',m1v:3,m1c:'amber',m2:'Intensidad',m2v:4,m2c:'amber',m3:'3×8-10 cada lado',m4:'12 min',
+          tip:'<strong>Versión avanzada del Pallof press: después de extender los brazos, rota lentamente el torso hacia el lado opuesto y regresa al centro.</strong> Añade la demanda rotacional al componente anti-rotacional básico. La banda debe estar tensa durante todo el movimiento. Es el ejercicio de oblicuos más completo que se puede hacer con solo una banda.'}
+        },
+      barra:{
+        ex1:{emoji:'🌀',name:'Windshield wipers colgado',sub:'3 × 6-8 repeticiones cada lado · rodillas dobladas',badgeT:'amber',badge:'⚡ Oblicuos en barra',
+          m1:'Técnica requerida',m1v:3,m1c:'amber',m2:'Intensidad',m2v:5,m2c:'red',m3:'3×6-8 cada lado',m4:'18 min',
+          tip:'<strong>Este es el ejercicio de oblicuos más exigente disponible con solo una barra.</strong> Empieza con rodillas dobladas para reducir el torque. El control en la bajada es más importante que llegar lejos. Con piernas rectas el ejercicio es de élite. Es la razón más poderosa para tener una barra de dominadas.'},
+        ex2:{emoji:'🤸',name:'Elevación de rodillas con rotación',sub:'3 × 10-12 repeticiones cada lado · más rango',badgeT:'amber',badge:'⚡ Volumen en barra',
+          m1:'Técnica requerida',m1v:3,m1c:'amber',m2:'Intensidad',m2v:4,m2c:'amber',m3:'3×10-12 cada lado',m4:'12 min',
+          tip:'<strong>Complementa los windshield wipers con elevaciones con rotación a mayor volumen.</strong> Los windshield wipers son muy intensos para hacer muchas series — las elevaciones con rotación completan el volumen necesario para oblicuos con menor fatiga por repetición. Son el calentamiento y el volumen adicional del mismo patrón de movimiento.'}
+        }
+    },
+    core:{
+      gym:{
+        ex1:{emoji:'💎',name:'L-sit en paralelas',sub:'3 × 10-20 seg · piernas rectas horizontales',badgeT:'amber',badge:'⚡ Pico del core sin barra',
+          m1:'Técnica requerida',m1v:3,m1c:'amber',m2:'Intensidad',m2v:5,m2c:'red',m3:'3×10-20 seg',m4:'18 min',
+          tip:'<strong>El L-sit requiere simultáneamente fuerza de core, flexores de cadera y empuje de hombros.</strong> Empieza con rodillas dobladas y piernas en ángulo hasta desarrollar la fuerza necesaria para piernas horizontales. La posición correcta: hombros deprimidos, brazos rectos, caderas ligeramente hacia adelante.'},
+        ex2:{emoji:'⚙️',name:'Plancha con un brazo (one-arm plank)',sub:'3 × 15-20 seg cada lado',badgeT:'amber',badge:'⚡ Anti-rotación extrema',
+          m1:'Técnica requerida',m1v:3,m1c:'amber',m2:'Intensidad',m2v:5,m2c:'red',m3:'3×15-20 seg cada lado',m4:'15 min',
+          tip:'<strong>La plancha con un brazo crea una tensión anti-rotacional extrema sobre el core.</strong> El cuerpo quiere rotar hacia el lado del brazo libre — el core resiste completamente. La cadera debe permanecer paralela al suelo. Empieza con los pies separados para más estabilidad y acércalos gradualmente.'}
+        },
+      casa:{
+        ex1:{emoji:'💎',name:'L-sit en el suelo',sub:'3 × 10-15 seg · apoyado en manos',badgeT:'amber',badge:'⚡ Disponible en casa',
+          m1:'Técnica requerida',m1v:3,m1c:'amber',m2:'Intensidad',m2v:5,m2c:'red',m3:'3×10-15 seg',m4:'15 min',
+          tip:'<strong>El L-sit puede hacerse en el suelo apoyando las manos entre las piernas.</strong> Es más difícil que en paralelas porque el rango de separación del suelo es menor. Usa libros o bloques bajo las manos para ganar altura. Piernas rectas hacia adelante, hombros deprimidos, brazos rectos.'},
+        ex2:{emoji:'⚙️',name:'Plancha con un brazo',sub:'3 × 15-20 seg cada lado',badgeT:'amber',badge:'⚡ Solo el suelo necesitas',
+          m1:'Técnica requerida',m1v:3,m1c:'amber',m2:'Intensidad',m2v:5,m2c:'red',m3:'3×15-20 seg cada lado',m4:'15 min',
+          tip:'<strong>La plancha con un brazo es el ejercicio de core anti-rotacional más exigente que existe sin equipamiento.</strong> No hay forma de compensar — o el core aguanta o la posición colapsa. Empieza con la mano libre apoyada en la cadera y pies bien separados. Progresa juntando los pies gradualmente.'}
+        },
+      basico_eq:{
+        ex1:{emoji:'💎',name:'L-sit en sillas o mancuernas',sub:'3 × 10-15 seg · piernas dobladas o rectas',badgeT:'amber',badge:'⚡ Con apoyo improvisado',
+          m1:'Técnica requerida',m1v:3,m1c:'amber',m2:'Intensidad',m2v:5,m2c:'red',m3:'3×10-15 seg',m4:'15 min',
+          tip:'<strong>Coloca dos mancuernas paralelas en el suelo para apoyar las manos y elevar el cuerpo.</strong> El rango es suficiente para piernas dobladas en avanzado. Hombros empujando hacia abajo, brazos rectos, intenta extender las piernas progresivamente. Es el único ejercicio donde las mancuernas actúan como soporte, no como resistencia.'},
+        ex2:{emoji:'⚙️',name:'Plancha con un brazo',sub:'3 × 15-20 seg cada lado',badgeT:'amber',badge:'⚡ Anti-rotación sin implementos',
+          m1:'Técnica requerida',m1v:3,m1c:'amber',m2:'Intensidad',m2v:5,m2c:'red',m3:'3×15-20 seg cada lado',m4:'15 min',
+          tip:'<strong>La plancha con un brazo no necesita ningún equipamiento y es igualmente exigente en casa o en el gimnasio.</strong> El piso es suficiente. Agrega el L-sit improvisado como primer ejercicio del bloque y la plancha con un brazo como segundo para cubrir las dos funciones más exigentes del core avanzado.'}
+        },
+      barra:{
+        ex1:{emoji:'💎',name:'L-sit colgado en barra',sub:'3 × 10-20 seg · piernas dobladas o rectas',badgeT:'amber',badge:'⚡ Barra + core élite',
+          m1:'Técnica requerida',m1v:3,m1c:'amber',m2:'Intensidad',m2v:5,m2c:'red',m3:'3×10-20 seg',m4:'18 min',
+          tip:'<strong>Colgado de la barra, eleva las piernas hasta que estén horizontales y mantén la posición.</strong> Mucho más difícil que en paralelas porque el agarre requiere fuerza adicional. Empieza con rodillas dobladas. El L-sit colgado desarrolla simultáneamente core, flexores de cadera y fuerza de agarre.'},
+        ex2:{emoji:'🌊',name:'Hollow hold colgado con oscilación',sub:'3 × 20-30 seg · controlando el balanceo',badgeT:'amber',badge:'⚡ Estabilización dinámica',
+          m1:'Técnica requerida',m1v:3,m1c:'amber',m2:'Intensidad',m2v:4,m2c:'amber',m3:'3×20-30 seg',m4:'12 min',
+          tip:'<strong>Colgado de la barra en posición hollow, resiste activamente cualquier oscilación del cuerpo.</strong> El core trabaja dinámicamente para mantener la posición ante una fuerza desestabilizadora constante. Es la versión dinámica del hollow hold estático y entrena la función real del core en movimiento.'}
+        }
+    },
+    lumbar:{
+      gym:{
+        ex1:{emoji:'⚡',name:'Jefferson curl',sub:'3 × 8 repeticiones · carga mínima al inicio',badgeT:'amber',badge:'⚡ Solo para avanzados',
+          m1:'Técnica requerida',m1v:2,m1c:'red',m2:'Intensidad',m2v:4,m2c:'amber',m3:'3×8 reps',m4:'12 min',
+          tip:'<strong>El Jefferson curl (flexión de columna vertebra a vértebra con carga) desarrolla extensibilidad y fuerza lumbar simultáneamente.</strong> Solo para avanzados con columna sana. De pie en un step, baja el peso enrollando la columna hacia abajo, vértebra a vértebra. Carga muy ligera al inicio (5-10 kg). No es un ejercicio para principiantes.'},
+        ex2:{emoji:'🔙',name:'Hiperextensiones con peso en el pecho',sub:'3 × 10-12 repeticiones · disco o mancuerna',badgeT:'amber',badge:'⚡ Carga progresiva',
+          m1:'Técnica requerida',m1v:3,m1c:'amber',m2:'Intensidad',m2v:4,m2c:'amber',m3:'3×10-12 reps',m4:'10 min',
+          tip:'<strong>Las hiperextensiones con carga en el pecho son el ejercicio de erector espinal más directo en nivel avanzado.</strong> Sostienes un disco o mancuerna contra el pecho mientras realizas el movimiento. La carga escala el estímulo sin cambiar la mecánica. Progresa 2-5 kg cada 2-3 semanas.'}
+        },
+      casa:{
+        ex1:{emoji:'🔙',name:'Reverse hyperextension en mesa',sub:'3 × 12 repeticiones · piernas colgando',badgeT:'amber',badge:'⚡ Cadena posterior completa',
+          m1:'Técnica requerida',m1v:3,m1c:'amber',m2:'Intensidad',m2v:3,m2c:'gold',m3:'3×12 reps',m4:'12 min',
+          tip:'<strong>Acostado boca abajo en el borde de una mesa o cama, eleva las piernas extendidas desde colgantes hasta horizontales.</strong> Activa simultáneamente glúteos, isquiotibiales y erector espinal en la cadena posterior completa. Es una versión accessible del reverse hyperextension del gimnasio sin necesitar máquina.'},
+        ex2:{emoji:'🐦',name:'Bird-dog con banda de resistencia',sub:'3 × 10 repeticiones cada lado',badgeT:'amber',badge:'⚡ Resistencia en extensión',
+          m1:'Técnica requerida',m1v:4,m1c:'gold',m2:'Intensidad',m2v:3,m2c:'gold',m3:'3×10 cada lado',m4:'10 min',
+          tip:'<strong>Ata una banda alrededor del pie y ancla el otro extremo detrás de ti.</strong> Al extender la pierna en el bird-dog, la banda añade resistencia al movimiento de extensión. Esto aumenta la activación del erector y los glúteos. La cadera debe mantenerse perfectamente nivelada durante todo el movimiento.'}
+        },
+      basico_eq:{
+        ex1:{emoji:'🏋️',name:'Buenos días con mancuernas pesadas',sub:'3 × 8-10 repeticiones · carga progresiva máxima',badgeT:'amber',badge:'⚡ Bisagra con carga alta',
+          m1:'Técnica requerida',m1v:3,m1c:'amber',m2:'Intensidad',m2v:4,m2c:'amber',m3:'3×8-10 reps',m4:'12 min',
+          tip:'<strong>Con mancuernas pesadas en los hombros, los buenos días se vuelven un ejercicio de fuerza real para el erector espinal.</strong> En avanzado, la carga debe ser suficiente para que las últimas repeticiones sean exigentes. Mantén la espalda neutral — cualquier redondeo con carga alta es señal de reducir el peso.'},
+        ex2:{emoji:'🍑',name:'Peso muerto rumano con mancuernas',sub:'3 × 10 repeticiones · rango completo',badgeT:'amber',badge:'⚡ Cadena posterior completa',
+          m1:'Técnica requerida',m1v:3,m1c:'amber',m2:'Intensidad',m2v:4,m2c:'amber',m3:'3×10 reps',m4:'12 min',
+          tip:'<strong>El peso muerto rumano con mancuernas trabaja la cadena posterior completa: isquiotibiales, glúteos y erector espinal.</strong> Bisagra de cadera con espalda neutral, baja las mancuernas por la pierna hasta sentir el estiramiento de los isquios, sube apretando los glúteos. Es el ejercicio de lumbar más completo disponible con mancuernas.'}
+        },
+      barra:{
+        ex1:{emoji:'🔙',name:'Hiperextensión colgada invertida',sub:'3 × 10-12 repeticiones · de la barra',badgeT:'amber',badge:'⚡ Barra + lumbar avanzada',
+          m1:'Técnica requerida',m1v:3,m1c:'amber',m2:'Intensidad',m2v:4,m2c:'amber',m3:'3×10-12 reps',m4:'12 min',
+          tip:'<strong>Colgado de la barra boca abajo (sostenido por las rodillas), realiza hiperextensiones del torso.</strong> Requiere acceso a una barra baja o una que permita este agarre invertido. Activa el erector espinal en su longitud completa con carga gravitacional. Solo intenta esto si tienes la fuerza de agarre y control necesarios.'},
+        ex2:{emoji:'🔙',name:'Reverse hyperextension en barra baja',sub:'3 × 12 repeticiones · piernas colgando',badgeT:'amber',badge:'⚡ Cadena posterior completa',
+          m1:'Técnica requerida',m1v:3,m1c:'amber',m2:'Intensidad',m2v:3,m2c:'gold',m3:'3×12 reps',m4:'10 min',
+          tip:'<strong>Si la barra es lo suficientemente baja, apoya el torso sobre ella y realiza elevaciones de piernas extendidas desde atrás.</strong> Es el reverse hyperextension casero usando la barra como banco. Activa glúteos e isquiotibiales desde su porción proximal y el erector desde el sacro.'}
+        }
+    }
+  },
+
+  elite:{
+    recto:{
+      gym:{
+        ex1:{emoji:'👑',name:'Dragon flag completo',sub:'3 × 4-6 repeticiones perfectas · arriba y abajo',badgeT:'gold',badge:'👑 Nivel atlético',
+          m1:'Técnica requerida',m1v:2,m1c:'red',m2:'Intensidad',m2v:5,m2c:'red',m3:'3×4-6 reps',m4:'25 min',
+          tip:'<strong>El dragon flag completo — subir y bajar sin apoyar el cuerpo — es el estándar élite del recto abdominal.</strong> Solo quien domine perfectamente el negativo puede intentar esto. El ascenso requiere una fuerza de recto y core que se desarrolla en meses de trabajo específico. No hay atajos.'},
+        ex2:{emoji:'🛞',name:'Pike rollout completo',sub:'3 × 6-8 repeticiones · caderas en V',badgeT:'gold',badge:'👑 Excéntrica extrema',
+          m1:'Técnica requerida',m1v:1,m1c:'red',m2:'Intensidad',m2v:5,m2c:'red',m3:'3×6-8 reps',m4:'18 min',
+          tip:'<strong>Desde posición de V invertida (caderas arriba), rueda hacia adelante pasando por plancha extendida y regresa.</strong> La curva de activación del recto en este movimiento es la más alta de cualquier ejercicio sin máquinas. Requiere dominar completamente el rollout de pie antes de intentarlo.'}
+        },
+      casa:{
+        ex1:{emoji:'🛞',name:'Pike rollout completo',sub:'3 × 6-8 repeticiones',badgeT:'gold',badge:'👑 El mejor sin máquinas',
+          m1:'Técnica requerida',m1v:1,m1c:'red',m2:'Intensidad',m2v:5,m2c:'red',m3:'3×6-8 reps',m4:'20 min',
+          tip:'<strong>Con solo una rueda de abdominales, el pike rollout es el ejercicio de recto más difícil disponible para casa.</strong> Desde V invertida, rueda hacia adelante hasta casi el suelo y regresa. La demanda sobre el recto abdominal supera cualquier otro ejercicio sin máquinas especializadas.'},
+        ex2:{emoji:'🔥',name:'Dragon flag negativo máximo',sub:'3 × 5-6 repeticiones · 6-8 seg de bajada',badgeT:'gold',badge:'👑 Bajada máxima',
+          m1:'Técnica requerida',m1v:2,m1c:'red',m2:'Intensidad',m2v:5,m2c:'red',m3:'3×5-6 reps',m4:'18 min',
+          tip:'<strong>La versión élite del dragon flag negativo alarga la bajada a 6-8 segundos.</strong> El tiempo extra bajo tensión excéntrica máxima es el estímulo de hipertrofia más alto que existe para el recto. Sin banco, usa el borde del suelo sujetándote de un objeto pesado y fijo. Cada repetición debe ser perfecta.'}
+        },
+      basico_eq:{
+        ex1:{emoji:'👑',name:'Dragon flag negativo con carga',sub:'3 × 4-5 repeticiones · tobilleras de peso',badgeT:'gold',badge:'👑 Resistencia adicional',
+          m1:'Técnica requerida',m1v:1,m1c:'red',m2:'Intensidad',m2v:5,m2c:'red',m3:'3×4-5 reps',m4:'22 min',
+          tip:'<strong>Si dominas completamente el dragon flag negativo, añadir tobilleras de 1-2 kg aumenta el estímulo de forma significativa.</strong> La carga extra en las piernas incrementa el torque que el recto debe controlar. Es una de las pocas formas de progresar el dragon flag más allá del peso corporal sin equipamiento especializado.'},
+        ex2:{emoji:'💪',name:'Crunch con mancuerna muy pesada',sub:'3-4 × 8 repeticiones · 16-20 kg',badgeT:'gold',badge:'👑 Hipertrofia directa',
+          m1:'Técnica requerida',m1v:3,m1c:'amber',m2:'Intensidad',m2v:5,m2c:'red',m3:'3-4×8 reps',m4:'15 min',
+          tip:'<strong>En nivel élite, el crunch con carga muy alta (16-20 kg) es el ejercicio de hipertrofia directa más efectivo con mancuernas.</strong> El estímulo mecánico con rangos bajos de repetición y carga alta es diferente al del dragon flag. Usar ambos cubre las adaptaciones de fuerza máxima y de hipertrofia funcional.'}
+        },
+      barra:{
+        ex1:{emoji:'🏋️',name:'Toes to bar con pausa',sub:'3 × 6-8 repeticiones · pausa 2 seg arriba',badgeT:'gold',badge:'👑 Contracción máxima',
+          m1:'Técnica requerida',m1v:2,m1c:'red',m2:'Intensidad',m2v:5,m2c:'red',m3:'3×6-8 reps',m4:'18 min',
+          tip:'<strong>El toes to bar con pausa de 2 segundos arriba es la versión élite del ejercicio.</strong> La pausa con los pies en la barra exige una contracción máxima del recto y los flexores de cadera bajo carga gravitacional plena. Es significativamente más difícil que el toes to bar continuo y produce mayor estímulo de adaptación.'},
+        ex2:{emoji:'🔥',name:'Dragon flag negativo desde suelo',sub:'3 × 5-6 repeticiones · 6 seg de bajada',badgeT:'gold',badge:'👑 Complemento sin barra',
+          m1:'Técnica requerida',m1v:2,m1c:'red',m2:'Intensidad',m2v:5,m2c:'red',m3:'3×5-6 reps',m4:'18 min',
+          tip:'<strong>El toes to bar y el dragon flag son los dos ejercicios más exigentes para el recto disponibles con y sin barra.</strong> El toes to bar trabaja el recto en cadena cinética cerrada (colgado); el dragon flag en cadena abierta (suelo). Juntos representan el pico del entrenamiento de recto con este equipamiento.'}
+        }
+    },
+    oblicuos:{
+      gym:{
+        ex1:{emoji:'🌪️',name:'Windshield wipers con piernas rectas',sub:'3 × 5-8 repeticiones cada lado',badgeT:'gold',badge:'👑 Máximo absoluto',
+          m1:'Técnica requerida',m1v:1,m1c:'red',m2:'Intensidad',m2v:5,m2c:'red',m3:'3×5-8 cada lado',m4:'22 min',
+          tip:'<strong>Los windshield wipers con piernas completamente rectas son el ejercicio de oblicuos más difícil disponible con barra.</strong> El torque que los oblicuos deben controlar con piernas rectas es máximo. Cada repetición debe ser perfecta — si el movimiento se acelera o pierde control, termina la serie.'},
+        ex2:{emoji:'🔀',name:'Cable rotation con carga alta',sub:'3 × 8-10 repeticiones cada lado · velocidad controlada',badgeT:'gold',badge:'👑 Potencia rotacional máxima',
+          m1:'Técnica requerida',m1v:2,m1c:'red',m2:'Intensidad',m2v:5,m2c:'red',m3:'3×8-10 cada lado',m4:'15 min',
+          tip:'<strong>Rotaciones en cable con carga alta desarrollan potencia rotacional — la capacidad de generar fuerza con velocidad.</strong> A diferencia del nivel avanzado donde el foco era técnica, en élite se busca la combinación de carga alta con velocidad controlada. Es el entrenamiento de oblicuos más transferible al deporte.'}
+        },
+      casa:{
+        ex1:{emoji:'🌪️',name:'Hollow rock con rotación dinámica',sub:'3 × 10-12 repeticiones cada lado · velocidad controlada',badgeT:'gold',badge:'👑 Control dinámico máximo',
+          m1:'Técnica requerida',m1v:2,m1c:'red',m2:'Intensidad',m2v:4,m2c:'amber',m3:'3×10-12 cada lado',m4:'18 min',
+          tip:'<strong>La versión dinámica del hollow rock con rotación: la velocidad es más alta pero el control no puede ceder.</strong> En élite, la capacidad de mantener posición perfecta a mayor velocidad es el indicador de progreso. Sin equipamiento, este ejercicio representa el pico del trabajo de oblicuos en el suelo.'},
+        ex2:{emoji:'⚙️',name:'Plancha lateral con elevación y extensión',sub:'3 × 8 repeticiones cada lado · complejo',badgeT:'gold',badge:'👑 Complejo avanzado',
+          m1:'Técnica requerida',m1v:1,m1c:'red',m2:'Intensidad',m2v:5,m2c:'red',m3:'3×8 cada lado',m4:'15 min',
+          tip:'<strong>Desde plancha lateral, eleva la cadera y simultáneamente extiende el brazo libre hacia arriba y la pierna superior hacia adelante.</strong> Es un complejo que combina flexión lateral, rotación y estabilización en el mismo movimiento. Requiere un control motor excepcional y es uno de los ejercicios más completos para oblicuos sin equipamiento.'}
+        },
+      basico_eq:{
+        ex1:{emoji:'🔄',name:'Russian twist con carga máxima',sub:'3 × 8-10 repeticiones cada lado · 20+ kg',badgeT:'gold',badge:'👑 Carga élite',
+          m1:'Técnica requerida',m1v:2,m1c:'red',m2:'Intensidad',m2v:5,m2c:'red',m3:'3×8-10 cada lado',m4:'15 min',
+          tip:'<strong>Con 20 kg o más, el Russian twist pasa a ser un ejercicio de fuerza pura de oblicuos.</strong> En élite, las repeticiones son lentas y completamente controladas con esta carga. La forma no puede ceder en ningún momento. Si tienes acceso a una mancuerna de 24 kg, úsala — la progresión de carga es la única variable disponible aquí.'},
+        ex2:{emoji:'🌪️',name:'Hollow rock lateral con mancuerna',sub:'3 × 6-8 rotaciones cada lado',badgeT:'gold',badge:'👑 Resistencia en rotación',
+          m1:'Técnica requerida',m1v:2,m1c:'red',m2:'Intensidad',m2v:5,m2c:'red',m3:'3×6-8 cada lado',m4:'15 min',
+          tip:'<strong>Desde posición hollow con una mancuerna extendida sobre el pecho, rota lentamente hacia un lado.</strong> La mancuerna actúa como resistencia al movimiento rotacional. La combinación de la demanda del hollow hold más la rotación con peso crea una activación de oblicuos que pocos ejercicios pueden igualar en casa.'}
+        },
+      barra:{
+        ex1:{emoji:'🌪️',name:'Windshield wipers con piernas rectas',sub:'3 × 5-8 repeticiones cada lado',badgeT:'gold',badge:'👑 Pico absoluto',
+          m1:'Técnica requerida',m1v:1,m1c:'red',m2:'Intensidad',m2v:5,m2c:'red',m3:'3×5-8 cada lado',m4:'22 min',
+          tip:'<strong>Con solo una barra de dominadas, los windshield wipers con piernas rectas son el ejercicio de oblicuos más exigente que existe.</strong> No hay nada más allá de esto sin equipamiento especializado. Cada repetición perfecta representa un nivel de control motor y fuerza de oblicuos que muy pocos atletas alcanzan.'},
+        ex2:{emoji:'🤸',name:'Toes to bar con rotación',sub:'3 × 5-6 repeticiones cada lado',badgeT:'gold',badge:'👑 Recto + oblicuos',
+          m1:'Técnica requerida',m1v:1,m1c:'red',m2:'Intensidad',m2v:5,m2c:'red',m3:'3×5-6 cada lado',m4:'18 min',
+          tip:'<strong>Lleva los pies rectos a la barra y en la parte alta rota el cuerpo para tocar el lado contrario.</strong> Es la combinación de toes to bar y windshield wipers en un solo movimiento. Activa recto, oblicuos y core de forma simultánea bajo carga gravitacional máxima. Es el ejercicio más completo disponible con solo una barra.'}
+        }
+    },
+    core:{
+      gym:{
+        ex1:{emoji:'💎',name:'Handstand contra pared',sub:'3 × 20-30 seg · hombros activos',badgeT:'gold',badge:'👑 Control total invertido',
+          m1:'Técnica requerida',m1v:1,m1c:'red',m2:'Intensidad',m2v:5,m2c:'red',m3:'3×20-30 seg',m4:'20 min',
+          tip:'<strong>El handstand (parado de manos) invierte la relación gravitacional del core y exige un nivel de estabilización completamente diferente.</strong> El core trabaja para prevenir el colapso en un plano que no es el habitual. Empieza contra la pared. La progresión hacia el handstand libre puede llevar meses de práctica consistente.'},
+        ex2:{emoji:'🛞',name:'Stir the pot en pelota suiza',sub:'3 × 8 rotaciones en cada dirección',badgeT:'gold',badge:'👑 Activación 360°',
+          m1:'Técnica requerida',m1v:2,m1c:'red',m2:'Intensidad',m2v:5,m2c:'red',m3:'3×8 cada dirección',m4:'15 min',
+          tip:'<strong>"Stir the pot": en posición de plancha con antebrazos en la pelota suiza, realiza círculos con los codos.</strong> La inestabilidad de la pelota más el movimiento circular crea una activación de oblicuos internos y externos que supera cualquier ejercicio en superficie estable. Es técnicamente el ejercicio de core con mayor activación medida en electromiografía.'}
+        },
+      casa:{
+        ex1:{emoji:'💎',name:'Handstand contra pared',sub:'3 × 20-30 seg · hombros activos',badgeT:'gold',badge:'👑 Sin equipamiento',
+          m1:'Técnica requerida',m1v:1,m1c:'red',m2:'Intensidad',m2v:5,m2c:'red',m3:'3×20-30 seg',m4:'20 min',
+          tip:'<strong>El handstand no necesita ningún equipamiento — solo una pared y práctica sistemática.</strong> Es el ejercicio de core con mayor demanda de control motor disponible sin equipamiento. La progresión: kick up contra pared, estabilización con espalda a la pared, luego vientre a la pared, y finalmente libre.'},
+        ex2:{emoji:'⚙️',name:'Planche lean',sub:'3 × 10-15 seg · inclinación progresiva',badgeT:'gold',badge:'👑 Progresión al planche',
+          m1:'Técnica requerida',m1v:1,m1c:'red',m2:'Intensidad',m2v:5,m2c:'red',m3:'3×10-15 seg',m4:'18 min',
+          tip:'<strong>Desde plancha sobre las manos, inclínate hacia adelante hasta que los hombros queden por delante de las muñecas.</strong> La gravedad crea un torque enorme sobre el core y los hombros. Es la primera etapa de la progresión al planche completo. La activación de core en esta posición es comparable a los ejercicios más exigentes de gimnasia.'}
+        },
+      basico_eq:{
+        ex1:{emoji:'💎',name:'Handstand contra pared',sub:'3 × 20-30 seg',badgeT:'gold',badge:'👑 No necesita equipamiento',
+          m1:'Técnica requerida',m1v:1,m1c:'red',m2:'Intensidad',m2v:5,m2c:'red',m3:'3×20-30 seg',m4:'20 min',
+          tip:'<strong>A nivel élite, el handstand es el ejercicio de core prioritario independientemente del equipamiento disponible.</strong> Las mancuernas o bandas no aportan nada al trabajo invertido. El handstand requiere solo una pared y representa el pico del entrenamiento de core en control motor y estabilización tridimensional.'},
+        ex2:{emoji:'🛞',name:'Ab wheel walk circular',sub:'3 × 5 vueltas completas',badgeT:'gold',badge:'👑 Core en movimiento',
+          m1:'Técnica requerida',m1v:1,m1c:'red',m2:'Intensidad',m2v:5,m2c:'red',m3:'3×5 vueltas',m4:'18 min',
+          tip:'<strong>Con la rueda de abdominales, camina en círculos desde posición de pie.</strong> Las variaciones de dirección obligan al core a adaptarse constantemente a fuerzas en ángulos cambiantes. A diferencia del rollout lineal, el movimiento circular activa oblicuos y core rotacional de forma que ningún otro ejercicio con rueda puede replicar.'}
+        },
+      barra:{
+        ex1:{emoji:'💎',name:'L-sit completo colgado',sub:'3 × 20-30 seg · piernas completamente horizontales',badgeT:'gold',badge:'👑 Pico colgado',
+          m1:'Técnica requerida',m1v:1,m1c:'red',m2:'Intensidad',m2v:5,m2c:'red',m3:'3×20-30 seg',m4:'22 min',
+          tip:'<strong>El L-sit completo colgado con piernas horizontales durante 20-30 segundos es el estándar élite del trabajo de core en barra.</strong> Requiere fuerza de core, flexores de cadera, hombros y agarre en simultáneo. Es el prerrequisito para progresar hacia el front lever, que es el siguiente nivel en este equipamiento.'},
+        ex2:{emoji:'🌊',name:'Front lever negativo',sub:'3 × 3-5 repeticiones · 5 seg de bajada',badgeT:'gold',badge:'👑 Más allá del L-sit',
+          m1:'Técnica requerida',m1v:1,m1c:'red',m2:'Intensidad',m2v:5,m2c:'red',m3:'3×3-5 reps',m4:'20 min',
+          tip:'<strong>El front lever negativo — bajar lentamente desde L-sit hasta posición horizontal con el cuerpo extendido — es el ejercicio de core más exigente disponible con solo una barra.</strong> La posición horizontal del cuerpo colgado requiere una fuerza de core y hombros que se desarrolla en años de práctica. Es el horizonte del entrenamiento con barra.'}
+        }
+    },
+    lumbar:{
+      gym:{
+        ex1:{emoji:'🏆',name:'Buenos días pesados',sub:'3 × 6-8 repeticiones · carga máxima controlada',badgeT:'gold',badge:'👑 Fuerza lumbar máxima',
+          m1:'Técnica requerida',m1v:1,m1c:'red',m2:'Intensidad',m2v:5,m2c:'red',m3:'3×6-8 reps',m4:'18 min',
+          tip:'<strong>Buenos días con carga significativa (mayor al 60% del peso corporal) es el ejercicio de erector espinal más intenso en nivel élite.</strong> La barra alta, bisagra profunda con espalda neutral. En élite, esta carga compite con cualquier ejercicio compound de fuerza y requiere periodización precisa. No se incluye en bloques de alta fatiga.'},
+        ex2:{emoji:'🔙',name:'Peso muerto rumano en déficit',sub:'3 × 8 repeticiones · de pie en step',badgeT:'gold',badge:'👑 Rango excéntrico máximo',
+          m1:'Técnica requerida',m1v:1,m1c:'red',m2:'Intensidad',m2v:5,m2c:'red',m3:'3×8 reps',m4:'15 min',
+          tip:'<strong>De pie en un step, el peso muerto rumano extiende el rango de estiramiento de isquiotibiales y erector espinal más allá del rango convencional.</strong> Solo para élite con flexibilidad de cadena posterior sólida. La carga debe permitir mantener la espalda completamente neutral en el rango extendido. Es el ejercicio de lumbar con mayor tensión excéntrica disponible.'}
+        },
+      casa:{
+        ex1:{emoji:'🔙',name:'Reverse hyperextension con pausa',sub:'3 × 10-12 repeticiones · 2 seg arriba',badgeT:'gold',badge:'👑 Cadena posterior máxima',
+          m1:'Técnica requerida',m1v:3,m1c:'amber',m2:'Intensidad',m2v:3,m2c:'gold',m3:'3×10-12 reps',m4:'12 min',
+          tip:'<strong>En élite sin equipamiento de carga, el reverse hyperextension con pausa de 2 segundos arriba es la mejor opción para lumbar.</strong> La tensión isométrica adicional en la posición extendida aumenta el estímulo muscular. Añadir tobilleras con peso convierte esto en un ejercicio de verdadero trabajo de fuerza lumbar en casa.'},
+        ex2:{emoji:'🤸',name:'Jefferson curl con objeto de carga',sub:'3 × 8 repeticiones · 10-20 kg en manos',badgeT:'gold',badge:'👑 Mobilidad + fuerza',
+          m1:'Técnica requerida',m1v:1,m1c:'red',m2:'Intensidad',m2v:4,m2c:'amber',m3:'3×8 reps',m4:'15 min',
+          tip:'<strong>El Jefferson curl puede hacerse en casa usando mancuernas, una mochila con peso o cualquier objeto manejable.</strong> De pie en un step (o borde de cama), baja el peso enrollando la columna vértebra a vértebra. Solo para élite con columna sana. Es el ejercicio de movilidad y fuerza lumbar más completo disponible en casa.'}
+        },
+      basico_eq:{
+        ex1:{emoji:'🏆',name:'Peso muerto rumano con mancuernas muy pesadas',sub:'3 × 6-8 repeticiones · carga máxima',badgeT:'gold',badge:'👑 Fuerza máxima con mancuernas',
+          m1:'Técnica requerida',m1v:2,m1c:'red',m2:'Intensidad',m2v:5,m2c:'red',m3:'3×6-8 reps',m4:'18 min',
+          tip:'<strong>Con las mancuernas más pesadas disponibles, el peso muerto rumano se vuelve un ejercicio de fuerza real para la cadena posterior.</strong> En élite, el límite es la carga que las mancuernas permiten. Si el máximo disponible se siente fácil, es señal de que necesitas acceso a barra o equipamiento adicional para seguir progresando.'},
+        ex2:{emoji:'🔙',name:'Jefferson curl con mancuerna',sub:'3 × 8 repeticiones · vértebra a vértebra',badgeT:'gold',badge:'👑 Mobilidad + fuerza',
+          m1:'Técnica requerida',m1v:1,m1c:'red',m2:'Intensidad',m2v:4,m2c:'amber',m3:'3×8 reps',m4:'15 min',
+          tip:'<strong>El Jefferson curl con mancuerna en déficit (de pie en step) combina flexibilidad y fuerza lumbar en el mismo ejercicio.</strong> Solo para élite. Enrolla la columna hacia abajo vértebra a vértebra mientras sostienes la mancuerna. La carga debe ser manejable — no es un ejercicio para demostrar fuerza máxima, sino para desarrollar movilidad con control.'}
+        },
+      barra:{
+        ex1:{emoji:'🤸',name:'Front lever negativo — cadena posterior',sub:'3 × 3-5 repeticiones · core y lumbar en suspensión',badgeT:'gold',badge:'👑 Lumbar en suspensión',
+          m1:'Técnica requerida',m1v:1,m1c:'red',m2:'Intensidad',m2v:5,m2c:'red',m3:'3×3-5 reps',m4:'20 min',
+          tip:'<strong>El front lever trabaja simultáneamente el core, los extensores de espalda y el sistema de hombros bajo tensión gravitacional máxima.</strong> Es imposible mantener la posición sin una cadena posterior completamente desarrollada. La versión negativa (bajar desde L-sit) permite practicar el movimiento antes de dominar la posición estática.'},
+        ex2:{emoji:'🏆',name:'Jefferson curl colgado del step',sub:'3 × 8 repeticiones · carga mínima, rango máximo',badgeT:'gold',badge:'👑 Mobilidad máxima',
+          m1:'Técnica requerida',m1v:1,m1c:'red',m2:'Intensidad',m2v:4,m2c:'amber',m3:'3×8 reps',m4:'15 min',
+          tip:'<strong>El Jefferson curl complementa el trabajo de suspensión de la barra con trabajo de movilidad y fuerza lumbar en rango extendido.</strong> Juntos cubren las dos demandas más importantes de la lumbar en élite: la fuerza en suspensión bajo carga gravitacional (front lever) y la movilidad con control (Jefferson curl).'}
+        }
+    }
   }
 };
 
+// ZONE INFO
+const ZONE_INFO = {
+  recto:{emoji:'🔲',name:'Recto Abdominal',
+    desc:'El músculo principal del "six-pack". Va desde el pubis hasta las costillas. Se activa con flexión de columna y elevación de piernas. Es el más visible pero no el más funcional.',
+    rows:[
+      {f:'Visibilidad estética',v:5,good:true},
+      {f:'Dificultad técnica',v:3,good:false},
+      {f:'Transferencia funcional',v:3,good:true},
+      {f:'Impacto en lumbar',v:3,good:false},
+      {f:'Velocidad de desarrollo',v:3,good:true},
+      {f:'Necesita carga externa',v:4,good:true},
+    ],
+    chips:[{t:'Ab rollout',c:'gold'},{t:'Elevación de piernas',c:'blue'},{t:'Dragon flag',c:'red'}]
+  },
+  oblicuos:{emoji:'↔️',name:'Oblicuos',
+    desc:'Oblicuo externo e interno. Controlan la rotación y la flexión lateral del tronco. Dan anchura al core y son clave en deportes. Muy subestimados en la mayoría de rutinas.',
+    rows:[
+      {f:'Visibilidad estética',v:3,good:true},
+      {f:'Dificultad técnica',v:4,good:false},
+      {f:'Transferencia funcional',v:5,good:true},
+      {f:'Impacto en lumbar',v:2,good:false},
+      {f:'Velocidad de desarrollo',v:3,good:true},
+      {f:'Necesita carga externa',v:3,good:true},
+    ],
+    chips:[{t:'Rotaciones en polea',c:'gold'},{t:'Windshield wipers',c:'red'},{t:'Side plank',c:'green'}]
+  },
+  core:{emoji:'⚙️',name:'Core Profundo',
+    desc:'Transverso del abdomen, multífidos y suelo pélvico. El "cinturón natural". No es visible pero es la base de toda la fuerza. Pilar de la salud lumbar y el rendimiento atlético.',
+    rows:[
+      {f:'Visibilidad estética',v:1,good:true},
+      {f:'Dificultad técnica',v:5,good:false},
+      {f:'Transferencia funcional',v:5,good:true},
+      {f:'Impacto en lumbar',v:1,good:false},
+      {f:'Velocidad de desarrollo',v:2,good:true},
+      {f:'Necesita carga externa',v:1,good:true},
+    ],
+    chips:[{t:'Planchas',c:'green'},{t:'Dead bug',c:'blue'},{t:'Pallof press',c:'gold'}]
+  },
+  lumbar:{emoji:'🔙',name:'Lumbar / Extensores',
+    desc:'Erector espinal, cuadrado lumbar y glúteos. El lado olvidado del core. Sin un posterior fuerte, el abdomen trabaja en desequilibrio. Previene el 80% de las lesiones de espalda baja.',
+    rows:[
+      {f:'Visibilidad estética',v:1,good:true},
+      {f:'Dificultad técnica',v:3,good:false},
+      {f:'Transferencia funcional',v:5,good:true},
+      {f:'Impacto en lumbar',v:2,good:false},
+      {f:'Velocidad de desarrollo',v:4,good:true},
+      {f:'Necesita carga externa',v:2,good:true},
+    ],
+    chips:[{t:'Buenos días',c:'gold'},{t:'Superman',c:'green'},{t:'Hiperextensiones',c:'blue'}]
+  }
+};
+
+// VOLUMEN DATA
+const VOL_DATA = {
+  basico:[
+    {n:'Crunch básico',v:20},
+    {n:'Plancha estática',v:30},
+    {n:'Elevación de rodillas',v:18},
+    {n:'Dead bug',v:25},
+    {n:'Bird-dog',v:22},
+  ],
+  intermedio:[
+    {n:'Crunch con peso',v:55},
+    {n:'Ab rollout rodillas',v:70},
+    {n:'Elevación piernas colgado',v:65},
+    {n:'Russian twist + peso',v:60},
+    {n:'Hollow hold',v:58},
+  ],
+  avanzado:[
+    {n:'Ab rollout de pie',v:90},
+    {n:'Dragon flag negativo',v:85},
+    {n:'Windshield wipers',v:80},
+    {n:'Toes to bar',v:88},
+    {n:'Pallof press pesado',v:75},
+  ],
+  elite:[
+    {n:'Dragon flag completo',v:100},
+    {n:'L-sit colgado',v:95},
+    {n:'One-arm plank',v:92},
+    {n:'Pike rollout',v:98},
+    {n:'Front lever negativo',v:100},
+  ]
+};
+
+// WEEKS
 const WEEKS = {
-  volumen:{
+  basico:{
     days:[
-      {n:'Lun',i:'🏋️',m:'Pesas',d:'Caminata 20\' post',a:'#5A9E72'},
-      {n:'Mar',i:'🚶',m:'Caminata',d:'30 min suave',a:'#5A9E72'},
-      {n:'Mié',i:'🏋️',m:'Pesas',d:'Caminata 20\' post',a:'#5A9E72'},
-      {n:'Jue',i:'🚴',m:'Bicicleta',d:'LISS 25 min',a:'#4A85C8'},
-      {n:'Vie',i:'🏋️',m:'Pesas',d:'Caminata 20\' post',a:'#5A9E72'},
-      {n:'Sáb',i:'🚶',m:'Caminata',d:'40 min libre',a:'#5A9E72'},
+      {n:'Lun',i:'⚙️',m:'Core base',d:'Plancha + Dead bug',a:'#4A85C8'},
+      {n:'Mar',i:'😴',m:'Descanso',d:'o caminata',a:'#3A3A3A',rest:true},
+      {n:'Mié',i:'💪',m:'Recto + Lumbar',d:'Crunch + Superman',a:'#5A9E72'},
+      {n:'Jue',i:'😴',m:'Descanso',d:'activo',a:'#3A3A3A',rest:true},
+      {n:'Vie',i:'⚙️',m:'Core + Oblicuos',d:'Bird-dog + Bicicleta',a:'#C9A96E'},
+      {n:'Sáb',i:'🚶',m:'Movilidad',d:'Estiramientos activos',a:'#5A9E72'},
       {n:'Dom',i:'😴',m:'Descanso',d:'total',a:'#3A3A3A',rest:true},
     ],
-    tip:'<strong>En volumen:</strong> caminata suave como base. Evita la escaladora en la misma semana con piernas intensas. El objetivo del cardio es sumar salud sin restar recuperación para las pesas.'
+    tip:'<strong>En nivel básico:</strong> 3 sesiones de abdominales por semana es suficiente y óptimo. Prioriza siempre el core profundo primero. No omitas el trabajo lumbar: es tan importante como los crunches. La técnica perfecta antes de agregar carga o dificultad.'
   },
-  definicion:{
+  intermedio:{
     days:[
-      {n:'Lun',i:'🏋️',m:'Pesas',d:'+ Cam. inclinada 30\'',a:'#C9A96E'},
-      {n:'Mar',i:'🚴',m:'Bicicleta',d:'LISS 35 min',a:'#4A85C8'},
-      {n:'Mié',i:'🏋️',m:'Pesas',d:'+ Cam. inclinada 30\'',a:'#C9A96E'},
-      {n:'Jue',i:'🪜',m:'Escaladora',d:'25 min (no piernas)',a:'#C8881A'},
-      {n:'Vie',i:'🏋️',m:'Pesas',d:'+ Bicicleta 30\'',a:'#4A85C8'},
-      {n:'Sáb',i:'⛰️',m:'Cam. inclin.',d:'40 min',a:'#C9A96E'},
-      {n:'Dom',i:'🚶',m:'Caminata',d:'suave 45 min',a:'#5A9E72'},
-    ],
-    tip:'<strong>En definición:</strong> caminata inclinada + bicicleta LISS son la base. Escaladora 2-3x semana en días sin piernas. La caminata suave suma como NEAT diario sin costo de recuperación.'
-  },
-  mantencion:{
-    days:[
-      {n:'Lun',i:'🏋️',m:'Pesas',d:'+ Caminata 25\'',a:'#5A9E72'},
-      {n:'Mar',i:'🚴',m:'Bicicleta',d:'30 min libre',a:'#4A85C8'},
-      {n:'Mié',i:'🏋️',m:'Pesas',d:'+ Caminata 25\'',a:'#5A9E72'},
-      {n:'Jue',i:'⛰️',m:'Cam. inclin.',d:'30 min',a:'#C9A96E'},
-      {n:'Vie',i:'🏋️',m:'Pesas',d:'+ Caminata 25\'',a:'#5A9E72'},
-      {n:'Sáb',i:'🪜',m:'Escaladora',d:'20 min o libre',a:'#C8881A'},
+      {n:'Lun',i:'🏋️',m:'Recto A',d:'Rollout + Elevación',a:'#C9A96E'},
+      {n:'Mar',i:'🔄',m:'Oblicuos',d:'Russian + Polea',a:'#4A85C8'},
+      {n:'Mié',i:'😴',m:'Descanso',d:'o movilidad',a:'#3A3A3A',rest:true},
+      {n:'Jue',i:'⚙️',m:'Core profundo',d:'Hollow + Pallof',a:'#5A9E72'},
+      {n:'Vie',i:'🏋️',m:'Recto B',d:'Crunch + peso colgado',a:'#C9A96E'},
+      {n:'Sáb',i:'🔙',m:'Lumbar',d:'Buenos días + GHD',a:'#C8881A'},
       {n:'Dom',i:'😴',m:'Descanso',d:'total',a:'#3A3A3A',rest:true},
     ],
-    tip:'<strong>En mantención:</strong> sé flexible. Alterna modalidades según energía y motivación. La consistencia importa más que la modalidad específica. 3-5 sesiones/semana es más que suficiente.'
+    tip:'<strong>En intermedio:</strong> 4 sesiones específicas de abdominales. Varía las zonas cada día para maximizar la recuperación. Comienza a llevar un registro: repeticiones, tiempo en plancha, carga utilizada. Sin datos no hay progresión real.'
+  },
+  avanzado:{
+    days:[
+      {n:'Lun',i:'🔥',m:'Dragon Flag',d:'+ Ab Wheel pie',a:'#C0514A'},
+      {n:'Mar',i:'🌀',m:'Windshield W.',d:'+ Toes to bar',a:'#4A85C8'},
+      {n:'Mié',i:'⚙️',m:'L-Sit',d:'+ OA Plank',a:'#C9A96E'},
+      {n:'Jue',i:'😴',m:'Descanso',d:'activo',a:'#3A3A3A',rest:true},
+      {n:'Vie',i:'🔥',m:'Dragon Flag',d:'+ Hollow avanzado',a:'#C0514A'},
+      {n:'Sáb',i:'⚡',m:'Lumbar pesada',d:'Jefferson + GHR',a:'#C8881A'},
+      {n:'Dom',i:'😴',m:'Descanso',d:'total',a:'#3A3A3A',rest:true},
+    ],
+    tip:'<strong>En avanzado:</strong> 5 sesiones de alta intensidad. La recuperación es crítica — el sistema nervioso también se fatiga con ejercicios como el dragon flag. Un día de descanso activo en la mitad de la semana es clave. Periodiza por bloques de 4 a 6 semanas.'
+  },
+  elite:{
+    days:[
+      {n:'Lun',i:'👑',m:'Dragon completo',d:'+ Pike rollout',a:'#C9A96E'},
+      {n:'Mar',i:'🌪️',m:'Windshield W.',d:'+ Cable rotación',a:'#4A85C8'},
+      {n:'Mié',i:'💎',m:'Handstand',d:'+ Stir the pot',a:'#C9A96E'},
+      {n:'Jue',i:'😴',m:'Descanso',d:'total SNC',a:'#3A3A3A',rest:true},
+      {n:'Vie',i:'👑',m:'Combo élite',d:'L-sit + Front lever',a:'#C9A96E'},
+      {n:'Sáb',i:'🏆',m:'Lumbar máx.',d:'GM pesados + Déficit',a:'#C8881A'},
+      {n:'Dom',i:'😴',m:'Descanso',d:'total',a:'#3A3A3A',rest:true},
+    ],
+    tip:'<strong>En élite:</strong> el entrenamiento de abdominales ya no es un bloque separado — se integra en el trabajo técnico diario. El descanso es tan importante como la intensidad. Si estás en este nivel, ya sabes que la programación en ondas (descarga cada 3 a 4 semanas) es innegociable.'
   }
 };
 
-const CALS = {
-  low: [{n:'Escaladora',b:220},{n:'Bicicleta LISS',b:150},{n:'Caminata inclinada',b:150},{n:'Caminata suave',b:90}],
-  mod: [{n:'Escaladora',b:320},{n:'Bicicleta LISS',b:250},{n:'Caminata inclinada',b:220},{n:'Caminata suave',b:130}],
-  high:[{n:'Escaladora',b:400},{n:'Bicicleta LISS',b:350},{n:'Caminata inclinada',b:280},{n:'Caminata suave',b:160}],
-};
-
+// FAQS
 const FAQS = [
-  {q:'¿Puedo hacer cardio en ayunas?',a:'Sí, pero no es mágico. El cardio en ayunas no quema significativamente más grasa que el cardio post-comida cuando se igualan las calorías totales del día. Si lo toleras bien y te da energía, úsalo. Si te marea o baja tu rendimiento general, evítalo.'},
-  {q:'¿Cuánto cardio es demasiado?',a:'En volumen: más de 180-200 min/semana puede interferir con la ganancia muscular. En definición: hasta 300-350 min/semana es manejable con intensidad moderada. La señal de alarma real es la fatiga acumulada y la pérdida de fuerza progresiva en las pesas.'},
-  {q:'¿La escaladora me "come" el músculo de piernas?',a:'No directamente, pero si se usa en exceso junto al entrenamiento de piernas, compromete la calidad del entrenamiento y la recuperación. Esto sí puede frenar el progreso a largo plazo. Úsala con inteligencia: nunca el mismo día que piernas intensas.'},
-  {q:'¿HIIT o LISS para perder grasa?',a:'Depende del contexto. El HIIT quema más calorías en menos tiempo y genera mayor EPOC post-ejercicio, pero fatiga más. El LISS es más sostenible, menos agotador y mejor para preservar masa muscular en déficit. Una mezcla de ambos suele dar mejores resultados que cualquiera solo.'},
-  {q:'¿Tengo dolor de rodilla, qué hago?',a:'Bicicleta estática (con asiento a altura correcta) y caminata suave plana son tus opciones más seguras. Evita escaladora y caminata inclinada hasta resolver el problema. La bicicleta es la única modalidad sin impacto compresivo en la rodilla. Consulta a tu médico o fisioterapeuta ante dolor persistente.'},
-  {q:'¿Cuánto esperar entre cardio y pesas el mismo día?',a:'Idealmente 4-6 horas entre sesiones para maximizar recuperación y rendimiento. Si no es posible esa separación, haz pesas primero y cardio después. Nunca hagas cardio intenso (HIIT o escaladora) antes de pesas si tu objetivo es rendimiento en fuerza.'},
-  {q:'¿El cardio afecta la síntesis proteica?',a:'El cardio excesivo o mal programado puede elevar el cortisol y reducir la ventana anabólica post-entrenamiento. La caminata suave prácticamente no afecta la síntesis proteica. La escaladora e HIIT intensos sí pueden hacerlo si se acumulan en exceso o se colocan mal en el día.'},
+  {q:'¿Cuántas veces a la semana debo entrenar abdomen?',a:'Depende del nivel: básico 2 a 3 veces, intermedio 3 a 4 veces, avanzado hasta 5 veces. El abdomen se recupera más rápido que otros músculos (24 a 48 horas), pero eso no significa que entrenarlo todos los días sea óptimo. La calidad de cada sesión supera la cantidad de días.'},
+  {q:'¿Los crunches dañan la espalda?',a:'Los crunches bien ejecutados no dañan la espalda en personas sanas. El problema es la mala técnica: jalarse del cuello, usar impulso o hacerlos con hiperlordosis lumbar. Si tienes dolor lumbar previo, prioriza ejercicios de estabilización (planchas, dead bug) antes de introducir flexión de columna.'},
+  {q:'¿Por qué no se ven mis abdominales aunque los entrene?',a:'El abdomen se desarrolla con el entrenamiento, pero se revela con el déficit calórico. La grasa subcutánea cubre el recto abdominal sin importar cuán fuerte sea. Para ver los cuadros necesitas llegar a un porcentaje de grasa corporal bajo (por debajo del 12% en hombres, 18% en mujeres aproximadamente). El entrenamiento hace el músculo; la dieta hace la visibilidad.'},
+  {q:'¿Es mejor hacer abdominales al principio o al final del entrenamiento?',a:'Casi siempre al final. El core actúa como estabilizador en todos los ejercicios compuestos (sentadilla, peso muerto, press). Si lo fatigues primero, comprometes la calidad y seguridad de esos movimientos. Excepción: si el objetivo principal de la sesión es el core en sí mismo, como en rehabilitación.'},
+  {q:'¿El ab rollout es mejor que los crunches?',a:'Para el desarrollo muscular del recto abdominal, sí. El ab rollout genera una activación excéntrica extrema que los crunches no pueden igualar. Pero es un ejercicio avanzado que requiere una base sólida. Los crunches son más accesibles para aprender la contracción abdominal. Lo ideal es usar ambos según tu nivel.'},
+  {q:'¿El dolor lumbar impide entrenar abdominales?',a:'No necesariamente. El dead bug, la plancha y el bird-dog están diseñados específicamente para fortalecer el core sin comprometer la columna. Son el primer paso en cualquier protocolo de rehabilitación lumbar. Los ejercicios a evitar con lumbar sensible son: crunches completos, sit-ups, rotaciones con carga y cualquier flexión de columna con peso.'},
+  {q:'¿Los oblicuos hacen la cintura más ancha?',a:'El miedo a entrenar oblicuos por "ensanchar la cintura" es un mito extendido, especialmente entre mujeres. Los oblicuos bien entrenados, con bajo porcentaje de grasa, definen y estilizan la cintura. El "ensanchamiento" que se ve en algunos atletas se debe al conjunto de hipertrofia más grasa encima, no al entrenamiento específico de oblicuos.'},
+  {q:'¿Qué es el transverso abdominal y por qué importa?',a:'El transverso es el músculo abdominal más profundo. Actúa como un cinturón natural que comprime los órganos abdominales y estabiliza la columna. Se activa con la maniobra de "meter el ombligo". Es prácticamente invisible en términos estéticos pero es la base de toda la fuerza funcional. Ejercicios como el dead bug y el Pallof press lo trabajan directamente.'},
 ];
 
 // ── HELPERS ──────────────────────────────────────────────────────────
-let calIntensity = 'mod';
-
 function pips(v,max,colorClass){
   let h='';
-  for(let i=1;i<=max;i++){
-    h+=`<div class="pip${i<=v?' on-'+colorClass:''}"></div>`;
-  }
+  for(let i=1;i<=max;i++) h+=`<div class="pip${i<=v?' on-'+colorClass:''}"></div>`;
   return`<div class="pip-row">${h}</div>`;
 }
-
 function chipColor(c){
   return{green:'color:var(--green);background:var(--green-bg)',gold:'color:var(--gold);background:var(--gold-glow)',blue:'color:var(--blue);background:var(--blue-bg)',red:'color:var(--red);background:var(--red-bg)'}[c]||'';
 }
+function intensityLabel(v){return['','Muy baja','Baja','Media','Alta','Máxima'][v]}
 
-// ── SELECTOR ──────────────────────────────────────────────────────────
-function buildResult(){
-  const etapa   = document.getElementById('sel-etapa').value;
-  const obj     = document.getElementById('sel-objetivo').value;
-  const dia     = document.getElementById('sel-dia').value;
-  const art     = document.getElementById('sel-articular').value;
-
-  let r = RESULTS[etapa][obj];
-
-  // Override por articular
-  if(art!=='ok'){
-    if(['escaladora','caminata_inclinada'].includes(r.modal)&&art==='rodilla'){
-      r=RESULTS[etapa]['articulaciones'];
-    }
-    if(r.modal==='escaladora'&&art==='tobillo'){
-      r=RESULTS[etapa]['articulaciones'];
-    }
-  }
-
-  // Warning día piernas
-  let warningHtml='';
-  if(dia==='post_inf'){
-    if(r.modal==='escaladora'){
-      r=RESULTS[etapa]['rendimiento'];
-      warningHtml=`<div class="badge badge-amber" style="margin-bottom:12px;">⚠ Ajustado — escaladora incompatible con día de piernas</div>`;
-    } else {
-      warningHtml=`<div class="badge badge-amber" style="margin-bottom:12px;">⚠ Día de piernas — mantén intensidad baja</div>`;
-    }
-  }
-  if(dia==='descanso'){
-    warningHtml=`<div class="badge badge-green" style="margin-bottom:12px;">✓ Día libre — puedes ser más exigente</div>`;
-  }
-
-  const mi = MODAL_INFO[r.modal];
-  const badgeClass = `badge-${r.badgeT}`;
-
-  document.getElementById('result-output').innerHTML=`
-<div class="result-card">
-  <div class="result-top">
-    <div class="result-top-row">
-      <div class="result-emoji">${mi.emoji}</div>
+function exBlockHTML(ex, numLabel, isLast){
+  const border = isLast ? '' : '';
+  return `
+<div class="ex-block">
+  <div class="ex-block-top">
+    <div class="ex-block-num">${numLabel}</div>
+    <div class="ex-block-row">
+      <div class="ex-block-emoji">${ex.emoji}</div>
       <div style="flex:1;min-width:0">
-        <div class="result-name">${mi.name}</div>
-        <div class="result-sub">${r.freq} · ${r.dur}</div>
+        <div class="ex-block-name">${ex.name}</div>
+        <div class="ex-block-sub">${ex.sub}</div>
       </div>
     </div>
-    <div class="result-badge-wrap" style="margin-top:14px">
-      ${warningHtml}
-      <div class="badge ${badgeClass}">${r.badge}</div>
+    <div class="ex-block-badge" style="margin-top:10px">
+      <div class="badge badge-${ex.badgeT}">${ex.badge}</div>
     </div>
   </div>
-
   <div class="metrics-grid">
     <div class="metric-item">
-      <div class="metric-label-sm">Impacto articular</div>
-      ${pips(MODAL_INFO[r.modal].rows[1].v,5,'red')}
-      <div class="metric-val-lg">${['','Mín.','Bajo','Mod.','Alto','Muy alto'][MODAL_INFO[r.modal].rows[1].v]}</div>
+      <div class="metric-label-sm">${ex.m1}</div>
+      ${pips(ex.m1v,5,ex.m1c)}
+      <div class="metric-val-lg">${intensityLabel(ex.m1v)}</div>
     </div>
     <div class="metric-item">
-      <div class="metric-label-sm">Fatiga muscular</div>
-      ${pips(MODAL_INFO[r.modal].rows[2].v,5,'red')}
-      <div class="metric-val-lg">${['','Mín.','Baja','Media','Alta','Muy alta'][MODAL_INFO[r.modal].rows[2].v]}</div>
+      <div class="metric-label-sm">${ex.m2}</div>
+      ${pips(ex.m2v,5,ex.m2c)}
+      <div class="metric-val-lg">${intensityLabel(ex.m2v)}</div>
     </div>
     <div class="metric-item">
-      <div class="metric-label-sm">Quema calórica</div>
-      ${pips(MODAL_INFO[r.modal].rows[3].v,5,'gold')}
-      <div class="metric-val-lg">${['','Baja','Baja','Media','Alta','Muy alta'][MODAL_INFO[r.modal].rows[3].v]}</div>
+      <div class="metric-label-sm">Frecuencia</div>
+      <div class="metric-val-gold">${ex.m3}</div>
     </div>
     <div class="metric-item">
-      <div class="metric-label-sm">Kcal / 30 min</div>
-      <div class="metric-val-kcal">~${r.kcal}</div>
-      <div class="metric-sub">70 kg · int. moderada</div>
+      <div class="metric-label-sm">Duración bloque</div>
+      <div class="metric-val-gold">${ex.m4}</div>
     </div>
   </div>
-
-  <div class="result-tip">
-    <div class="tip-inner">${r.tip}</div>
+  <div class="ex-tip">
+    <div class="tip-inner">${ex.tip}</div>
   </div>
 </div>`;
 }
 
-// ── COMPARATIVA ──────────────────────────────────────────────────────
-function buildComp(){
-  const keys=['escaladora','bicicleta','caminata_inclinada','caminata_suave'];
+// ── SELECTOR ──────────────────────────────────────────────────────────
+function buildResult(){
+  const nivel  = document.getElementById('sel-nivel').value;
+  const zona   = document.getElementById('sel-zona').value;
+  const equipo = document.getElementById('sel-equipo').value;
+
+  const pair = RESULTS[nivel][zona][equipo];
+
+  document.getElementById('result-output').innerHTML=`
+<div class="result-card">
+  <div class="result-header">
+    <div class="result-header-top">
+      <div class="result-header-label">Ejercicio 1</div>
+    </div>
+  </div>
+  ${exBlockHTML(pair.ex1, 'EJERCICIO 1 — PRINCIPAL', false)}
+  <div class="ex-divider">
+    <div class="ex-divider-line"></div>
+    <div class="ex-divider-text">complemento</div>
+    <div class="ex-divider-line"></div>
+  </div>
+  ${exBlockHTML(pair.ex2, 'EJERCICIO 2 — COMPLEMENTO', true)}
+</div>`;
+}
+
+// ── EJERCICIOS (comparativa) ──────────────────────────────────────────
+function buildEjercicios(){
+  const keys=['recto','oblicuos','core','lumbar'];
   let html='';
   keys.forEach((k,ki)=>{
-    const m=MODAL_INFO[k];
-    const featured=k==='caminata_inclinada';
+    const m=ZONE_INFO[k];
+    const featured=k==='core';
     const rowsHtml=m.rows.map(r=>{
       const color=r.good?'gold':'red';
       return`<div class="comp-row">
@@ -895,24 +1189,24 @@ function buildComp(){
     }).join('');
     const chipsHtml=m.chips.map(c=>`<span class="comp-chip" style="${chipColor(c.c)};padding:4px 8px;border-radius:4px;font-size:10px;font-weight:600">${c.t}</span>`).join('');
     html+=`<div class="comp-modal-card${featured?' featured':''}">
-      <div class="comp-card-header" onclick="toggleComp(this,${ki})">
+      <div class="comp-card-header" onclick="toggleEx(this,${ki})">
         <span class="comp-emoji">${m.emoji}</span>
         <span class="comp-name">${m.name}</span>
-        ${featured?`<span class="badge badge-gold" style="font-size:9px;padding:3px 7px;margin-right:6px">Popular</span>`:''}
+        ${featured?`<span class="badge badge-gold" style="font-size:9px;padding:3px 7px;margin-right:6px">Base</span>`:''}
         <span class="comp-arrow">⌄</span>
       </div>
-      <div class="comp-body" id="comp-body-${ki}">
+      <div class="comp-body" id="ex-body-${ki}">
         <div style="padding:12px 16px 8px;font-size:12px;color:var(--text2);line-height:1.6">${m.desc}</div>
         <div style="padding:0 16px 10px;display:flex;flex-wrap:wrap;gap:6px">${chipsHtml}</div>
         ${rowsHtml}
       </div>
     </div>`;
   });
-  document.getElementById('comp-cards').innerHTML=html;
+  document.getElementById('ex-cards').innerHTML=html;
 }
 
-function toggleComp(header,idx){
-  const body=document.getElementById('comp-body-'+idx);
+function toggleEx(header,idx){
+  const body=document.getElementById('ex-body-'+idx);
   const arrow=header.querySelector('.comp-arrow');
   const isOpen=body.classList.contains('open');
   body.classList.toggle('open',!isOpen);
@@ -920,39 +1214,34 @@ function toggleComp(header,idx){
   header.classList.toggle('open',!isOpen);
 }
 
-// ── CALORÍAS ──────────────────────────────────────────────────────────
-function setInt(v,btn){
-  calIntensity=v;
+// ── VOLUMEN ──────────────────────────────────────────────────────────
+let nivelVol='intermedio';
+function setNivelVol(v,btn){
+  nivelVol=v;
   document.querySelectorAll('.cal-int-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-  updateCals();
+  updateVol();
 }
-
-function updateCals(){
-  const w=parseInt(document.getElementById('weight-slider').value);
-  document.getElementById('weight-out').textContent=w+' kg';
-  const data=CALS[calIntensity];
-  const maxCal=data[0].b*(w/70);
+function updateVol(){
+  const data=VOL_DATA[nivelVol];
   let html='';
   data.forEach(item=>{
-    const kcal=Math.round(item.b*(w/70));
-    const pct=Math.round((kcal/maxCal)*100);
-    html+=`<div class="cal-row">
-      <span class="cal-name">${item.n}</span>
-      <div class="cal-bar-track"><div class="cal-bar-fill" style="width:${pct}%"></div></div>
-      <span class="cal-num">~${kcal} kcal</span>
+    html+=`<div class="vol-row">
+      <span class="vol-name">${item.n}</span>
+      <div class="vol-bar-track"><div class="vol-bar-fill" style="width:${item.v}%"></div></div>
+      <span class="vol-num">${item.v}%</span>
     </div>`;
   });
-  document.getElementById('cal-bars').innerHTML=html;
+  document.getElementById('vol-bars').innerHTML=html;
 }
 
-// ── SEMANA ────────────────────────────────────────────────────────────
-function buildWeek(phase,btn){
+// ── SEMANA ──────────────────────────────────────────────────────────
+function buildWeek(level,btn){
   if(btn){
-    document.querySelectorAll('.phase-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.level-btn').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
   }
-  const data=WEEKS[phase];
+  const data=WEEKS[level];
   let html='';
   data.days.forEach(d=>{
     html+=`<div class="day-card${d.rest?' rest':''}">
@@ -967,7 +1256,7 @@ function buildWeek(phase,btn){
   document.getElementById('week-tip').innerHTML=data.tip;
 }
 
-// ── FAQ ───────────────────────────────────────────────────────────────
+// ── FAQ ──────────────────────────────────────────────────────────────
 function buildFaq(){
   let html='';
   FAQS.forEach((f,i)=>{
@@ -981,7 +1270,6 @@ function buildFaq(){
   });
   document.getElementById('faq-list').innerHTML=html;
 }
-
 function toggleFaq(i,row){
   const a=document.getElementById('faq-a-'+i);
   const icon=row.querySelector('.faq-icon');
@@ -1000,9 +1288,9 @@ function switchTab(id,btn){
 
 // ── INIT ──────────────────────────────────────────────────────────────
 buildResult();
-buildComp();
-updateCals();
-buildWeek('volumen');
+buildEjercicios();
+updateVol();
+buildWeek('basico');
 buildFaq();
 </script>
 </body>
